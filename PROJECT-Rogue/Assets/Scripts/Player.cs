@@ -7,7 +7,7 @@ public class Player : Character
     private Rigidbody2D _rigidbody;
 
 
-    new public void Move()  //przes³oniêcie metody z Character, ta u¿ywa si³y do poruszania
+    new public void Move()  //przesï¿½oniï¿½cie metody z Character, ta uï¿½ywa siï¿½y do poruszania
     {
         _rigidbody.AddForce(new Vector2(horizontalAxis*moveSpeed,0),ForceMode2D.Impulse);
         _rigidbody.AddForce(new Vector2(0,verticalAxis*moveSpeed),ForceMode2D.Impulse);
@@ -43,4 +43,9 @@ public class Player : Character
             Rotate();
         }
     }
+
+    // void OnTriggerEnter2D()
+    // {
+    //     transform.position = new Vector2(0, 0);
+    // }
 }
