@@ -16,7 +16,6 @@ public class Test : MonoBehaviour
         int y = 0;
         while (k < map.GetLength(0))
         {
-            myPrefab.AddComponent(typeof(BoxCollider2D));
             int x = 0;
             int i = 0;
             while (i < map[k].Length)
