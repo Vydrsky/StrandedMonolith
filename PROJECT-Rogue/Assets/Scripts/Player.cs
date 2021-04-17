@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : Character, IKeyboard,IMovement
 {
-    private Rigidbody2D _rigidbody;
+    
     [SerializeField] private float invincibilityDelay = 0;
 
 

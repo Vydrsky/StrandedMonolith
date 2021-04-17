@@ -261,27 +261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb451827fab69fb4390d200dcf5c429f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1327316634 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1333766199063517562, guid: 19c12371dec5a4b4f8dcc32a9d9c2c0e, type: 3}
-  m_PrefabInstance: {fileID: 925928691735665316}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1327316639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1327316634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eccfcdd4b9aee994890393cc4b8bbb46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 0
-  healthPoints: 0
-  moveSpeed: 0
-  player: {fileID: 740765324}
 --- !u!1001 &925928691735665316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -289,6 +268,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1327316639, guid: 19c12371dec5a4b4f8dcc32a9d9c2c0e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 740765324}
     - target: {fileID: 433211373755777329, guid: 19c12371dec5a4b4f8dcc32a9d9c2c0e, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -337,10 +320,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 1333766199063517562, guid: 19c12371dec5a4b4f8dcc32a9d9c2c0e, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
+    - target: {fileID: 8842253618837432488, guid: 19c12371dec5a4b4f8dcc32a9d9c2c0e, type: 3}
+      propertyPath: m_Constraints
+      value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 8986400880788966488, guid: 19c12371dec5a4b4f8dcc32a9d9c2c0e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19c12371dec5a4b4f8dcc32a9d9c2c0e, type: 3}
 --- !u!1001 &8678307867530601530
