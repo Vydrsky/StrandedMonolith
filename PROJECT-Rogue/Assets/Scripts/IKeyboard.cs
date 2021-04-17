@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IKeyboard
 {
-    void getMovementInput();
-    //void getAttackInput();
+    void readMovementInput();    
+    void readTurnInput();
 }

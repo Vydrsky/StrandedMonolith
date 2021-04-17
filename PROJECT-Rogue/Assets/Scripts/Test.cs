@@ -16,6 +16,7 @@ public class Test : MonoBehaviour
         int y = 0;
         while (k < map.GetLength(0))
         {
+            myPrefab.AddComponent(typeof(BoxCollider2D));
             int x = 0;
             int i = 0;
             while (i < map[k].Length)
@@ -24,6 +25,8 @@ public class Test : MonoBehaviour
                 if (pntr == 'X')
                 {
                     Instantiate(myPrefab, new Vector2(x, y), Quaternion.identity);
+                    myPrefab.layer = 7;
+                    
                 }
                 x++;
                 i++;

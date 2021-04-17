@@ -2,21 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Character,IKeyboard,IMovement
+public class Player : Character
 {
     private Rigidbody2D _rigidbody;
-    private float horizontalAxis, verticalAxis;
 
-    public void getMovementInput()
-    {
-        horizontalAxis = Input.GetAxis("Horizontal");
-        verticalAxis = Input.GetAxis("Vertical");
-    }
 
-    public void Move()
+    new public void Move()  //przes³oniêcie metody z Character, ta u¿ywa si³y do poruszania
     {
-        transform.Translate(new Vector2(horizontalAxis, 0) * Time.deltaTime * moveSpeed); //deltaTime - przetwarza wartoœæ wektorow¹ na metry/sekunde np. V(1,0) -> 1m/s w prawo 
-        transform.Translate(new Vector2(0, verticalAxis) * Time.deltaTime * moveSpeed);
+        _rigidbody.AddForce(new Vector2(horizontalAxis*moveSpeed,0),ForceMode2D.Impulse);
+        _rigidbody.AddForce(new Vector2(0,verticalAxis*moveSpeed),ForceMode2D.Impulse);
     }
 
 
@@ -34,7 +28,19 @@ public class Player : Character,IKeyboard,IMovement
     // Update is called once per frame
     void Update()
     {
-        getMovementInput();
-        Move();
+        if (Input.anyKey)
+        {
+            readMovementInput();
+            readTurnInput();
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (Input.anyKey)
+        {
+            Move();
+            Rotate();
+        }
     }
 }

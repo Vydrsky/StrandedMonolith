@@ -307,6 +307,44 @@ MonoBehaviour:
   maxHealth: 100
   healthPoints: 100
   moveSpeed: 3
+--- !u!4 &740765325 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2735277063403292392, guid: 3048b6ad88ca01c44af93e58dacc5861, type: 3}
+  m_PrefabInstance: {fileID: 8678307867530601530}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7159909818903220657
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 740765325}
+    m_Modifications:
+    - target: {fileID: 1328714545742594128, guid: 584920bec5cee4747bd9eaffe871aee9, type: 3}
+      propertyPath: m_Name
+      value: Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407184725965497997, guid: 584920bec5cee4747bd9eaffe871aee9, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3413499732054035367, guid: 584920bec5cee4747bd9eaffe871aee9, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3413499732054035367, guid: 584920bec5cee4747bd9eaffe871aee9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3413499732054035367, guid: 584920bec5cee4747bd9eaffe871aee9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3413499732054035367, guid: 584920bec5cee4747bd9eaffe871aee9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 584920bec5cee4747bd9eaffe871aee9, type: 3}
 --- !u!1001 &8678307867530601530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -361,6 +399,10 @@ PrefabInstance:
     - target: {fileID: 2735277063403292392, guid: 3048b6ad88ca01c44af93e58dacc5861, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7698645568258171251, guid: 3048b6ad88ca01c44af93e58dacc5861, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3048b6ad88ca01c44af93e58dacc5861, type: 3}
