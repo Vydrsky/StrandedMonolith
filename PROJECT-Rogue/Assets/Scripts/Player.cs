@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : Character, IKeyboard,IMovement
 {
     private Rigidbody2D _rigidbody;
-    [SerializeField] private float delay = 0;
+    [SerializeField] private float invincibilityDelay = 0;
 
 
     public void readMovementInput()
@@ -13,7 +13,7 @@ public class Player : Character, IKeyboard,IMovement
         horizontalAxis = Input.GetAxis("Horizontal");
         verticalAxis = Input.GetAxis("Vertical");
     }
-    public void Move()  //przes³oniêcie metody z Character, ta u¿ywa si³y do poruszania
+    public void Move()
     {
         _rigidbody.AddForce(new Vector2(horizontalAxis*moveSpeed,0),ForceMode2D.Impulse);
         _rigidbody.AddForce(new Vector2(0,verticalAxis*moveSpeed),ForceMode2D.Impulse);
@@ -100,10 +100,12 @@ public class Player : Character, IKeyboard,IMovement
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Enemy" && Time.time>=delay+1.0f)
+        
+        if(collision.gameObject.tag == "Enemy" && Time.time>=invincibilityDelay+1.0f)
         {
-            delay = Time.time;
+            invincibilityDelay = Time.time;
             this.healthPoints -= 10;
         }
+        invincibilityDelay = 0;
     }
 }
