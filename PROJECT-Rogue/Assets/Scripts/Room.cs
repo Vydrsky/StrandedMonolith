@@ -25,7 +25,7 @@ public class Room
                         Level.Instantiate(myPrefab[0], new Vector2(x1, y1), Quaternion.identity);
                         break;
                     case 'E':
-                        if ((i == map[k].Length - 1 && right)||(i==0 && left)||(k==0 && top)||(k==map.GetLength(0)-2 && bottom))
+                        if ((i == map[k].Length - 2 && right)||(i==0 && left)||(k==0 && top)||(k==map.GetLength(0)-2 && bottom))
                         {
                             Level.Instantiate(myPrefab[1], new Vector2(x1, y1), Quaternion.identity);
                         }

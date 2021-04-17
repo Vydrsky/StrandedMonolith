@@ -10,7 +10,7 @@ public class Enemy : CanAttack, IMovement
 
     public void Move()
     {
-        _rigidbody.AddRelativeForce(Vector2.right);
+        _rigidbody.AddRelativeForce(Vector2.right*moveSpeed);
     }
 
     public void Rotate()
