@@ -284,14 +284,14 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &740765323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,7 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   healthPoints: 100
-  moveSpeed: 3
+  moveSpeed: 1
 --- !u!4 &740765325 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2735277063403292392, guid: 3048b6ad88ca01c44af93e58dacc5861, type: 3}
