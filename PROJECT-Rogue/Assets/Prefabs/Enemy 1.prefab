@@ -275,9 +275,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eccfcdd4b9aee994890393cc4b8bbb46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  healthPoints: 0
-  moveSpeed: 0
+  maxHealth: 100
+  healthPoints: 100
+  moveSpeed: 3
   firePoint: {fileID: 4113302413840903172}
   bulletPrefab: {fileID: 4285918664514963144, guid: 56b69c83c0e9ac94c8b112f095f5ddab, type: 3}
-  player: {fileID: 0}
+  player: {fileID: 4005866522826770482, guid: 3048b6ad88ca01c44af93e58dacc5861, type: 3}
