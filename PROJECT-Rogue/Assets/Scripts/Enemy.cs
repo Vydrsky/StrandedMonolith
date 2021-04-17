@@ -17,11 +17,8 @@ public class Enemy : CanAttack, IMovement
     public void Rotate()
     {
         Vector3 difference = player.transform.position - this.transform.position;
-
         difference = difference.normalized;
-
-        float rotationOnZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-
+        float rotationOnZ = Mathf.Atan2(difference.y, difference.x)*Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rotationOnZ);
     }
 

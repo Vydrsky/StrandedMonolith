@@ -106,6 +106,6 @@ public class Player : CanAttack, IKeyboard, IMovement
             invincibilityDelay = Time.time;
             this.healthPoints -= 10;
         }
-        invincibilityDelay = 0;
+        
     }
 }
