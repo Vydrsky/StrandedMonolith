@@ -30,6 +30,12 @@ public class Enemy : CanAttack, IMovement
         weapon.SetAttacker(this);
     }
 
+    private void Update()
+    {
+        weapon.CheckShot();
+
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {

@@ -7,6 +7,7 @@ public class Player : CanAttack, IKeyboard, IMovement
     
     [SerializeField] private float invincibilityDelay = 0;
 
+    Weapon weapon;
 
     public void readMovementInput()
     {
@@ -47,6 +48,7 @@ public class Player : CanAttack, IKeyboard, IMovement
             case RotationDirectionEnum.UpDirection:
                 {
                     transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+                    
                     break;
                 }
             case RotationDirectionEnum.LeftDirection:
@@ -65,6 +67,7 @@ public class Player : CanAttack, IKeyboard, IMovement
                     break;
                 }
         }
+        weapon.CheckShot();
     }
 
     void Awake()
@@ -75,7 +78,8 @@ public class Player : CanAttack, IKeyboard, IMovement
     // Start is called before the first frame update
     void Start()
     {
-
+        weapon = new Weapon();
+        weapon.SetAttacker(this);
     }
 
     // Update is called once per frame
