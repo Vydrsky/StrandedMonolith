@@ -10,21 +10,21 @@ public class Enemy : CanAttack, IMovement
 
     public void Move()
     {
-
-        transform.Translate(new Vector3(moveSpeed * Time.deltaTime, 0, 0));
+        _rigidbody.AddRelativeForce(Vector2.right* moveSpeed);
     }
 
     public void Rotate()
     {
         Vector3 difference = player.transform.position - this.transform.position;
         difference = difference.normalized;
-        float rotationOnZ = Mathf.Atan2(difference.y, difference.x)*Mathf.Rad2Deg;
+        float rotationOnZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rotationOnZ);
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        _rigidbody = GetComponent<Rigidbody2D>();
         // ustawianie broni
         weapon = new Weapon();
         weapon.SetAttacker(this);
@@ -35,6 +35,5 @@ public class Enemy : CanAttack, IMovement
     {
         Move();
         Rotate();
-
     }
 }
