@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Character, IKeyboard,IMovement
+public class Player : CanAttack, IKeyboard, IMovement
 {
     
     [SerializeField] private float invincibilityDelay = 0;

@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : Character,IMovement
+public class Enemy : CanAttack, IMovement
 {
     [SerializeField] private Player player;
+    private float delay;
+    Weapon weapon; // Do wywalenie, tylko na czas testowania
 
     public void Move()
     {
@@ -26,7 +28,9 @@ public class Enemy : Character,IMovement
     // Start is called before the first frame update
     void Start()
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
+        // ustawianie broni
+        weapon = new Weapon();
+        weapon.SetAttacker(this);
     }
 
     // Update is called once per frame
