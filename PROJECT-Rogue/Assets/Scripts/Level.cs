@@ -18,7 +18,7 @@ public class Level : MonoBehaviour
         return stringBuilder.ToString();
     }
 
-    string Wander(int mapSize, int wandererIterations)
+    string Wander(int mapSize, int wandererIterations, int numberOfWanderers)
     {
         UnityEngine.Random.InitState(UnityEngine.Random.Range(-10000,10000));
         string levelLayout="";
@@ -41,52 +41,60 @@ public class Level : MonoBehaviour
         pivotIndex = ((mapSideLength * ((mapSideLength+1) / 2)-mapSideLength/2)-1)+(mapSideLength/2);
         Debug.Log(pivotIndex);
         levelLayout = ReplaceAtIndex(levelLayout, pivotIndex, 'X');
-
-        for (int i = 0; i < wandererIterations; i++)
+        for (int j = 0; j < numberOfWanderers; j++)
         {
-            random = UnityEngine.Random.Range(0,3);
-            switch (random)
+            UnityEngine.Random.InitState(UnityEngine.Random.Range(-10000, 10000));
+            pivotIndex = ((mapSideLength * ((mapSideLength + 1) / 2) - mapSideLength / 2) - 1) + (mapSideLength / 2);
+            for (int i = 0; i < wandererIterations; i++)
             {
-                case 0:     //RIGHT
-                    {
-                        
-                        pivotIndex++;
-                        if (levelLayout[pivotIndex] == '\n')
+                random = UnityEngine.Random.Range(0, 3);
+                switch (random)
+                {
+                    case 0:     //RIGHT
                         {
-                            pivotIndex--;
-                        }
-                        break;
-                    }
-                case 1: //UP
-                    {
-                        if (pivotIndex>=mapSideLength+1)
-                        {
-                            pivotIndex -= mapSideLength + 1;
-                        }
-                        break;
-                    }
-                case 2: //LEFT
-                    {
-                        pivotIndex--;
-                        if (levelLayout[pivotIndex] == '\n')
-                        {
-                            pivotIndex++;
-                        }
 
-                        break;
-                    }
-                case 3: //DOWN
-                    {
-                        if (pivotIndex <= levelLayout.Length-mapSideLength) 
-                        { 
-                            pivotIndex += mapSideLength + 1;
+                            pivotIndex++;
+                            if (levelLayout[pivotIndex] == '\n')
+                            {
+                                pivotIndex--;
+                            }
+                            break;
                         }
-                        break;
-                    }
+                    case 1: //UP
+                        {
+                            if (pivotIndex >= mapSideLength + 1)
+                            {
+                                pivotIndex -= mapSideLength + 1;
+                            }
+                            break;
+                        }
+                    case 2: //LEFT
+                        {
+                            if (pivotIndex != 0)
+                            {
+                                pivotIndex--;
+                                if (levelLayout[pivotIndex] == '\n')
+                                {
+
+                                    pivotIndex++;
+                                }
+                            }
+                            break;
+                        }
+                    case 3: //DOWN
+                        {
+                            if (pivotIndex <= levelLayout.Length - mapSideLength)
+                            {
+                                pivotIndex += mapSideLength + 1;
+                            }
+                            break;
+                        }
+                }
+                levelLayout = ReplaceAtIndex(levelLayout, pivotIndex, 'X');
             }
-            levelLayout = ReplaceAtIndex(levelLayout, pivotIndex, 'X');
         }
         Debug.Log(levelLayout);
+        Debug.Log(levelLayout.Length);
 
         return levelLayout;
     }
@@ -96,7 +104,7 @@ public class Level : MonoBehaviour
         //string test = Wander(7);
         pokoje = new List<Room>();
         bool start = false;
-        string layout1D = Wander(10,30);
+        string layout1D = Wander(30,30,2);
         string[] layout = layout1D.Split('\n');
         for (int i = 0; i < layout.Length; i++)
         {
