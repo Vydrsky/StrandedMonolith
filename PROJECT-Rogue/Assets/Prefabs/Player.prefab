@@ -187,7 +187,8 @@ MonoBehaviour:
   moveSpeed: 1
   firePoint: {fileID: 7583177194294624644}
   bulletPrefab: {fileID: 4285918664514963144, guid: 56b69c83c0e9ac94c8b112f095f5ddab, type: 3}
-  invincibilityDelay: 0
+  invincibilityStart: 0
+  invincibilityDelay: 0.5
 --- !u!1001 &1959794870959568267
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -9,13 +9,92 @@ public class Level : MonoBehaviour
 {
     [SerializeField] private List<GameObject> myPrefab;
     private List<Room> pokoje;
+
+    public string ReplaceAtIndex(string text, int index, char c)
+    {
+        var stringBuilder = new System.Text.StringBuilder(text);
+        stringBuilder[index] = c;
+        return stringBuilder.ToString();
+    }
+
+    string Wander(int mapSize, int wandererIterations)
+    {
+        UnityEngine.Random.InitState(UnityEngine.Random.Range(-10000,10000));
+        string levelLayout="";
+        int random;     //w ktora strone pojdzie pies
+        int pivotIndex; //indeks w którym jest pies, zaczyna od srodka
+        int mapSideLength = mapSize;
+        if (mapSize % 2 == 0)
+        {
+            mapSideLength++;
+        }
+        for (int i = 0; i < mapSideLength; i++)
+        {
+            for (int j = 0; j < mapSideLength; j++)
+            {
+                levelLayout += "0";
+            }
+            levelLayout += "\n";
+        }
+
+        pivotIndex = ((mapSideLength * ((mapSideLength+1) / 2)-mapSideLength/2)-1)+(mapSideLength/2);
+        Debug.Log(pivotIndex);
+        levelLayout = ReplaceAtIndex(levelLayout, pivotIndex, 'X');
+
+        for (int i = 0; i < wandererIterations; i++)
+        {
+            random = UnityEngine.Random.Range(0,3);
+            switch (random)
+            {
+                case 0:     //RIGHT
+                    {
+                        
+                        pivotIndex++;
+                        if (levelLayout[pivotIndex] == '\n')
+                        {
+                            pivotIndex--;
+                        }
+                        break;
+                    }
+                case 1: //UP
+                    {
+                        if (pivotIndex>=mapSideLength+1)
+                        {
+                            pivotIndex -= mapSideLength + 1;
+                        }
+                        break;
+                    }
+                case 2: //LEFT
+                    {
+                        pivotIndex--;
+                        if (levelLayout[pivotIndex] == '\n')
+                        {
+                            pivotIndex++;
+                        }
+
+                        break;
+                    }
+                case 3: //DOWN
+                    {
+                        if (pivotIndex <= levelLayout.Length-mapSideLength) 
+                        { 
+                            pivotIndex += mapSideLength + 1;
+                        }
+                        break;
+                    }
+            }
+            levelLayout = ReplaceAtIndex(levelLayout, pivotIndex, 'X');
+        }
+        Debug.Log(levelLayout);
+
+        return levelLayout;
+    }
     // Start is called before the first frame update
     void Start()
     {
+        //string test = Wander(7);
         pokoje = new List<Room>();
-        string layout1D = "0X0\n" +
-                          "XXX\n" +
-                          "0XX";
+        string layout1D = Wander(10,30);
         string[] layout = layout1D.Split('\n');
         for (int i = 0; i < layout.Length; i++)
         {
@@ -43,7 +122,7 @@ public class Level : MonoBehaviour
                     }
                     if (j < layout[i].Length - 1)
                     {
-                        Debug.Log(layout[i][j + 1]);
+                        //Debug.Log(layout[i][j + 1]);
                         if (layout[i][j + 1] == 'X')
                         {
                             top = true;
@@ -56,7 +135,7 @@ public class Level : MonoBehaviour
                             bottom = true;
                         }
                     }
-                    Debug.Log(right);
+                    //Debug.Log(right);
                     pokoje.Add(new Room(myPrefab,-7+(i*18),-7+(j*11),top,left,right,bottom));
                 }
             }

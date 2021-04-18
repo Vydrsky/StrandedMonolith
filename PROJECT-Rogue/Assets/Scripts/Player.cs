@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Player : CanAttack, IKeyboard, IMovement
 {
-    
-    [SerializeField] private float invincibilityDelay = 0;
+    protected float horizontalAxis, verticalAxis;
+    [SerializeField] private float invincibilityStart;
+    public float InvincibilityStart { get { return invincibilityStart; } set { invincibilityStart = value; } }
+
+    [SerializeField] private float invincibilityDelay;
+    public float InvincibilityDuration { get { return invincibilityDelay; } set { invincibilityDelay = value; } }
 
     Weapon weapon;
 
@@ -70,6 +74,7 @@ public class Player : CanAttack, IKeyboard, IMovement
         weapon.CheckShot();
     }
 
+
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -98,17 +103,6 @@ public class Player : CanAttack, IKeyboard, IMovement
         {
             Move();
             Rotate();
-        }
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        
-        if(collision.gameObject.tag == "Enemy" && Time.time>=invincibilityDelay+1.0f)
-        {
-            invincibilityDelay = Time.time;
-            this.healthPoints -= 10;
         }
         
     }

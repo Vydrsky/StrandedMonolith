@@ -17,6 +17,7 @@ public class Room
         {        
             int x1 = x;
             int i = 0;
+            Debug.Log(map[k].Length);
             while (i < map[k].Length)
             {
                 char pntr = map[k][i];
