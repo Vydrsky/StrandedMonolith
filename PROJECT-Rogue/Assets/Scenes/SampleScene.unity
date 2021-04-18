@@ -170,12 +170,13 @@ MonoBehaviour:
   - {fileID: 7544207183005877249, guid: 52c923da96d61d5439db7086a73bbb34, type: 3}
   - {fileID: 4315324239279260375, guid: 26833c5c8a48b7244a585532a00ca2ff, type: 3}
   - {fileID: 0}
+  gracz: {fileID: 1726220596}
 --- !u!114 &82950151 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4005866522826770482, guid: 3048b6ad88ca01c44af93e58dacc5861, type: 3}
   m_PrefabInstance: {fileID: 8678307867530601530}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1726220596}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb451827fab69fb4390d200dcf5c429f, type: 3}
@@ -234,7 +235,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 40
+  orthographic size: 15.144774
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -336,6 +337,11 @@ PrefabInstance:
 --- !u!4 &293091248 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2735277063403292392, guid: 3048b6ad88ca01c44af93e58dacc5861, type: 3}
+  m_PrefabInstance: {fileID: 8678307867530601530}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1726220596 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1186859880452763253, guid: 3048b6ad88ca01c44af93e58dacc5861, type: 3}
   m_PrefabInstance: {fileID: 8678307867530601530}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8678307867530601530

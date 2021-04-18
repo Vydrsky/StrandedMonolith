@@ -8,6 +8,7 @@ using UnityEngine;
 public class Level : MonoBehaviour
 {
     [SerializeField] private List<GameObject> myPrefab;
+    [SerializeField] private GameObject gracz;
     private List<Room> pokoje;
 
     public string ReplaceAtIndex(string text, int index, char c)
@@ -22,7 +23,7 @@ public class Level : MonoBehaviour
         UnityEngine.Random.InitState(UnityEngine.Random.Range(-10000,10000));
         string levelLayout="";
         int random;     //w ktora strone pojdzie pies
-        int pivotIndex; //indeks w którym jest pies, zaczyna od srodka
+        int pivotIndex; //indeks w ktï¿½rym jest pies, zaczyna od srodka
         int mapSideLength = mapSize;
         if (mapSize % 2 == 0)
         {
@@ -94,6 +95,7 @@ public class Level : MonoBehaviour
     {
         //string test = Wander(7);
         pokoje = new List<Room>();
+        bool start = false;
         string layout1D = Wander(10,30);
         string[] layout = layout1D.Split('\n');
         for (int i = 0; i < layout.Length; i++)
@@ -110,14 +112,14 @@ public class Level : MonoBehaviour
                     {
                         if (layout[i + 1][j] == 'X')
                         {
-                            right = true;
+                            bottom = true;
                         }
                     }
                     if (i > 0)
                     {
                         if (layout[i - 1][j] == 'X')
                         {
-                            left = true;
+                            top = true;
                         }
                     }
                     if (j < layout[i].Length - 1)
@@ -125,18 +127,23 @@ public class Level : MonoBehaviour
                         //Debug.Log(layout[i][j + 1]);
                         if (layout[i][j + 1] == 'X')
                         {
-                            top = true;
+                            right = true;
                         }
                     }
                     if (j > 0)
                     {
                         if (layout[i][j - 1] == 'X')
                         {
-                            bottom = true;
+                            left = true;
                         }
                     }
-                    //Debug.Log(right);
-                    pokoje.Add(new Room(myPrefab,-7+(i*18),-7+(j*11),top,left,right,bottom));
+                    pokoje.Add(new Room(myPrefab,7+(j*(36)),-7+(i*(-15)),top,left,right,bottom));
+                    if (!start)
+                    {
+                        gracz.transform.position = new Vector2(14 + (j * (36)), -14 + (i * (-15)));
+                    }
+
+                    start = true;
                 }
             }
         }
