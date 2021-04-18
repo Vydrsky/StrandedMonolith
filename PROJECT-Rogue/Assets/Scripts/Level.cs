@@ -13,7 +13,9 @@ public class Level : MonoBehaviour
     void Start()
     {
         pokoje = new List<Room>();
-        string layout1D = "0X0\nXXX\n0X0";
+        string layout1D = "0X0\n" +
+                          "XXX\n" +
+                          "0XX";
         string[] layout = layout1D.Split('\n');
         for (int i = 0; i < layout.Length; i++)
         {
