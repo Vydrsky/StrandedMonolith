@@ -8,8 +8,8 @@ public class Player : CanAttack, IKeyboard, IMovement
     [SerializeField] private float invincibilityStart;
     public float InvincibilityStart { get { return invincibilityStart; } set { invincibilityStart = value; } }
 
-    [SerializeField] private float invincibilityDelay;
-    public float InvincibilityDuration { get { return invincibilityDelay; } set { invincibilityDelay = value; } }
+    [SerializeField] private float invincibilityDuration;
+    public float InvincibilityDuration { get { return invincibilityDuration; } set { invincibilityDuration = value; } }
 
     Weapon weapon;
 
@@ -73,7 +73,14 @@ public class Player : CanAttack, IKeyboard, IMovement
         }
         weapon.CheckShot();
     }
-
+    public void takeDamage(int damage)
+    {
+        if ( Time.time >= this.InvincibilityStart + this.InvincibilityDuration)
+        {
+            this.InvincibilityStart = Time.time;
+            this.HealthPoints -= damage;
+        }
+    }
 
     void Awake()
     {

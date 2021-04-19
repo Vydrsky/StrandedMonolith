@@ -21,14 +21,7 @@ public class Enemy : CanAttack, IMovement
         transform.rotation = Quaternion.Euler(0f, 0f, rotationOnZ);
     }
 
-    void collideWithPlayerHandle(Collision2D playerCollision)
-    {
-        if (playerCollision.gameObject.tag == "Player" && Time.time >= player.InvincibilityStart + player.InvincibilityDuration)
-        {
-            player.InvincibilityStart = Time.time;
-            player.HealthPoints -= 10;
-        }
-    }
+   
 
     // Start is called before the first frame update
     void Start()
@@ -52,8 +45,5 @@ public class Enemy : CanAttack, IMovement
         Rotate();
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        collideWithPlayerHandle(collision);
-    }
+    
 }
