@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Bullet
+  - Door
+  - DoorUp
+  - DoorBottom
+  - DoorLeft
+  - DoorRight
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class Player : CanAttack, IKeyboard, IMovement
@@ -112,5 +113,29 @@ public class Player : CanAttack, IKeyboard, IMovement
             Rotate();
         }
         
+    }
+    void OnTriggerEnter2D(Collider2D drzwi)
+    {
+        switch (drzwi.tag)
+        {
+            case "DoorUp":
+                transform.position = new Vector2(transform.position.x,transform.position.y+1);
+                Level.MoveCamera(0,7.5f);
+                break;
+            case "DoorBottom":
+                transform.position = new Vector2(transform.position.x,transform.position.y-1);
+                Level.MoveCamera(0,-7.5f);
+                break;
+            case "DoorLeft":
+                transform.position = new Vector2(transform.position.x-1,transform.position.y);
+                Level.MoveCamera(-18,0);
+                break;
+            case "DoorRight":
+                transform.position = new Vector2(transform.position.x + 1, transform.position.y);
+                Level.MoveCamera(18,0);
+                break;
+            default:
+                break;
+        }
     }
 }
