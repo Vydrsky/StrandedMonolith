@@ -19,6 +19,7 @@ public class Player : CanAttack, IKeyboard, IMovement
 
     private float horizontalAxis, verticalAxis;
     private bool collisionOccured = false;
+
     [SerializeField] private float invincibilityStart;
     public float InvincibilityStart { get { return invincibilityStart; } set { invincibilityStart = value; } }
 
@@ -68,7 +69,6 @@ public class Player : CanAttack, IKeyboard, IMovement
             case RotationDirectionEnum.UpDirection:
                 {
                     transform.rotation = Quaternion.Euler(0f, 0f, 90f);
-                    
                     break;
                 }
             case RotationDirectionEnum.LeftDirection:

@@ -14,8 +14,8 @@ public class Milk : PassiveItem
 
     public override void AddToInventory(Player player)
     {
-        player.Inventory.Add(new Milk());
         SetPlayerStats(player);
+        player.Inventory.Add(this);
     }
     public override void RemoveFromInventory(Player player)
     {
