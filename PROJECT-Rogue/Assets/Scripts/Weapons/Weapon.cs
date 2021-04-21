@@ -2,32 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon
+public abstract class Weapon
 {
-    CanAttack whoAttacks;
+    protected FightingCharacter whoAttacks;
+    protected float attackSpeed;
+    protected int damage;
     float delay; // delay = (1 / attackSpeed)
     float lastShot;
-    float bulletSpeed;
+    public abstract void Attack();
 
-    public float BulletSpeed { get => bulletSpeed; }
-
-    public Weapon()
-    {
-        lastShot = 0;
-        bulletSpeed = 5;
-        delay = 0.5f;
-    }
-    public void SetAttacker(CanAttack whoAttacks)
+    public void SetAttacker(FightingCharacter whoAttacks)
     {
         this.whoAttacks = whoAttacks;
     }
 
-    public void CheckShot()
-    {
 
+    public Weapon()
+    {
+        lastShot = 0;
+        delay = 0.5f;
+    }
+    public void CheckAttack()
+    {
         if (Time.time > lastShot + delay)
         {
-            Shooting.Shoot(whoAttacks);
+            Attack();
             lastShot = Time.time;
         }
     }

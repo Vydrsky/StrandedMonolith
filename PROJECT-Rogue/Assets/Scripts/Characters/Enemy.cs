@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : CanAttack, IMovement
+public class Enemy : FightingCharacter, IMovement
 {
     [SerializeField] private Player player;
     private float delay;
@@ -28,13 +28,13 @@ public class Enemy : CanAttack, IMovement
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         // ustawianie broni
-        weapon = new Weapon();
+        weapon = new ProjectileRiffle();
         weapon.SetAttacker(this);
     }
 
     private void Update()
     {
-        weapon.CheckShot();
+        weapon.CheckAttack();
 
     }
 
