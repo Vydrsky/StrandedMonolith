@@ -25,6 +25,8 @@ public class Player : FightingCharacter, IKeyboard, IMovement
     [SerializeField] private float invincibilityDuration;
     public float InvincibilityDuration { get { return invincibilityDuration; } set { invincibilityDuration = value; } }
 
+    bool playerRotated = false;
+
     Weapon weapon;
 
     public List<PassiveItem> Inventory = new List<PassiveItem>();
@@ -46,48 +48,56 @@ public class Player : FightingCharacter, IKeyboard, IMovement
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             RotDir = RotationDirectionEnum.UpDirection;     //enum opisany w RotationDirectionEnum.cs
+            playerRotated = true;
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             RotDir = RotationDirectionEnum.DownDirection;
+            playerRotated = true;
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             RotDir = RotationDirectionEnum.LeftDirection;
+            playerRotated = true;
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             RotDir = RotationDirectionEnum.RightDirection;
+            playerRotated = true;
         }
     }
 
     public void Rotate()
     {
-        switch (RotDir)
+        if(playerRotated)
         {
-            case RotationDirectionEnum.UpDirection:
-                {
-                    transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+            switch (RotDir)
+            {
+                case RotationDirectionEnum.UpDirection:
+                    {
+                        transform.rotation = Quaternion.Euler(0f, 0f, 90f);
                     
-                    break;
-                }
-            case RotationDirectionEnum.LeftDirection:
-                {
-                    transform.rotation = Quaternion.Euler(0f, 0f, 180f);
-                    break;
-                }
-            case RotationDirectionEnum.DownDirection:
-                {
-                    transform.rotation = Quaternion.Euler(0f, 0f, 270f);
-                    break;
-                }
-            case RotationDirectionEnum.RightDirection:
-                {
-                    transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-                    break;
-                }
+                        break;
+                    }
+                case RotationDirectionEnum.LeftDirection:
+                    {
+                        transform.rotation = Quaternion.Euler(0f, 0f, 180f);
+                        break;
+                    }
+                case RotationDirectionEnum.DownDirection:
+                    {
+                        transform.rotation = Quaternion.Euler(0f, 0f, 270f);
+                        break;
+                    }
+                case RotationDirectionEnum.RightDirection:
+                    {
+                        transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                        break;
+                    }
+            }
+            weapon.CheckAttack();
+            playerRotated = false;
         }
-        weapon.CheckAttack();
     }
     public void takeDamage(int damage)
     {

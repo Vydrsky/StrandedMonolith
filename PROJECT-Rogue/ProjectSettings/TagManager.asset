@@ -13,6 +13,8 @@ TagManager:
   - DoorRight
   - '|Item|Instant|'
   - '|Item|Passive|'
+  - '|Bullet|ProjShotgun|'
+  - '|Bullet|ProjRiffle|'
   layers:
   - Default
   - TransparentFX

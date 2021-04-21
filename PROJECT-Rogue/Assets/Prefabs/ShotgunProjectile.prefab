@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 2732187085174969032}
   - component: {fileID: 5467588064774086344}
   m_Layer: 0
-  m_Name: Bullet
-  m_TagString: Bullet
+  m_Name: ShotgunProjectile
+  m_TagString: '|Bullet|ProjShotgun|'
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
