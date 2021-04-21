@@ -89,7 +89,7 @@ public class Player : FightingCharacter, IKeyboard, IMovement
         }
         weapon.CheckAttack();
     }
-    public void takeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         if ( Time.time >= this.InvincibilityStart + this.InvincibilityDuration)
         {
@@ -186,9 +186,9 @@ public class Player : FightingCharacter, IKeyboard, IMovement
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if(collision.gameObject.tag.Contains("Enemy"))
         {
-            takeDamage(10);
+            TakeDamage(10);
         }
     }
 }
