@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : FightingCharacter, IMovement
 {
     [SerializeField] private Player player;
+
     private float delay;
     Weapon weapon; // Do wywalenie, tylko na czas testowania
 

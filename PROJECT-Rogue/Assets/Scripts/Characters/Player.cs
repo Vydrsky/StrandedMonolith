@@ -9,9 +9,9 @@ public class Player : FightingCharacter, IKeyboard, IMovement
     private bool collisionOccured = false;
 
     [SerializeField] private float invincibilityStart;
-    public float InvincibilityStart { get { return invincibilityStart; } set { invincibilityStart = value; } }
-
     [SerializeField] private float invincibilityDuration;
+
+    public float InvincibilityStart { get { return invincibilityStart; } set { invincibilityStart = value; } }
     public float InvincibilityDuration { get { return invincibilityDuration; } set { invincibilityDuration = value; } }
 
     bool playerRotated = false;

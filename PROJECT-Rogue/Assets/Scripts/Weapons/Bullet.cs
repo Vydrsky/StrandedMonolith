@@ -33,7 +33,9 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Jesli dany przeciwnik bedzie mial swoj tag to trzeba bedzie zmienic pierwszy warunek
-        if (collision.gameObject.tag != whoAttacks.tag && !collision.gameObject.tag.Contains("|Bullet|"))
+        if (collision.gameObject.tag != whoAttacks.tag &&
+            !collision.gameObject.tag.Contains("|Bullet|") &&
+            !collision.gameObject.tag.Contains("|Item|"))
         {
             FightingCharacter character = collision.transform.GetComponent<FightingCharacter>();
             if (character != null)
