@@ -46,22 +46,22 @@ public class Player : FightingCharacter, IKeyboard, IMovement
     public void readTurnInput()
     {
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             RotDir = RotationDirectionEnum.UpDirection;     //enum opisany w RotationDirectionEnum.cs
             playerRotated = true;
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.DownArrow))
         {
             RotDir = RotationDirectionEnum.DownDirection;
             playerRotated = true;
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow))
         {
             RotDir = RotationDirectionEnum.LeftDirection;
             playerRotated = true;
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow))
         {
             RotDir = RotationDirectionEnum.RightDirection;
             playerRotated = true;

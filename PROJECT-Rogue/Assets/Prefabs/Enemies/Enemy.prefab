@@ -134,7 +134,6 @@ MonoBehaviour:
   healthPoints: 100
   moveSpeed: 3
   firePoint: {fileID: 0}
-  bulletPrefab: {fileID: 0}
   player: {fileID: 0}
 --- !u!50 &-5480506860780915208
 Rigidbody2D:
