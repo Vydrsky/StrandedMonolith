@@ -21,11 +21,10 @@ public class Enemy : FightingCharacter, IMovement
         transform.rotation = Quaternion.Euler(0f, 0f, rotationOnZ);
     }
 
-   
-
     // Start is called before the first frame update
     void Start()
     {
+        Damage = 10.0f;
         _rigidbody = GetComponent<Rigidbody2D>();
         // ustawianie broni
         weapon = new ProjectileRiffle();

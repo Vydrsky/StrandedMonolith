@@ -5,18 +5,6 @@ using UnityEngine;
 
 public class Player : FightingCharacter, IKeyboard, IMovement
 {
-    [SerializeField] private float attackSpeed;
-    public float AttackSpeed { get { return attackSpeed; } set { attackSpeed = value; } }
-
-    [SerializeField] private float damage;
-    public float Damage { get { return damage; } set { damage = value; } }
-
-    [SerializeField] private float range;
-    public float Range { get { return range; } set { range = value; } }
-
-    [SerializeField] private float shotSpeed;
-    public float ShotSpeed { get { return shotSpeed; } set { shotSpeed = value; } }
-
     private float horizontalAxis, verticalAxis;
     private bool collisionOccured = false;
 
@@ -46,22 +34,22 @@ public class Player : FightingCharacter, IKeyboard, IMovement
     public void readTurnInput()
     {
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             RotDir = RotationDirectionEnum.UpDirection;     //enum opisany w RotationDirectionEnum.cs
             playerRotated = true;
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.DownArrow))
         {
             RotDir = RotationDirectionEnum.DownDirection;
             playerRotated = true;
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow))
         {
             RotDir = RotationDirectionEnum.LeftDirection;
             playerRotated = true;
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow))
         {
             RotDir = RotationDirectionEnum.RightDirection;
             playerRotated = true;
@@ -99,12 +87,12 @@ public class Player : FightingCharacter, IKeyboard, IMovement
             playerRotated = false;
         }
     }
-    public void TakeDamage(int damage)
+    new public void TakeDamage(float damage)
     {
         if ( Time.time >= this.InvincibilityStart + this.InvincibilityDuration)
         {
             this.InvincibilityStart = Time.time;
-            this.HealthPoints -= damage;
+            this.HealthPoints -= (int)damage;
         }
     }
     
@@ -116,6 +104,7 @@ public class Player : FightingCharacter, IKeyboard, IMovement
     }
     void Start()
     {
+        Damage = 10;
         weapon = new ProjectileShotgun();
         weapon.SetAttacker(this);
     }
