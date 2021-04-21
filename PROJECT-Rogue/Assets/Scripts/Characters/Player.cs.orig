@@ -72,11 +72,13 @@ public class Player : FightingCharacter, IKeyboard, IMovement
     {
         if(playerRotated)
         {
+<<<<<<< HEAD
             switch (RotDir)
             {
                 case RotationDirectionEnum.UpDirection:
                     {
                         transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+                    
                         break;
                     }
                 case RotationDirectionEnum.LeftDirection:
@@ -97,6 +99,28 @@ public class Player : FightingCharacter, IKeyboard, IMovement
             }
             weapon.CheckAttack();
             playerRotated = false;
+=======
+            case RotationDirectionEnum.UpDirection:
+                {
+                    transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+                    break;
+                }
+            case RotationDirectionEnum.LeftDirection:
+                {
+                    transform.rotation = Quaternion.Euler(0f, 0f, 180f);
+                    break;
+                }
+            case RotationDirectionEnum.DownDirection:
+                {
+                    transform.rotation = Quaternion.Euler(0f, 0f, 270f);
+                    break;
+                }
+            case RotationDirectionEnum.RightDirection:
+                {
+                    transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                    break;
+                }
+>>>>>>> d60a297307ec71561e7661d68cc7dfa02c495349
         }
     }
     public void TakeDamage(int damage)
