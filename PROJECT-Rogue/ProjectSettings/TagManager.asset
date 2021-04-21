@@ -11,6 +11,8 @@ TagManager:
   - DoorBottom
   - DoorLeft
   - DoorRight
+  - '|Item|Instant|'
+  - '|Item|Passive|'
   layers:
   - Default
   - TransparentFX

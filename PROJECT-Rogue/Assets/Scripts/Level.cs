@@ -23,7 +23,7 @@ public class Level : MonoBehaviour
         return stringBuilder.ToString();
     }
 
-    string Wander(int mapSize, int wandererIterations, int numberOfWanderers)
+    string GenerateLevel(int mapSize, int wandererIterations, int numberOfWanderers)
     {
         UnityEngine.Random.InitState(UnityEngine.Random.Range(-10000,10000));
         string levelLayout="";
@@ -111,7 +111,7 @@ public class Level : MonoBehaviour
         pokoje = new List<Room>();
         bool start = false;
         bool flag = false;
-        string layout1D = Wander(30,30,2);
+        string layout1D = GenerateLevel(30,30,2);
         string[] layout = layout1D.Split('\n');
         files = Directory.GetFiles("Assets/Scripts","map*").ToList();
         string compare="meta";

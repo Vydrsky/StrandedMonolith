@@ -5,7 +5,20 @@ using UnityEngine;
 
 public class Player : CanAttack, IKeyboard, IMovement
 {
-    protected float horizontalAxis, verticalAxis;
+    [SerializeField] private float attackSpeed;
+    public float AttackSpeed { get { return attackSpeed; } set { attackSpeed = value; } }
+
+    [SerializeField] private float damage;
+    public float Damage { get { return damage; } set { damage = value; } }
+
+    [SerializeField] private float range;
+    public float Range { get { return range; } set { range = value; } }
+
+    [SerializeField] private float shotSpeed;
+    public float ShotSpeed { get { return shotSpeed; } set { shotSpeed = value; } }
+
+    private float horizontalAxis, verticalAxis;
+    private bool collisionOccured = false;
     [SerializeField] private float invincibilityStart;
     public float InvincibilityStart { get { return invincibilityStart; } set { invincibilityStart = value; } }
 
@@ -13,6 +26,8 @@ public class Player : CanAttack, IKeyboard, IMovement
     public float InvincibilityDuration { get { return invincibilityDuration; } set { invincibilityDuration = value; } }
 
     Weapon weapon;
+
+    public List<PassiveItem> Inventory = new List<PassiveItem>();
 
     public void readMovementInput()
     {
@@ -82,22 +97,26 @@ public class Player : CanAttack, IKeyboard, IMovement
             this.HealthPoints -= damage;
         }
     }
+    
 
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         characterName = "Hero";
     }
-    // Start is called before the first frame update
     void Start()
     {
         weapon = new Weapon();
         weapon.SetAttacker(this);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
+        if(collisionOccured == true)
+        {
+            collisionOccured = false;
+        }
         if (Input.anyKey)
         {
             readMovementInput();
@@ -114,28 +133,62 @@ public class Player : CanAttack, IKeyboard, IMovement
         }
         
     }
-    void OnTriggerEnter2D(Collider2D drzwi)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        switch (drzwi.tag)
+        if (collisionOccured == false)
         {
-            case "DoorUp":
-                transform.position = new Vector2(transform.position.x,transform.position.y+1);
-                Level.MoveCamera(0,7.5f);
-                break;
-            case "DoorBottom":
-                transform.position = new Vector2(transform.position.x,transform.position.y-1);
-                Level.MoveCamera(0,-7.5f);
-                break;
-            case "DoorLeft":
-                transform.position = new Vector2(transform.position.x-1,transform.position.y);
-                Level.MoveCamera(-18,0);
-                break;
-            case "DoorRight":
-                transform.position = new Vector2(transform.position.x + 1, transform.position.y);
-                Level.MoveCamera(18,0);
-                break;
-            default:
-                break;
+            collisionOccured = true;
+            switch (collider.tag)
+            {
+                case "DoorUp":
+                    transform.position = new Vector2(transform.position.x, transform.position.y + 1);
+                    Level.MoveCamera(0, 7.5f);
+                    break;
+                case "DoorBottom":
+                    transform.position = new Vector2(transform.position.x, transform.position.y - 1);
+                    Level.MoveCamera(0, -7.5f);
+                    break;
+                case "DoorLeft":
+                    transform.position = new Vector2(transform.position.x - 1, transform.position.y);
+                    Level.MoveCamera(-18, 0);
+                    break;
+                case "DoorRight":
+                    transform.position = new Vector2(transform.position.x + 1, transform.position.y);
+                    Level.MoveCamera(18, 0);
+                    break;
+                default:
+                    break;
+            }
+
+            if (collider.tag.Contains("Instant"))
+            {
+                
+                InstantItem temp = collider.gameObject.GetComponent<InstantItem>();
+                if (temp.CheckUsability(this))
+                {
+                    temp.immediateEffectOnPlayer(this);
+                    Destroy(collider.gameObject);
+                }
+            }
+            if (collider.tag.Contains("Passive"))
+            {
+                
+                PassiveItem temp = collider.gameObject.GetComponent<PassiveItem>();
+                temp.AddToInventory(this);
+                foreach(PassiveItem i in Inventory)
+                {
+                    Debug.Log(i.itemInfo());
+                }
+                Destroy(collider.gameObject);
+            }
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            takeDamage(10);
         }
     }
 }
