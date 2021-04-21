@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.SearchService;
 using UnityEngine;
 
-public class Player : CanAttack, IKeyboard, IMovement
+public class Player : FightingCharacter, IKeyboard, IMovement
 {
     [SerializeField] private float attackSpeed;
     public float AttackSpeed { get { return attackSpeed; } set { attackSpeed = value; } }
@@ -87,7 +87,7 @@ public class Player : CanAttack, IKeyboard, IMovement
                     break;
                 }
         }
-        weapon.CheckShot();
+        weapon.CheckAttack();
     }
     public void takeDamage(int damage)
     {
@@ -106,7 +106,7 @@ public class Player : CanAttack, IKeyboard, IMovement
     }
     void Start()
     {
-        weapon = new Weapon();
+        weapon = new ProjectileShotgun();
         weapon.SetAttacker(this);
     }
 

@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
     float lifeTime = 2.0f;
     Rigidbody2D rb;
-    CanAttack whoAttacks;
+    FightingCharacter whoAttacks;
     // Update is called once per frame
     void Update()
     {
@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, lifeTime);
     }
 
-    public void SetAttacker(CanAttack whoAttacks)
+    public void SetAttacker(FightingCharacter whoAttacks)
     {
         this.whoAttacks = whoAttacks;
     }
