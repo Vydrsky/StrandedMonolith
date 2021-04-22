@@ -4,44 +4,52 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    float someRandomStuffForFun;
     float lifeTime = 2.0f;
-    float bulletSpeed;
-    Rigidbody2D rb;
-    FightingCharacter whoAttacks;
-
-    // Update is called once per frame
-    void Update()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        rb.velocity = transform.right * ((5 + 2) + someRandomStuffForFun); // as + bonus + random
-        Destroy(gameObject, lifeTime);
-        
-    }
+    float damage;
+    Rigidbody2D rb, charRb;
+    Vector2 velocity;
+    string attackerTag;
 
     private void Start()
     {
-        someRandomStuffForFun = Random.Range(-1.0f, 1.0f);
+        Destroy(gameObject, lifeTime);
     }
 
-
-    public void SetAttacker(FightingCharacter whoAttacks)
+    private void Update()
     {
-        this.whoAttacks = whoAttacks;
+        transform.Translate(velocity * Time.deltaTime);
+    }
+
+    public void SetParameters(FightingCharacter whoAttacks, float damage, float bulletSpeed, float bulletSize)
+    {
+        float bonusBulletSpeed = whoAttacks.AttackSpeed;
+        this.damage = damage;
+        attackerTag = whoAttacks.tag;
+        rb = GetComponent<Rigidbody2D>();
+
+        Vector2 ownerVelocity = (whoAttacks.GetComponent<Rigidbody2D>().velocity);
+        Vector3 newRot = new Vector3(0f, 0f, -whoAttacks.firePoint.transform.rotation.eulerAngles.z);
+        ownerVelocity = Quaternion.Euler(newRot) * ownerVelocity;
+        Vector2 baseBulletVelocity = (Vector3.right * (bulletSpeed + bonusBulletSpeed));
+        velocity = (baseBulletVelocity + ownerVelocity);
+        //Debug.Log("rotation: " + whoAttacks.firePoint.transform.rotation.eulerAngles.z);
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Jesli dany przeciwnik bedzie mial swoj tag to trzeba bedzie zmienic pierwszy warunek
-        if (collision.gameObject.tag != whoAttacks.tag && !collision.gameObject.tag.Contains("|Bullet|"))
+        if (collision.gameObject.tag != attackerTag &&
+            !collision.gameObject.tag.Contains("|Bullet|") &&
+            !collision.gameObject.tag.Contains("|Item|"))
         {
             FightingCharacter character = collision.transform.GetComponent<FightingCharacter>();
             if (character != null)
             {
                 if (character is Player)
-                    ((Player)character).TakeDamage(whoAttacks.Damage);
+                    ((Player)character).TakeDamage(damage);
                 else
-                character.TakeDamage(whoAttacks.Damage);
+                    character.TakeDamage(damage);
             }
             Destroy(gameObject);
         }

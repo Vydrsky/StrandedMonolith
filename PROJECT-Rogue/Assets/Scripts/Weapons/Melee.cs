@@ -12,4 +12,9 @@ public abstract class Melee : Weapon
         MeleeHit(whoAttacks);
     }
 
+    public Melee(float attackSpeed, float damage) : base(attackSpeed, damage)
+    {
+
+    }
+
 }
