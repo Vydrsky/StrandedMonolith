@@ -44,6 +44,4 @@ public class Enemy : FightingCharacter, IMovement
         Move();
         Rotate();
     }
-
-    
 }

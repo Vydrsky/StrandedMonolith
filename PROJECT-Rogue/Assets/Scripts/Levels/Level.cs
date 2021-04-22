@@ -4,17 +4,24 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.MemoryMappedFiles;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Level : MonoBehaviour
 {
     [SerializeField] private List<GameObject> myPrefab;
+    [SerializeField] private List<GameObject> items;
+    private static List<GameObject> staticItems;
+    [SerializeField] private List<GameObject> enemies;
+    private static List<GameObject> staticEnemies;
     [SerializeField] private GameObject gracz;
     [SerializeField] private GameObject kamera;
+    private static int _currentX;
+    private static int _currentY;
     public static GameObject instancjaKamery;
-    private List<string> files;
-    private List<Room> pokoje;
+    private static List<string> files;
+    private static Dictionary<string,Room> pokoje;
 
     public string ReplaceAtIndex(string text, int index, char c)
     {
@@ -108,12 +115,14 @@ public class Level : MonoBehaviour
     {
         instancjaKamery = kamera;
         //string test = Wander(7);
-        pokoje = new List<Room>();
+        pokoje = new Dictionary<string, Room>();
+        staticItems = items;
+        staticEnemies = enemies;
         bool start = false;
         bool flag = false;
         string layout1D = GenerateLevel(30,30,2);
         string[] layout = layout1D.Split('\n');
-        files = Directory.GetFiles("Assets/Scripts","map*").ToList();
+        files = Directory.GetFiles("Assets/Scripts/Levels","map*").ToList();
         string compare="meta";
         for (int i = 0; i < files.Count; i++)
         {
@@ -177,21 +186,17 @@ public class Level : MonoBehaviour
                         }
                     }
                     int rnd=Random.Range(0,files.Count);
-                    pokoje.Add(new Room(myPrefab,7+(j*(36)),-7+(i*(-15)),top,left,right,bottom,files[rnd]));
+                    pokoje.Add(""+i+j,new Room(myPrefab,7+(j*(36)),-7+(i*(-15)),top,left,right,bottom,files[rnd]));
                     if (!start)
                     {
                         gracz.transform.position = new Vector2(14 + (j * (36)), -14 + (i * (-15)));
                         instancjaKamery.transform.position = new Vector3(26 + (j * (36)), -14 + (i * (-15)),-10);
+                        _currentX = j;
+                        _currentY = i;
                     }
-
                     start = true;
                 }
             }
-        }
-
-        for (int k = 0; k < pokoje.Count; k++)
-        {
-            pokoje[k].Activate();
         }
     }
 
@@ -205,4 +210,34 @@ public class Level : MonoBehaviour
     {
         instancjaKamery.transform.position=(new Vector3(instancjaKamery.transform.position.x + x, instancjaKamery.transform.position.y + y, -10));
     }
+
+    public static void MoveFocus(int x, int y)
+    {
+        _currentX += x;
+        _currentY += y;
+        pokoje[""+_currentY+_currentX].Activate();
+    }
+    
+    public static void RemoveFocus()
+    {
+        pokoje[""+_currentY+_currentX].DeActivate();
+    }
+    
+    public static void CheckStatus()
+    {
+        pokoje[""+_currentY+_currentX].CheckEnemyTable();
+    }
+
+    public static GameObject GetItem()
+    {
+        int rnd=Random.Range(0, staticItems.Count);
+        return staticItems[rnd];
+    }
+    
+    public static GameObject GetEnemy()
+    {
+        int rnd=Random.Range(0, staticEnemies.Count);
+        return staticEnemies[rnd];
+    }
+    
 }
