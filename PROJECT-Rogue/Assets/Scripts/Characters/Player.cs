@@ -140,20 +140,27 @@ public class Player : FightingCharacter, IKeyboard, IMovement
             switch (collider.tag)
             {
                 case "DoorUp":
-                    transform.position = new Vector2(transform.position.x, transform.position.y + 1);
-                    Level.MoveCamera(0, 7.5f);
+                    transform.position = new Vector2(transform.position.x, transform.position.y + 3f);
+                    Level.MoveCamera(0, 15);
+                    Level.MoveFocus(0,-1);
                     break;
                 case "DoorBottom":
-                    transform.position = new Vector2(transform.position.x, transform.position.y - 1);
-                    Level.MoveCamera(0, -7.5f);
+                    transform.position = new Vector2(transform.position.x, transform.position.y - 3f);
+                    Level.MoveCamera(0, -15);
+                    Level.MoveFocus(0,1);
                     break;
                 case "DoorLeft":
-                    transform.position = new Vector2(transform.position.x - 1, transform.position.y);
-                    Level.MoveCamera(-18, 0);
+                    transform.position = new Vector2(transform.position.x - 3f, transform.position.y);
+                    Level.MoveCamera(-36, 0);
+                    Level.MoveFocus(-1,0);
                     break;
                 case "DoorRight":
-                    transform.position = new Vector2(transform.position.x + 1, transform.position.y);
-                    Level.MoveCamera(18, 0);
+                    transform.position = new Vector2(transform.position.x + 3f, transform.position.y);
+                    Level.MoveCamera(36, 0);
+                    Level.MoveFocus(1,0);
+                    break;
+                case "Button":
+                    Level.RemoveFocus();
                     break;
                 default:
                     break;

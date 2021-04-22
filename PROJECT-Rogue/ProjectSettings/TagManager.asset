@@ -15,6 +15,7 @@ TagManager:
   - '|Item|Passive|'
   - '|Bullet|ProjShotgun|'
   - '|Bullet|ProjRiffle|'
+  - Button
   layers:
   - Default
   - TransparentFX

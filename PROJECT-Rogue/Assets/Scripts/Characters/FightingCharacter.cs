@@ -28,5 +28,13 @@ public class FightingCharacter : Character
     public void TakeDamage(float damage)
     {
         healthPoints -= (int)damage;
+        if (healthPoints <= 0)
+        {
+            Level.CheckStatus();
+            Destroy(gameObject);
+            Destroy(this);
+        }
     }
+    
+    
 }
