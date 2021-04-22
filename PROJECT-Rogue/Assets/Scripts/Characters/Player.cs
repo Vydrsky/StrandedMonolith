@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player : FightingCharacter, IKeyboard, IMovement
 {
-    private float horizontalAxis, verticalAxis;
+    public float horizontalAxis, verticalAxis;
     private bool collisionOccured = false;
 
     [SerializeField] private float invincibilityStart;
