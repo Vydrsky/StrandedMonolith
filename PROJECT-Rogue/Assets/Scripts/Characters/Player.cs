@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class Player : FightingCharacter, IKeyboard, IMovement
 {
-    public float horizontalAxis, verticalAxis;
+    private float horizontalAxis, verticalAxis;
     private bool collisionOccured = false;
+    private bool playerRotated = false;
+    [SerializeField]private float itemPickupTime = 0f;
 
     [SerializeField] private float invincibilityStart;
     [SerializeField] private float invincibilityDuration;
@@ -14,11 +16,13 @@ public class Player : FightingCharacter, IKeyboard, IMovement
     public float InvincibilityStart { get { return invincibilityStart; } set { invincibilityStart = value; } }
     public float InvincibilityDuration { get { return invincibilityDuration; } set { invincibilityDuration = value; } }
 
-    bool playerRotated = false;
 
     Weapon weapon;
 
     public List<PassiveItem> Inventory = new List<PassiveItem>();
+
+    [SerializeField]private ActiveItem activeItem;
+    public ActiveItem ActiveItem { get; set; }
 
     public void readMovementInput()
     {
@@ -87,6 +91,8 @@ public class Player : FightingCharacter, IKeyboard, IMovement
             playerRotated = false;
         }
     }
+
+    
     new public void TakeDamage(float damage)
     {
         if ( Time.time >= this.InvincibilityStart + this.InvincibilityDuration)
@@ -101,30 +107,46 @@ public class Player : FightingCharacter, IKeyboard, IMovement
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         characterName = "Hero";
+
     }
     void Start()
     {
         Damage = 10;
         weapon = new ProjectileShotgun();
         weapon.SetAttacker(this);
+
     }
 
 
     void Update()
     {
-        if(collisionOccured == true)
-        {
-            collisionOccured = false;
-        }
-        if (Input.anyKey)
+        
+
+        if (Input.anyKey)           //INPUT RUCH
         {
             readMovementInput();
             readTurnInput();
         }
+
+        if (activeItem != null && Input.GetKeyDown(KeyCode.E))  //INPUT PRZEDMIOT AKTYWNY    
+        {
+            activeItem.Effect(this);
+        }
+        if (activeItem !=null && activeItem.EffectRunnedOut())
+        {
+           activeItem.RemoveEffect(this);
+        }
+        
     }
 
     void FixedUpdate()
     {
+
+        if (collisionOccured == true)
+        {
+            collisionOccured = false;
+        }
+
         if (Input.anyKey)
         {
             Move();
@@ -185,7 +207,33 @@ public class Player : FightingCharacter, IKeyboard, IMovement
                 {
                     Debug.Log(i.itemInfo());
                 }
-                Destroy(collider.gameObject);
+                collider.gameObject.SetActive(false);
+            }
+            if (collider.tag.Contains("Active"))
+            {
+                if (Time.time >= itemPickupTime + 0.1f)
+                {
+                    if (activeItem != null)
+                    {
+                        if (activeItem.IsActive)
+                            activeItem.RemoveEffect(this);
+                        ActiveItem temp = collider.gameObject.GetComponent<ActiveItem>();
+                        activeItem.gameObject.SetActive(true);
+                        activeItem.gameObject.transform.position = collider.gameObject.transform.position;
+                        Vector2 force = transform.position - activeItem.transform.position;
+                        activeItem.GetComponent<Rigidbody2D>().AddForce(-force * 2000, ForceMode2D.Force);
+                        activeItem = temp;
+                        collider.gameObject.SetActive(false);
+                        itemPickupTime = Time.time;
+                    }
+                    else
+                    {
+                        activeItem = collider.gameObject.GetComponent<ActiveItem>();
+                        Debug.Log(activeItem);
+                        collider.gameObject.SetActive(false);
+                        itemPickupTime = Time.time;
+                    }
+                }
             }
         }
     }

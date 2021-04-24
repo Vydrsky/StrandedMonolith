@@ -114,12 +114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ddf57a2f5e0d6a48b5ee97c77328566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHPIncrease: 0
-  AttackSpeedModification: 0
-  DamageModification: 0
-  MoveSpeedModification: 0
-  ShotSpeedModification: 0
-  RangeModification: 0
   HPrestoration: 10
 --- !u!50 &-2426214556317600852
 Rigidbody2D:
@@ -134,7 +128,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 5
+  m_LinearDrag: 2
   m_AngularDrag: 10
   m_GravityScale: 0
   m_Material: {fileID: 0}

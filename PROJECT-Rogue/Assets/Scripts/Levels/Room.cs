@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
-using TMPro;
 using UnityEngine;
 using UnityEngine.WSA;
 
@@ -41,7 +40,7 @@ public class Room
                         Level.Instantiate(myPrefab[0], new Vector2(x1, y1), Quaternion.identity);
                         break;
                     case 'E':
-                        if ((i == map[k].Length - 1 && right) || (i == 0 && left) || (k == 0 && top) ||
+                        if ((i == map[k].Length - 2 && right) || (i == 0 && left) || (k == 0 && top) ||
                             (k == map.GetLength(0) - 2 && bottom))
                         {
                             if (k == 0 && top)
@@ -56,7 +55,7 @@ public class Room
                             {
                                 myPrefab[1].tag = "DoorLeft";
                             }
-                            else if (i == map[k].Length - 1 && right)
+                            else if (i == map[k].Length - 2 && right)
                             {
                                 myPrefab[1].tag = "DoorRight";
                             }

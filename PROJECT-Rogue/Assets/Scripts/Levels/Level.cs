@@ -63,7 +63,7 @@ public class Level : MonoBehaviour
                 switch (random)
                 {
                     case 0:     //RIGHT
-                        {
+
 
                             pivotIndex++;
                             if (levelLayout[pivotIndex] == '\n')
@@ -71,17 +71,17 @@ public class Level : MonoBehaviour
                                 pivotIndex--;
                             }
                             break;
-                        }
+
                     case 1: //UP
-                        {
+
                             if (pivotIndex >= mapSideLength + 1)
                             {
                                 pivotIndex -= mapSideLength + 1;
                             }
                             break;
-                        }
+
                     case 2: //LEFT
-                        {
+
                             if (pivotIndex != 0)
                             {
                                 pivotIndex--;
@@ -92,15 +92,13 @@ public class Level : MonoBehaviour
                                 }
                             }
                             break;
-                        }
+
                     case 3: //DOWN
-                        {
                             if (pivotIndex <= levelLayout.Length - mapSideLength)
                             {
                                 pivotIndex += mapSideLength + 1;
                             }
                             break;
-                        }
                 }
                 levelLayout = ReplaceAtIndex(levelLayout, pivotIndex, 'X');
             }
