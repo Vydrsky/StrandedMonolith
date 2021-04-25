@@ -25,14 +25,12 @@ public class Raycast : Ranged
                 else
                     character.TakeDamage(damage);
             }
-            Debug.Log("RayCast hit");
             lineRenderer.SetPosition(0, whoAttacks.firePoint.position);
             lineRenderer.SetPosition(1, hitInfo.point);
             lineRenderer.transform.position = new Vector3(lineRenderer.transform.position.x, lineRenderer.transform.position.y, 0);
         }
         else
         {
-            Debug.Log("RayCast no hit");
             lineRenderer.SetPosition(0, whoAttacks.firePoint.position);
             lineRenderer.SetPosition(1, whoAttacks.firePoint.position + whoAttacks.firePoint.right * 100);
             lineRenderer.transform.position = new Vector3(lineRenderer.transform.position.x, lineRenderer.transform.position.y, 0);
