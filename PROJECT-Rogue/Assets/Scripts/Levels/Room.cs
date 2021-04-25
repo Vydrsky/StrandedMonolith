@@ -10,16 +10,19 @@ public class Room
     private string[] map;
     private List<GameObject> myPrefab;
     private List<GameObject> doors;
+    private List<GameObject> allObjects;
     private List<GameObject> enemies;
     private List<List<int>> enemySpawns;
     private List<List<int>> itemSpawns;
     private bool _active = false;
+    private bool _disarmed = false;
     public Room(List<GameObject> myPrefab,int x, int y,bool top, bool left, bool right, bool bottom, string filePath)
     {
         string sr = File.ReadAllText(filePath);
         map= sr.Split('\n');
         this.myPrefab = myPrefab;
         doors = new List<GameObject>();
+        allObjects = new List<GameObject>();
         enemies = new List<GameObject>();
         enemySpawns = new List<List<int>>();
         itemSpawns = new List<List<int>>();
@@ -37,10 +40,10 @@ public class Room
                 switch (pntr)
                 {
                     case 'X':
-                        Level.Instantiate(myPrefab[0], new Vector2(x1, y1), Quaternion.identity);
+                        allObjects.Add(Level.Instantiate(myPrefab[0], new Vector2(x1, y1), Quaternion.identity));
                         break;
                     case 'E':
-                        if ((i == map[k].Length - 2 && right) || (i == 0 && left) || (k == 0 && top) ||
+                        if ((i == map[k].Length - 1 && right) || (i == 0 && left) || (k == 0 && top) ||
                             (k == map.GetLength(0) - 2 && bottom))
                         {
                             if (k == 0 && top)
@@ -55,7 +58,7 @@ public class Room
                             {
                                 myPrefab[1].tag = "DoorLeft";
                             }
-                            else if (i == map[k].Length - 2 && right)
+                            else if (i == map[k].Length - 1 && right)
                             {
                                 myPrefab[1].tag = "DoorRight";
                             }
@@ -64,7 +67,7 @@ public class Room
                         }
                         else
                         {
-                            Object.Instantiate(myPrefab[0], new Vector2(x1, y1), Quaternion.identity);
+                            allObjects.Add(Object.Instantiate(myPrefab[0], new Vector2(x1, y1), Quaternion.identity));
                         }
                         break;
                     case 'I':
@@ -82,7 +85,7 @@ public class Room
                         spawnIndx++;
                         break;
                     case 'B':
-                        Level.Instantiate(myPrefab[2], new Vector2(x1, y1), Quaternion.identity);
+                        allObjects.Add(Level.Instantiate(myPrefab[2], new Vector2(x1, y1), Quaternion.identity));
                         break;
                     default:
                         break;
@@ -112,10 +115,6 @@ public class Room
             {
                 enemies.Add(Level.Instantiate(Level.GetEnemy(), new Vector2(enemySpawns[i][0], enemySpawns[i][1]), Quaternion.identity));
             }
-            for (int i = 0; i < itemSpawns.Count; i++)
-            {
-                Level.Instantiate(Level.GetItem(), new Vector2(itemSpawns[i][0], itemSpawns[i][1]), Quaternion.identity);
-            }
         }
 
 
@@ -123,7 +122,7 @@ public class Room
 
     public void DeActivate()
     {
-        if (_active)
+        if (_active && !_disarmed)
         {
             for (int i = 0; i < doors.Count; i++)
             {
@@ -131,7 +130,12 @@ public class Room
                 doors[i].GetComponent<BoxCollider2D>().size = new Vector2(0.01f, 0.01f);
                 doors[i].GetComponent<SpriteRenderer>().color = new Color(0f,29f/255,106f/255);
             }
+            for (int i = 0; i < itemSpawns.Count; i++)
+            {
+                allObjects.Add(Level.Instantiate(Level.GetItem(ItemClass.Instant), new Vector2(itemSpawns[i][0], itemSpawns[i][1]), Quaternion.identity));
+            }
         }
+        _disarmed = true;
     }
 
     public void CheckEnemyTable()
@@ -151,5 +155,22 @@ public class Room
             DeActivate();
         }
     }
-    
+
+    public void Delete()
+    {
+        for (int i = 0; i < allObjects.Count; i++)
+        {
+            Level.Destroy(allObjects[i]);
+        }
+
+        for (int i = 0; i < doors.Count; i++)
+        {
+            Level.Destroy(doors[i]);
+        }
+        
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            Level.Destroy(enemies[i]);
+        }
+    }
 }

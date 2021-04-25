@@ -6,13 +6,18 @@ using System.IO.MemoryMappedFiles;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
+using Object = System.Object;
 using Random = UnityEngine.Random;
 
 public class Level : MonoBehaviour
 {
     [SerializeField] private List<GameObject> myPrefab;
-    [SerializeField] private List<GameObject> items;
-    private static List<GameObject> staticItems;
+    [SerializeField] private List<GameObject> instantItems;
+    private static List<GameObject> staticInstantItems;
+    [SerializeField] private List<GameObject> passiveItems;
+    private static List<GameObject> staticPassiveItems;
+    [SerializeField] private List<GameObject> activeItems;
+    private static List<GameObject> staticActivetems;
     [SerializeField] private List<GameObject> enemies;
     private static List<GameObject> staticEnemies;
     [SerializeField] private GameObject gracz;
@@ -21,7 +26,7 @@ public class Level : MonoBehaviour
     private static int _currentY;
     public static GameObject instancjaKamery;
     private static List<string> files;
-    private static Dictionary<string,Room> pokoje;
+    private static Dictionary<string,Room> rooms;
 
     public string ReplaceAtIndex(string text, int index, char c)
     {
@@ -113,9 +118,11 @@ public class Level : MonoBehaviour
     {
         instancjaKamery = kamera;
         //string test = Wander(7);
-        pokoje = new Dictionary<string, Room>();
-        staticItems = items;
+        rooms = new Dictionary<string, Room>();
+        staticInstantItems = instantItems;
         staticEnemies = enemies;
+        staticPassiveItems = passiveItems;
+        staticActivetems = activeItems;
         bool start = false;
         bool flag = false;
         string layout1D = GenerateLevel(30,30,2);
@@ -124,7 +131,6 @@ public class Level : MonoBehaviour
         string compare="meta";
         for (int i = 0; i < files.Count; i++)
         {
-            
             flag = false;
             for (int j = 0; j < files[i].Length; j++)
             {
@@ -184,7 +190,7 @@ public class Level : MonoBehaviour
                         }
                     }
                     int rnd=Random.Range(0,files.Count);
-                    pokoje.Add(""+i+j,new Room(myPrefab,7+(j*(36)),-7+(i*(-15)),top,left,right,bottom,files[rnd]));
+                    rooms.Add(""+i+j,new Room(myPrefab,7+(j*(36)),-7+(i*(-15)),top,left,right,bottom,files[rnd]));
                     if (!start)
                     {
                         gracz.transform.position = new Vector2(14 + (j * (36)), -14 + (i * (-15)));
@@ -213,29 +219,52 @@ public class Level : MonoBehaviour
     {
         _currentX += x;
         _currentY += y;
-        pokoje[""+_currentY+_currentX].Activate();
+        rooms[""+_currentY+_currentX].Activate();
     }
     
     public static void RemoveFocus()
     {
-        pokoje[""+_currentY+_currentX].DeActivate();
+        rooms[""+_currentY+_currentX].DeActivate();
     }
     
     public static void CheckStatus()
     {
-        pokoje[""+_currentY+_currentX].CheckEnemyTable();
+        rooms[""+_currentY+_currentX].CheckEnemyTable();
     }
 
-    public static GameObject GetItem()
+    public static GameObject GetItem(ItemClass itemClass)
     {
-        int rnd=Random.Range(0, staticItems.Count);
-        return staticItems[rnd];
+        int rnd;
+        switch (itemClass)
+        {
+            case ItemClass.Instant:
+                rnd=Random.Range(0, staticInstantItems.Count);
+                return staticInstantItems[rnd];
+            case ItemClass.Passive:
+                rnd=Random.Range(0, staticPassiveItems.Count);
+                return staticInstantItems[rnd];
+            case ItemClass.Active:
+                rnd = Random.Range(0, staticActivetems.Count);
+                return staticActivetems[rnd];
+            default:
+                return null;
+        }
     }
     
     public static GameObject GetEnemy()
     {
         int rnd=Random.Range(0, staticEnemies.Count);
         return staticEnemies[rnd];
+    }
+
+    void RemoveRooms()
+    {
+        foreach (var i in rooms.Values.ToArray())
+        {
+            i.Delete();
+        }
+        
+        rooms.Clear();
     }
     
 }
