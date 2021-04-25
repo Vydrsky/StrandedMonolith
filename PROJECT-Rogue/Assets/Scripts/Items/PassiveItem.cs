@@ -8,7 +8,11 @@ public abstract class PassiveItem : Item
     {
         return this.itemName;
     }
-    public abstract void AddToInventory(Player player);
+    public void AddToInventory(Player player)
+    {
+        SetPlayerStats(player);
+        player.Inventory.Add(this);
+    }
     public abstract void RemoveFromInventory(Player player);
 
 
@@ -16,10 +20,10 @@ public abstract class PassiveItem : Item
     {
         player.MaxHealth += maxHPIncrease;
         player.HealthPoints += maxHPIncrease;
-        player.Damage *= DamageModification;
-        player.Range *= RangeModification;
-        player.MoveSpeed *= MoveSpeedModification;
-        player.AttackSpeed *= AttackSpeedModification;
-        player.ShotSpeed *= ShotSpeedModification;
+        player.Damage += DamageModification;
+        player.Range += RangeModification;
+        player.MoveSpeed += MoveSpeedModification;
+        player.AttackSpeed += AttackSpeedModification;
+        player.ShotSpeed += ShotSpeedModification;
     }
 }
