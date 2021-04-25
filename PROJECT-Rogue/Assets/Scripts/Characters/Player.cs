@@ -11,6 +11,8 @@ public class Player : FightingCharacter, IKeyboard, IMovement
     [SerializeField] private float invincibilityStart;
     [SerializeField] private float invincibilityDuration;
 
+    [SerializeField] public LineRenderer lineRenderer;
+
     public float InvincibilityStart { get { return invincibilityStart; } set { invincibilityStart = value; } }
     public float InvincibilityDuration { get { return invincibilityDuration; } set { invincibilityDuration = value; } }
 
@@ -105,7 +107,10 @@ public class Player : FightingCharacter, IKeyboard, IMovement
     void Start()
     {
         Damage = 10;
-        weapon = new ProjectileShotgun();
+        //weapon = new ProjectileSniperRiffle();
+        //weapon = new ProjectileShotgun();
+        //weapon = new ProjectileRiffle();
+        weapon = new Raycast();
         weapon.SetAttacker(this);
     }
 
@@ -121,6 +126,7 @@ public class Player : FightingCharacter, IKeyboard, IMovement
             readMovementInput();
             readTurnInput();
         }
+        WeaponSwap();
     }
 
     void FixedUpdate()
@@ -128,9 +134,8 @@ public class Player : FightingCharacter, IKeyboard, IMovement
         if (Input.anyKey)
         {
             Move();
-            Rotate();
         }
-        
+            Rotate();
     }
     void OnTriggerEnter2D(Collider2D collider)
     {
@@ -190,4 +195,29 @@ public class Player : FightingCharacter, IKeyboard, IMovement
             TakeDamage(10);
         }
     }
+
+
+
+    //Do testowania
+    void WeaponSwap()
+    {
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            weapon = new ProjectileRiffle();
+            weapon.SetAttacker(this);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            weapon = new ProjectileShotgun();
+            weapon.SetAttacker(this);
+
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            weapon = new ProjectileSniperRiffle();
+            weapon.SetAttacker(this);
+
+        }
+    }
+
 }

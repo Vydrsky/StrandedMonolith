@@ -12,15 +12,18 @@ public class ProjectileShotgun : Projectile
         Vector3 rotationVector;
         for (int i = -5; i <= 5; i++)
         {
-            random = Random.Range(-1.0f, 1.0f);
+            random = Random.Range(-10.0f, 10.0f);
             rotationVector = whoAttacks.transform.rotation.eulerAngles;
-            rotationVector.z += i / spread;
+            //rotationVector.z += (i + (random / 10)) / spread;  // troche losowe
+            rotationVector.z += Random.Range(-5.0f, 5.0f) / spread; // totalnie losowe
+            //rotationVector.z += i / spread; // totalnie nie losowe
+            Vector2 ownerVelocity = (whoAttacks.GetComponent<Rigidbody2D>().velocity / 3);
             var obj = Object.Instantiate(bullet, whoAttacks.firePoint.position, Quaternion.Euler(rotationVector));
-            obj.GetComponent<Bullet>().SetParameters(whoAttacks, damage + whoAttacks.Damage, bulletSpeed + random, 1);
+            obj.GetComponent<Bullet>().SetParameters(whoAttacks, damage + whoAttacks.Damage, bulletSpeed + (random / 15), 1, ownerVelocity);
         }
     }
 
-    public ProjectileShotgun(float attackSpeed = 1, float damage = 5, float bulletSpeed = 3, float bulletSize = 1) : base(attackSpeed, damage, bulletSpeed, bulletSize)
+    public ProjectileShotgun(float attackSpeed = 0.75f, float damage = 4, float bulletSpeed = 4, float bulletSize = 1) : base(attackSpeed, damage, bulletSpeed, bulletSize)
     {
 
     }
