@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Milk : PassiveItem
 {
-    public Milk()
+    private void Start()
     {
         this.itemName = "Milk";
         this.maxHPIncrease = 25;

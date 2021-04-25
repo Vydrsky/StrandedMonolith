@@ -132,7 +132,10 @@ public class Player : FightingCharacter, IKeyboard, IMovement
             readMovementInput();
             readTurnInput();
         }
+<<<<<<< HEAD
         WeaponSwap();
+=======
+
         if (activeItem != null && Input.GetKeyDown(KeyCode.E))  //INPUT PRZEDMIOT AKTYWNY    
         {
             activeItem.Effect(this);
@@ -142,6 +145,7 @@ public class Player : FightingCharacter, IKeyboard, IMovement
            activeItem.RemoveEffect(this);
         }
         
+>>>>>>> 0e3a5c3dd07a93a05a1beb7bb5b9639559614490
     }
 
     void FixedUpdate()
