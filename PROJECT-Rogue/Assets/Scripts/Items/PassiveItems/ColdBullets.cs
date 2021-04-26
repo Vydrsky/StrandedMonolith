@@ -8,14 +8,14 @@ public class ColdBullets : PassiveItem
     {
         this.itemName = "Cold Bullets";
         this.itemDescription = "Keep Your cool";
-        AttackSpeedModification = 0.2f;
+        attackSpeedModification = 0.2f;
     }
 
 
     
     public override void RemoveFromInventory(Player player)
     {
-        AttackSpeedModification = -AttackSpeedModification;
+        attackSpeedModification = -attackSpeedModification;
         SetPlayerStats(player);
         player.Inventory.Remove(this);
     }

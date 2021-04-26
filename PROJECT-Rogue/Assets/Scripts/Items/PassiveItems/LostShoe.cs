@@ -8,14 +8,14 @@ public class LostShoe : PassiveItem
     {
         this.itemName = "Lost Shoe";
         this.itemDescription = "There you are";
-        this.MoveSpeedModification = 0.3f;
+        this.moveSpeedModification = 0.3f;
     }
 
 
     
     public override void RemoveFromInventory(Player player)
     {
-        this.MoveSpeedModification = -MoveSpeedModification;
+        this.moveSpeedModification = -moveSpeedModification;
         SetPlayerStats(player);
         player.Inventory.Remove(this);
     }

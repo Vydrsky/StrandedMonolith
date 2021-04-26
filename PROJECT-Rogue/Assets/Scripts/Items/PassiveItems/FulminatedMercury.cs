@@ -8,14 +8,14 @@ public class FulminatedMercury : PassiveItem
     {
         this.itemName = "Fulminated Mercury";
         this.itemDescription = "Are you sure this is safe?";
-        this.DamageModification = 5;
+        this.damageModification = 5;
     }
 
 
     
     public override void RemoveFromInventory(Player player)
     {
-        this.DamageModification = -DamageModification;
+        this.damageModification = -damageModification;
         SetPlayerStats(player);
         player.Inventory.Remove(this);
     }

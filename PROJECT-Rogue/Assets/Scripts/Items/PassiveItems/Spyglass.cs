@@ -8,14 +8,14 @@ public class Spyglass : PassiveItem
     {
         this.itemName = "Spyglass";
         this.itemDescription = "Be careful where you look";
-        this.RangeModification = 0.2f;
+        this.rangeModification = 0.2f;
     }
 
 
     
     public override void RemoveFromInventory(Player player)
     {
-        this.RangeModification = -RangeModification;
+        this.rangeModification = -rangeModification;
         SetPlayerStats(player);
         player.Inventory.Remove(this);
     }
