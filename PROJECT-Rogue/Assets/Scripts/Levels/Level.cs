@@ -37,7 +37,7 @@ public class Level : MonoBehaviour
 
     string GenerateLevel(int mapSize, int wandererIterations, int numberOfWanderers)
     {
-        UnityEngine.Random.InitState(UnityEngine.Random.Range(-10000,10000));
+        Random.InitState(Random.Range(-10000,10000));
         string levelLayout="";
         int random;     //w ktora strone pojdzie pies
         int pivotIndex; //indeks w kt�rym jest pies, zaczyna od srodka
@@ -60,7 +60,7 @@ public class Level : MonoBehaviour
         levelLayout = ReplaceAtIndex(levelLayout, pivotIndex, 'X');
         for (int j = 0; j < numberOfWanderers; j++)
         {
-            UnityEngine.Random.InitState(UnityEngine.Random.Range(-10000, 10000));
+            Random.InitState(Random.Range(-10000, 10000));
             pivotIndex = ((mapSideLength * ((mapSideLength + 1) / 2) - mapSideLength / 2) - 1) + (mapSideLength / 2);
             for (int i = 0; i < wandererIterations; i++)
             {

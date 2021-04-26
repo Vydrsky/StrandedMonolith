@@ -7,5 +7,5 @@ public abstract class InstantItem : Item     //pieniadze,klucze,leczenie etc.
     [SerializeField] protected int HPrestoration;
 
     public abstract bool CheckUsability(Player player); //zwraca czy jest sens podnosic item, jesli nie to trzeb zrobic zeby nie naruszalo itema w grze
-    public abstract void immediateEffectOnPlayer(Player player);    //wplyw na gracza
+    public abstract void ImmediateEffectOnPlayer(Player player);    //wplyw na gracza
 }

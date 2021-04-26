@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class PassiveItem : Item
 {
-    public string itemInfo()
+    public string ItemInfo()
     {
         return this.itemName;
     }

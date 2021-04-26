@@ -198,7 +198,7 @@ public class Player : FightingCharacter, IKeyboard, IMovement
                 InstantItem temp = collider.gameObject.GetComponent<InstantItem>();
                 if (temp.CheckUsability(this))
                 {
-                    temp.immediateEffectOnPlayer(this);
+                    temp.ImmediateEffectOnPlayer(this);
                     Destroy(collider.gameObject);
                 }
             }
@@ -209,7 +209,7 @@ public class Player : FightingCharacter, IKeyboard, IMovement
                 temp.AddToInventory(this);
                 foreach(PassiveItem i in Inventory)
                 {
-                    Debug.Log(i.itemInfo());
+                    Debug.Log(i.ItemInfo());
                 }
                 collider.gameObject.SetActive(false);
             }

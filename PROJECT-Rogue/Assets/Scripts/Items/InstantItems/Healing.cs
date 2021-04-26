@@ -5,7 +5,7 @@ using UnityEngine;
 public class Healing : InstantItem
 {
     
-    public override void immediateEffectOnPlayer(Player player)
+    public override void ImmediateEffectOnPlayer(Player player)
     {
         
         player.HealthPoints += HPrestoration;
