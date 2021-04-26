@@ -16,10 +16,10 @@ public abstract class PassiveItem : Item
     {
         player.MaxHealth += maxHPIncrease;
         player.HealthPoints += maxHPIncrease;
-        player.Damage *= DamageModification;
-        player.Range *= RangeModification;
-        player.MoveSpeed *= MoveSpeedModification;
-        player.AttackSpeed *= AttackSpeedModification;
-        player.ShotSpeed *= ShotSpeedModification;
+        player.Damage *= damageModification;
+        player.Range *= rangeModification;
+        player.MoveSpeed *= moveSpeedModification;
+        player.AttackSpeed *= attackSpeedModification;
+        player.ShotSpeed *= shotSpeedModification;
     }
 }

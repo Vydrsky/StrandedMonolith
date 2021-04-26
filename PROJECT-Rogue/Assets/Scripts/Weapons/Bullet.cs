@@ -9,32 +9,24 @@ public class Bullet : MonoBehaviour
     Rigidbody2D rb, charRb;
     Vector2 velocity;
     string attackerTag;
-
     private void Start()
     {
         Destroy(gameObject, lifeTime);
     }
-
     private void Update()
     {
         transform.Translate(velocity * Time.deltaTime);
     }
-
     public void SetParameters(FightingCharacter whoAttacks, float damage, float bulletSpeed, float bulletSize, Vector2 ownerVelocity)
     {
         float bonusBulletSpeed = whoAttacks.AttackSpeed;
         this.damage = damage;
         attackerTag = whoAttacks.tag;
         rb = GetComponent<Rigidbody2D>();
-
-        //Vector3 newRot = new Vector3(0f, 0f, -whoAttacks.firePoint.transform.rotation.eulerAngles.z);
         ownerVelocity = Quaternion.Euler(0f, 0f, -whoAttacks.firePoint.transform.rotation.eulerAngles.z) * ownerVelocity;
         Vector2 baseBulletVelocity = (Vector3.right * (bulletSpeed + bonusBulletSpeed));
         velocity = (baseBulletVelocity + ownerVelocity);
-        //Debug.Log("rotation: " + whoAttacks.firePoint.transform.rotation.eulerAngles.z);
-
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Jesli dany przeciwnik bedzie mial swoj tag to trzeba bedzie zmienic pierwszy warunek
@@ -45,10 +37,7 @@ public class Bullet : MonoBehaviour
             FightingCharacter character = collision.transform.GetComponent<FightingCharacter>();
             if (character != null)
             {
-                if (character is Player)
-                    ((Player)character).TakeDamage(damage);
-                else
-                    character.TakeDamage(damage);
+                character.TakeDamage(damage);
             }
             Destroy(gameObject);
         }

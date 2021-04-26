@@ -28,7 +28,7 @@ public abstract class ActiveItem : Item
         }
         return false;
     }
-    public bool EffectRunnedOut()
+    public bool EffectRanOut()
     {
         
         if(Time.time >= timeWhenUsed+durationOfEffect  && isActive == true)

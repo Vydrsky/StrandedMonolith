@@ -4,17 +4,8 @@ using UnityEngine;
 
 public abstract class Ranged : Weapon
 {
-    //public FightingCharacter WhoAttacks { get; set; }
+    protected override void Attack() { Shoot(); }
+    protected abstract void Shoot();
 
-    public override void Attack()
-    {
-        Shoot();
-    }
-    public abstract void Shoot();
-
-    public Ranged(float attackSpeed, float damage) : base(attackSpeed, damage)
-    {
-
-    }
-
+    public Ranged(float attackSpeed, float damage) : base(attackSpeed, damage) { }
 }

@@ -95,7 +95,7 @@ public class Player : FightingCharacter, IKeyboard, IMovement
     }
 
     
-    new public void TakeDamage(float damage)
+    public override void TakeDamage(float damage)
     {
         if ( Time.time >= this.InvincibilityStart + this.InvincibilityDuration)
         {
@@ -137,7 +137,7 @@ public class Player : FightingCharacter, IKeyboard, IMovement
         {
             activeItem.Effect(this);
         }
-        if (activeItem !=null && activeItem.EffectRunnedOut())
+        if (activeItem !=null && activeItem.EffectRanOut())
         {
            activeItem.RemoveEffect(this);
         }

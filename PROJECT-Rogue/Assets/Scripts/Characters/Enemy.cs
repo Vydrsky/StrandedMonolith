@@ -35,7 +35,17 @@ public class Enemy : FightingCharacter, IMovement
     private void Update()
     {
         weapon.CheckAttack();
+    }
 
+    public override void TakeDamage(float damage)
+    {
+        healthPoints -= (int)damage;
+        if (healthPoints <= 0)
+        {
+            Level.CheckStatus();
+            Destroy(gameObject);
+            Destroy(this);
+        }
     }
 
     // Update is called once per frame

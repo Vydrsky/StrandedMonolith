@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1392533654099451601}
   - component: {fileID: 5409718447338318751}
   - component: {fileID: 2673244312036157343}
-  m_Layer: 0
-  m_Name: SniperRiffleProjectile 1
+  m_Layer: 2
+  m_Name: SniperRiffleProjectile
   m_TagString: '|Bullet|ProjSniper|'
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
