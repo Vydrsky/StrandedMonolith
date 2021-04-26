@@ -7,20 +7,15 @@ public class Milk : PassiveItem
     private void Start()
     {
         this.itemName = "Milk";
+        this.itemDescription = "Good for Your bones";
         this.maxHPIncrease = 25;
-        this.attackSpeedModification = 1.3f;
     }
 
 
-    public override void AddToInventory(Player player)
-    {
-        SetPlayerStats(player);
-        player.Inventory.Add(this);
-    }
+    
     public override void RemoveFromInventory(Player player)
     {
-        this.maxHPIncrease = -25;
-        this.attackSpeedModification = 1.0f/1.3f;
+        this.maxHPIncrease = -maxHPIncrease;
         SetPlayerStats(player);
         player.Inventory.Remove(this);
     }

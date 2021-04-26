@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : FightingCharacter, IMovement
 {
-    [SerializeField] private Player player;
+    private GameObject player;
 
     private float delay;
     Weapon weapon; // Do wywalenie, tylko na czas testowania
@@ -27,6 +27,7 @@ public class Enemy : FightingCharacter, IMovement
     {
         Damage = 10.0f;
         _rigidbody = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectsWithTag("Player")[0];
         // ustawianie broni
         weapon = new ProjectileRiffle();
         weapon.SetAttacker(this);
