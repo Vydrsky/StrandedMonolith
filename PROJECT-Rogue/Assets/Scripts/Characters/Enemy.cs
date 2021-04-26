@@ -9,12 +9,12 @@ public class Enemy : FightingCharacter, IMovement
     private float delay;
     Weapon weapon; // Do wywalenie, tylko na czas testowania
 
-    public void Move()
+    public void move()
     {
         _rigidbody.AddRelativeForce(Vector2.right*moveSpeed);
     }
 
-    public void Rotate()
+    public void rotate()
     {
         Vector3 difference = player.transform.position - this.transform.position;
         difference = difference.normalized;
@@ -42,7 +42,7 @@ public class Enemy : FightingCharacter, IMovement
     // Update is called once per frame
     void FixedUpdate()
     {
-        Move();
-        Rotate();
+        move();
+        rotate();
     }
 }

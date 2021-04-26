@@ -31,7 +31,7 @@ public class Player : FightingCharacter, IKeyboard, IMovement
         horizontalAxis = Input.GetAxis("Horizontal");
         verticalAxis = Input.GetAxis("Vertical");
     }
-    public void Move()
+    public void move()
     {
         _rigidbody.AddForce(new Vector2(horizontalAxis*moveSpeed,0),ForceMode2D.Impulse);
         _rigidbody.AddForce(new Vector2(0,verticalAxis*moveSpeed),ForceMode2D.Impulse);
@@ -62,7 +62,7 @@ public class Player : FightingCharacter, IKeyboard, IMovement
         }
     }
 
-    public void Rotate()
+    public void rotate()
     {
         if(playerRotated)
         {
@@ -154,9 +154,9 @@ public class Player : FightingCharacter, IKeyboard, IMovement
 
         if (Input.anyKey)
         {
-            Move();
+            move();
         }
-            Rotate();
+            rotate();
     }
     void OnTriggerEnter2D(Collider2D collider)
     {
