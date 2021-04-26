@@ -11,7 +11,7 @@ public class Stimpak : ActiveItem
         if (EffectCanBeUsed())
         {
             isActive = true;
-            player.MoveSpeed *= MoveSpeedModification;
+            player.MoveSpeed *= moveSpeedModification;
             currentItemCooldown = maxItemCooldown;
             timeWhenUsed = Time.time;
         }
@@ -20,12 +20,12 @@ public class Stimpak : ActiveItem
     public override void RemoveEffect(Player player)    //cofnij efekt na graczu
     {
         isActive = false;
-        player.MoveSpeed *= 1.0f/MoveSpeedModification;
+        player.MoveSpeed *= 1.0f/moveSpeedModification;
     }
 
     private void Start()
     {
         maxItemCooldown = currentItemCooldown;
-        MoveSpeedModification = 2.0f;
+        moveSpeedModification = 2.0f;
     }
 }

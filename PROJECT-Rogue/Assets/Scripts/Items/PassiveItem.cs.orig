@@ -1,0 +1,37 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public abstract class PassiveItem : Item
+{
+    public string itemInfo()
+    {
+        return this.itemName;
+    }
+    public void AddToInventory(Player player)
+    {
+        SetPlayerStats(player);
+        player.Inventory.Add(this);
+    }
+    public abstract void RemoveFromInventory(Player player);
+
+
+    public void SetPlayerStats(Player player)
+    {
+        player.MaxHealth += maxHPIncrease;
+        player.HealthPoints += maxHPIncrease;
+<<<<<<< HEAD
+        player.Damage *= damageModification;
+        player.Range *= rangeModification;
+        player.MoveSpeed *= moveSpeedModification;
+        player.AttackSpeed *= attackSpeedModification;
+        player.ShotSpeed *= shotSpeedModification;
+=======
+        player.Damage += DamageModification;
+        player.Range += RangeModification;
+        player.MoveSpeed += MoveSpeedModification;
+        player.AttackSpeed += AttackSpeedModification;
+        player.ShotSpeed += ShotSpeedModification;
+>>>>>>> 282d00c2e719655859e7bcd27eae6b1b8fa3c948
+    }
+}

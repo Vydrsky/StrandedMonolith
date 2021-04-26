@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2391161304784982533}
   - component: {fileID: 8750343680293594955}
   - component: {fileID: 1685785497781021515}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RiffleProjectile
   m_TagString: '|Bullet|ProjRiffle|'
   m_Icon: {fileID: 0}

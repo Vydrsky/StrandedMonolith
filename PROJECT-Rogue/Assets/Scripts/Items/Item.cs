@@ -8,10 +8,10 @@ public abstract class Item : MonoBehaviour
     protected string itemDescription;
 
     protected int maxHPIncrease = 0;
-    protected float AttackSpeedModification = 0.0f;
-    protected int DamageModification = 0;
-    protected float MoveSpeedModification = 0.0f;
-    protected float ShotSpeedModification = 0.0f;
-    protected float RangeModification = 0.0f;
+    protected float attackSpeedModification = 0.0f;
+    protected int damageModification = 0;
+    protected float moveSpeedModification = 0.0f;
+    protected float shotSpeedModification = 0.0f;
+    protected float rangeModification = 0.0f;
     
 }

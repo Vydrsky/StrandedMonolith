@@ -4,17 +4,11 @@ using UnityEngine;
 
 public abstract class Melee : Weapon
 {
-
-    public abstract void MeleeHit(FightingCharacter WhoAttacks);
-
-    public override void Attack()
+    protected abstract void MeleeHit();
+    protected override void Attack()
     {
-        MeleeHit(whoAttacks);
+        MeleeHit();
     }
-
-    public Melee(float attackSpeed, float damage) : base(attackSpeed, damage)
-    {
-
-    }
+    public Melee(float attackSpeed, float damage) : base(attackSpeed, damage) { }
 
 }
