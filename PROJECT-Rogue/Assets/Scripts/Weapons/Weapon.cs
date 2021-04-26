@@ -15,7 +15,7 @@ public abstract class Weapon
     {
         this.attackSpeed = attackSpeed;
         this.damage = damage;
-        lastShot = 0;
+        lastShot = Time.time + 0.5f;
         delay = 0.5f;
     }
     public void CheckAttack()
