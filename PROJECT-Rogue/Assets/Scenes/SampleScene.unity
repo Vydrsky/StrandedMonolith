@@ -1813,16 +1813,8 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 740765322, guid: 3048b6ad88ca01c44af93e58dacc5861, type: 3}
-      propertyPath: m_LinearDrag
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 1186859880452763253, guid: 3048b6ad88ca01c44af93e58dacc5861, type: 3}
       propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1186859880452763253, guid: 3048b6ad88ca01c44af93e58dacc5861, type: 3}
-      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2735277063403292392, guid: 3048b6ad88ca01c44af93e58dacc5861, type: 3}
@@ -1869,29 +1861,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3781431018484011782, guid: 3048b6ad88ca01c44af93e58dacc5861, type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4005866522826770482, guid: 3048b6ad88ca01c44af93e58dacc5861, type: 3}
       propertyPath: statsUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 330219952}
     - target: {fileID: 4005866522826770482, guid: 3048b6ad88ca01c44af93e58dacc5861, type: 3}
       propertyPath: healthBar
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4005866522826770482, guid: 3048b6ad88ca01c44af93e58dacc5861, type: 3}
-      propertyPath: maxHealth
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 4005866522826770482, guid: 3048b6ad88ca01c44af93e58dacc5861, type: 3}
-      propertyPath: moveSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4005866522826770482, guid: 3048b6ad88ca01c44af93e58dacc5861, type: 3}
-      propertyPath: healthPoints
-      value: 1000
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1023013612}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3048b6ad88ca01c44af93e58dacc5861, type: 3}

@@ -99,7 +99,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 10
+  m_LinearDrag: 8
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -136,8 +136,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 8884137023068954548}
-  maxHealth: 100
-  healthPoints: 100
+  maxHealth: 1000
+  healthPoints: 1000
   moveSpeed: 1
   attackSpeed: 1
   damage: 1
@@ -147,6 +147,8 @@ MonoBehaviour:
   invincibilityStart: 0
   invincibilityDuration: 0.5
   lineRenderer: {fileID: 0}
+  healthBar: {fileID: 0}
+  statsUI: {fileID: 0}
   Inventory: []
   activeItem: {fileID: 0}
 --- !u!1001 &2233037042817856049
