@@ -149,6 +149,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 0}
   healthBar: {fileID: 0}
   statsUI: {fileID: 0}
+  activeUI: {fileID: 0}
   Inventory: []
   activeItem: {fileID: 0}
 --- !u!1001 &2233037042817856049

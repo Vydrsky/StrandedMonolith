@@ -22,6 +22,7 @@ public class Player : FightingCharacter, IKeyboard, IMovement
 
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private PlayerStats statsUI;
+    [SerializeField] private ActiveUI activeUI;
     Weapon weapon;
 
     public List<PassiveItem> Inventory = new List<PassiveItem>();
@@ -181,7 +182,6 @@ public class Player : FightingCharacter, IKeyboard, IMovement
     }
     void OnTriggerEnter2D(Collider2D collider)
     {
-        UpdateHealth();
         if (collisionOccured == false)
         {
             collisionOccured = true;
@@ -221,6 +221,7 @@ public class Player : FightingCharacter, IKeyboard, IMovement
                 if (temp.CheckUsability(this))
                 {
                     temp.ImmediateEffectOnPlayer(this);
+                    UpdateHealth();
                     Destroy(collider.gameObject);
                 }
             }
@@ -251,12 +252,14 @@ public class Player : FightingCharacter, IKeyboard, IMovement
                         Vector2 force = transform.position - activeItem.transform.position;
                         activeItem.GetComponent<Rigidbody2D>().AddForce(-force * 2000, ForceMode2D.Force);
                         activeItem = temp;
+                        activeUI.SetCurrentActive(activeItem);
                         collider.gameObject.SetActive(false);
                         itemPickupTime = Time.time;
                     }
                     else
                     {
                         activeItem = collider.gameObject.GetComponent<ActiveItem>();
+                        activeUI.SetCurrentActive(activeItem);
                         Debug.Log(activeItem);
                         collider.gameObject.SetActive(false);
                         itemPickupTime = Time.time;
