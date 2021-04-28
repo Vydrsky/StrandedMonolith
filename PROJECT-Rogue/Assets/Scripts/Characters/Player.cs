@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : FightingCharacter, IKeyboard, IMovement
 {
@@ -19,6 +20,8 @@ public class Player : FightingCharacter, IKeyboard, IMovement
     public float InvincibilityDuration { get { return invincibilityDuration; } set { invincibilityDuration = value; } }
 
 
+    [SerializeField] private HealthBar healthBar;
+    [SerializeField] private PlayerStats statsUI;
     Weapon weapon;
 
     public List<PassiveItem> Inventory = new List<PassiveItem>();
@@ -101,9 +104,17 @@ public class Player : FightingCharacter, IKeyboard, IMovement
         {
             this.InvincibilityStart = Time.time;
             this.HealthPoints -= (int)damage;
+            healthBar.SetHealth(HealthPoints);
+            healthBar.SetText(HealthPoints, MaxHealth);
         }
     }
-    
+
+    private void UpdateHealth()
+    {
+        healthBar.SetHealth(HealthPoints);
+        healthBar.SetText(HealthPoints, MaxHealth);
+    }
+
 
     void Awake()
     {
@@ -119,13 +130,15 @@ public class Player : FightingCharacter, IKeyboard, IMovement
         //weapon = new ProjectileRiffle();
         weapon = new Raycast();
         weapon.SetAttacker(this);
-
+        healthBar.SetMaxHealth(MaxHealth);
+        healthBar.SetHealth(HealthPoints);
+        healthBar.SetText(HealthPoints, MaxHealth);
     }
 
 
     void Update()
     {
-        
+        UpdateStats();
 
         if (Input.anyKey)           //INPUT RUCH
         {
@@ -137,11 +150,19 @@ public class Player : FightingCharacter, IKeyboard, IMovement
         {
             activeItem.Effect(this);
         }
-        if (activeItem !=null && activeItem.EffectRanOut())
+        if (activeItem != null && activeItem.EffectRanOut())
         {
-           activeItem.RemoveEffect(this);
+            activeItem.RemoveEffect(this);
         }
-        
+    }
+
+    private void UpdateStats()
+    {
+        statsUI.SetStat("MS", this.MoveSpeed);
+        statsUI.SetStat("DAMAGE", this.Damage);
+        statsUI.SetStat("AS", this.AttackSpeed);
+        statsUI.SetStat("SHOTSPEED", this.ShotSpeed);
+        statsUI.SetStat("RANGE", this.Range);
     }
 
     void FixedUpdate()
@@ -160,6 +181,7 @@ public class Player : FightingCharacter, IKeyboard, IMovement
     }
     void OnTriggerEnter2D(Collider2D collider)
     {
+        UpdateHealth();
         if (collisionOccured == false)
         {
             collisionOccured = true;
@@ -212,6 +234,8 @@ public class Player : FightingCharacter, IKeyboard, IMovement
                     Debug.Log(i.ItemInfo());
                 }
                 collider.gameObject.SetActive(false);
+                healthBar.SetMaxHealth(MaxHealth);
+                UpdateHealth();
             }
             if (collider.tag.Contains("Active"))
             {
@@ -244,6 +268,7 @@ public class Player : FightingCharacter, IKeyboard, IMovement
 
     private void OnCollisionStay2D(Collision2D collision)
     {
+        UpdateHealth();
         if(collision.gameObject.tag.Contains("Enemy"))
         {
             TakeDamage(10);
