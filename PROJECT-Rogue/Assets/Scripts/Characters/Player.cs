@@ -118,12 +118,12 @@ public class Player : FightingCharacter
         //weapon = new ProjectileSniperRiffle();
         //weapon = new ProjectileShotgun();
         //weapon = new ProjectileRiffle();
-        weaponItem.weapon = new ProjectileRiffle();
-        weaponItem.weapon.SetAttacker(this);
         healthBar.SetMaxHealth(MaxHealth);
         healthBar.SetHealth(HealthPoints);
         healthBar.SetText(HealthPoints, MaxHealth);
         playerMovement = new PlayerMovement();
+        weaponItem.weapon = new ProjectileRiffle();
+        weaponItem.weapon.SetAttacker(this);
     }
     void Update()
     {

@@ -152,6 +152,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 0}
   Inventory: []
   activeItem: {fileID: 0}
+  weaponItem: {fileID: 4575320530088364512, guid: 8d944f8158ad2db4081b70994751c38e, type: 3}
 --- !u!1 &8024029002110264293
 GameObject:
   m_ObjectHideFlags: 0
