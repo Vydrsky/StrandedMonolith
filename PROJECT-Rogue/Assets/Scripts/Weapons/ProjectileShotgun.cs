@@ -19,7 +19,8 @@ public class ProjectileShotgun : Projectile
             //rotationVector.z += i / spread; // totalnie nie losowe
             Vector2 ownerVelocity = (whoAttacks.GetComponent<Rigidbody2D>().velocity / 5);
             var obj = Object.Instantiate(bullet, whoAttacks.firePoint.position, Quaternion.Euler(rotationVector));
-            obj.GetComponent<Bullet>().SetParameters(whoAttacks, damage + whoAttacks.Damage, bulletSpeed + (random / 10), 1, ownerVelocity);
+            obj.transform.localScale = new Vector2(obj.transform.localScale.x * 1f, obj.transform.localScale.y * 1f);
+            obj.GetComponent<Bullet>().SetParameters(whoAttacks, damage * whoAttacks.Damage, bulletSpeed + (random / 10), 1, ownerVelocity, (whoAttacks.Range * 0.5f) / 10);
         }
     }
     public ProjectileShotgun(float attackSpeed = 0.75f, float damage = 4, float bulletSpeed = 15, float bulletSize = 1) : base(attackSpeed, damage, bulletSpeed, bulletSize) { }

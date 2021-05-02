@@ -26,6 +26,8 @@ public class Player : FightingCharacter, IKeyboard, IMovement
     [SerializeField]private ActiveItem activeItem;
     public ActiveItem ActiveItem { get; set; }
 
+   
+
     public void readMovementInput()
     {
         horizontalAxis = Input.GetAxis("Horizontal");
@@ -111,22 +113,21 @@ public class Player : FightingCharacter, IKeyboard, IMovement
         characterName = "Hero";
 
     }
+
     void Start()
     {
-        Damage = 10;
+        Damage = 2;
         //weapon = new ProjectileSniperRiffle();
         //weapon = new ProjectileShotgun();
         //weapon = new ProjectileRiffle();
-        weapon = new Raycast();
+        weapon = new RaycastRifle();
         weapon.SetAttacker(this);
-
+        range = 10;
+        attackSpeed = 1;
+        Debug.Log(attackSpeed);
     }
-
-
     void Update()
     {
-        
-
         if (Input.anyKey)           //INPUT RUCH
         {
             readMovementInput();
@@ -137,16 +138,15 @@ public class Player : FightingCharacter, IKeyboard, IMovement
         {
             activeItem.Effect(this);
         }
-        if (activeItem !=null && activeItem.EffectRanOut())
+        if (activeItem != null && activeItem.EffectRanOut())
         {
-           activeItem.RemoveEffect(this);
+            activeItem.RemoveEffect(this);
         }
-        
+
     }
 
     void FixedUpdate()
     {
-
         if (collisionOccured == true)
         {
             collisionOccured = false;
@@ -156,8 +156,10 @@ public class Player : FightingCharacter, IKeyboard, IMovement
         {
             move();
         }
-            rotate();
+
+        rotate();
     }
+
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collisionOccured == false)
@@ -257,7 +259,7 @@ public class Player : FightingCharacter, IKeyboard, IMovement
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            weapon = new ProjectileRiffle();
+            weapon = new ProjectileRifle();
             weapon.SetAttacker(this);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -268,7 +270,19 @@ public class Player : FightingCharacter, IKeyboard, IMovement
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            weapon = new ProjectileSniperRiffle();
+            weapon = new ProjectileSniperRifle();
+            weapon.SetAttacker(this);
+
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            weapon = new RaycastRifle();
+            weapon.SetAttacker(this);
+
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            weapon = new RaycastSniperRifle();
             weapon.SetAttacker(this);
 
         }

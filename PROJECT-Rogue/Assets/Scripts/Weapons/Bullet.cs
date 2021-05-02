@@ -4,28 +4,23 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    float lifeTime = 2.0f;
+    public GameObject impactAnimation;
     float damage;
-    Rigidbody2D rb, charRb;
     Vector2 velocity;
     string attackerTag;
-    private void Start()
-    {
-        Destroy(gameObject, lifeTime);
-    }
     private void Update()
     {
         transform.Translate(velocity * Time.deltaTime);
     }
-    public void SetParameters(FightingCharacter whoAttacks, float damage, float bulletSpeed, float bulletSize, Vector2 ownerVelocity)
+    public void SetParameters(FightingCharacter whoAttacks, float damage, float bulletSpeed, float bulletSize, Vector2 ownerVelocity, float range)
     {
         float bonusBulletSpeed = whoAttacks.AttackSpeed;
         this.damage = damage;
         attackerTag = whoAttacks.tag;
-        rb = GetComponent<Rigidbody2D>();
         ownerVelocity = Quaternion.Euler(0f, 0f, -whoAttacks.firePoint.transform.rotation.eulerAngles.z) * ownerVelocity;
         Vector2 baseBulletVelocity = (Vector3.right * (bulletSpeed + bonusBulletSpeed));
         velocity = (baseBulletVelocity + ownerVelocity);
+        Destroy(gameObject, range);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -41,5 +36,12 @@ public class Bullet : MonoBehaviour
             }
             Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        GameObject obj = Instantiate(impactAnimation, gameObject.transform.position, gameObject.transform.rotation);
+        obj.transform.localScale = new Vector2(this.transform.localScale.x * 3, this.transform.localScale.x * 3);
+        Destroy(obj, 0.17f);
     }
 }

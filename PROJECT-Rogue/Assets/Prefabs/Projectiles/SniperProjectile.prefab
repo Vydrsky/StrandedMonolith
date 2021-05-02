@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3065706290164782564
+--- !u!1 &4739059644689150570
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2086795293451227086}
-  - component: {fileID: 9095956656329085833}
-  - component: {fileID: 4945500550708792251}
-  - component: {fileID: 4446074935649672970}
-  - component: {fileID: 4895250807224603693}
+  - component: {fileID: 8627453506195302464}
+  - component: {fileID: 1545933557971448839}
+  - component: {fileID: 3453949270302469173}
+  - component: {fileID: 6268086656294500484}
+  - component: {fileID: 2927474653636539299}
   m_Layer: 2
-  m_Name: ShotgunProjectile
-  m_TagString: '|Bullet|ProjShotgun|'
+  m_Name: SniperProjectile
+  m_TagString: '|Bullet|ProjSniper|'
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2086795293451227086
+--- !u!4 &8627453506195302464
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3065706290164782564}
+  m_GameObject: {fileID: 4739059644689150570}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.877681, y: -0.05499673, z: 5.3420258}
-  m_LocalScale: {x: 0.14229916, y: 0.14229916, z: 0.14229916}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.3468892, y: 0.3468892, z: 0.3468892}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &9095956656329085833
+--- !u!212 &1545933557971448839
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3065706290164782564}
+  m_GameObject: {fileID: 4739059644689150570}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -85,13 +85,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &4945500550708792251
+--- !u!58 &3453949270302469173
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3065706290164782564}
+  m_GameObject: {fileID: 4739059644689150570}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -101,14 +101,14 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.7
---- !u!50 &4446074935649672970
+--- !u!50 &6268086656294500484
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3065706290164782564}
+  m_GameObject: {fileID: 4739059644689150570}
   m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -122,13 +122,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &4895250807224603693
+--- !u!114 &2927474653636539299
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3065706290164782564}
+  m_GameObject: {fileID: 4739059644689150570}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b49359ecbd9284e49ab3ff60e6c30ede, type: 3}

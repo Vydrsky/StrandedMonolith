@@ -20,8 +20,8 @@ public abstract class Weapon
     }
     public void CheckAttack()
     {
-        delay = (1 / (attackSpeed + whoAttacks.AttackSpeed)); // attackSpeed * whoAttacks.AS
-        if (Time.time > lastShot + delay)
+        delay = (1 / (attackSpeed + whoAttacks.AttackSpeed)); 
+        if(Time.time > lastShot + delay)
         {
             Attack();
             lastShot = Time.time;

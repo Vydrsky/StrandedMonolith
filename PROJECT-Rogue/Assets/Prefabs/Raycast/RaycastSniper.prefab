@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1535888858541983274}
   - component: {fileID: 8898704758614927471}
   m_Layer: 0
-  m_Name: RaycastShot
-  m_TagString: '|Raycast|RayRiffle|'
+  m_Name: RaycastSniper
+  m_TagString: '|Raycast|RaySniper|'
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,10 +38,10 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5766028636738096778}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -72,8 +72,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 12
   m_Positions:
-  - {x: -5.1153364, y: -1.1554105, z: 0}
-  - {x: -4.567676, y: -1.1554105, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 1, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.1
@@ -82,7 +82,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 1
-        value: 1
+        value: 0.8044586
         inSlope: 0
         outSlope: 0
         tangentMode: 0
