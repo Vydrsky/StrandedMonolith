@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
     {
         transform.Translate(velocity * Time.deltaTime);
     }
-    public void SetParameters(FightingCharacter whoAttacks, float damage, float bulletSpeed, float bulletSize, Vector2 ownerVelocity, float range)
+    public void SetParameters(FightingCharacter whoAttacks, int damage, float bulletSpeed, float bulletSize, Vector2 ownerVelocity, float range)
     {
         float bonusBulletSpeed = whoAttacks.AttackSpeed;
         this.damage = damage;
