@@ -414,9 +414,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefabs:
-  - {fileID: 7493847717846315851, guid: 43af68a706eaefc4d8d3276e3c37c590, type: 3}
-  - {fileID: 4285918664514963144, guid: 56b69c83c0e9ac94c8b112f095f5ddab, type: 3}
-  - {fileID: 6161812389707153311, guid: dbac17431674a8e449ecb58406be322e, type: 3}
+  - {fileID: 2314937791570350830, guid: 95b38a376c0e2f34da62463533fc73b3, type: 3}
+  - {fileID: 3065706290164782564, guid: 3dfad37ab7539ca46a0a2e2f1b820807, type: 3}
+  - {fileID: 4739059644689150570, guid: 223921331d8e92141bd9f261703ec661, type: 3}
   raycastPrefabs:
   - {fileID: 446832327}
 --- !u!4 &659551500
@@ -427,7 +427,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 659551498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2520483, y: 0.09364252, z: -10.357904}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
