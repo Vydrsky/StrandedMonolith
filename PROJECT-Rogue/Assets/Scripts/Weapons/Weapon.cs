@@ -6,12 +6,12 @@ public abstract class Weapon
 {
     protected FightingCharacter whoAttacks;
     protected float attackSpeed;
-    protected float damage;
+    protected int damage;
     float delay; // delay = (1 / attackSpeed)
     float lastShot;
     protected abstract void Attack();
     public void SetAttacker(FightingCharacter whoAttacks) { this.whoAttacks = whoAttacks; }
-    public Weapon(float attackSpeed, float damage)
+    public Weapon(float attackSpeed, int damage)
     {
         this.attackSpeed = attackSpeed;
         this.damage = damage;

@@ -1,0 +1,64 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Enemy : FightingCharacter
+{
+    private GameObject player;
+
+    private float delay;
+    Weapon weapon; // Do wywalenie, tylko na czas testowania
+
+    public void move()
+    {
+        _rigidbody.AddRelativeForce(Vector2.right*moveSpeed);
+    }
+
+    public void rotate()
+    {
+        Vector3 difference = player.transform.position - this.transform.position;
+        difference = difference.normalized;
+        float rotationOnZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotationOnZ);
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+<<<<<<< HEAD
+        range = 15;
+        Damage = 2;
+=======
+        Damage = 10;
+>>>>>>> 01ad5cdc4ca2a14c25bbdd067c1d52048f9f753b
+        _rigidbody = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectsWithTag("Player")[0];
+        // ustawianie broni
+        weapon = new ProjectileRifle(4, 10, 10);
+        weapon.SetAttacker(this);
+    }
+
+    private void Update()
+    {
+        
+    }
+
+    public override void TakeDamage(int damage)
+    {
+        healthPoints -= damage;
+        if (healthPoints <= 0)
+        {
+            Level.CheckStatus();
+            Destroy(gameObject);
+            Destroy(this);
+        }
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        weapon.CheckAttack();
+        move();
+        rotate();
+    }
+}

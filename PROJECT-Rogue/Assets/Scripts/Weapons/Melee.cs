@@ -9,6 +9,6 @@ public abstract class Melee : Weapon
     {
         MeleeHit();
     }
-    public Melee(float attackSpeed, float damage) : base(attackSpeed, damage) { }
+    public Melee(float attackSpeed, int damage) : base(attackSpeed, damage) { }
 
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : FightingCharacter, IMovement
+public class Enemy : FightingCharacter
 {
     private GameObject player;
 
@@ -36,12 +36,12 @@ public class Enemy : FightingCharacter, IMovement
 
     private void Update()
     {
-        weapon.CheckAttack();
+        
     }
 
-    public override void TakeDamage(float damage)
+    public override void TakeDamage(int damage)
     {
-        healthPoints -= (int)damage;
+        healthPoints -= damage;
         if (healthPoints <= 0)
         {
             Level.CheckStatus();
@@ -53,6 +53,7 @@ public class Enemy : FightingCharacter, IMovement
     // Update is called once per frame
     void FixedUpdate()
     {
+        weapon.CheckAttack();
         move();
         rotate();
     }

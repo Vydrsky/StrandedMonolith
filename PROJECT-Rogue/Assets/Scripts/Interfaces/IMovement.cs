@@ -5,7 +5,7 @@ using UnityEngine;
 public interface IMovement
 {
 
-    void move();
-    void rotate();
+    void move(Player player);
+    void rotate(Player player);
     
 }

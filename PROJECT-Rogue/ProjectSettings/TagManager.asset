@@ -19,7 +19,7 @@ TagManager:
   - '|Item|Active|'
   - '|Bullet|ProjSniper|'
   - '|Raycast|RayRiffle|'
-  - '|Raycast|RaySniper|'
+  - '|Item|Weapon|'
   layers:
   - Default
   - TransparentFX

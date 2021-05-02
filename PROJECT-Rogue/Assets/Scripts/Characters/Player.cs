@@ -2,147 +2,153 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Player : FightingCharacter, IKeyboard, IMovement
+public class Player : FightingCharacter
 {
-    private float horizontalAxis, verticalAxis;
     private bool collisionOccured = false;
-    private bool playerRotated = false;
-    [SerializeField]private float itemPickupTime = 0f;
 
+    private PlayerMovement playerMovement; //podklasa do chodzenia
+
+    [SerializeField] private float itemPickupTime = 0f;
     [SerializeField] private float invincibilityStart;
     [SerializeField] private float invincibilityDuration;
-
-    [SerializeField] public LineRenderer lineRenderer;
-
     public float InvincibilityStart { get { return invincibilityStart; } set { invincibilityStart = value; } }
     public float InvincibilityDuration { get { return invincibilityDuration; } set { invincibilityDuration = value; } }
 
+    [SerializeField] private HealthBar healthBar;
+    [SerializeField] private PlayerStats statsUI;
+    [SerializeField] private ActiveUI activeUI;
+    [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private ActiveItem activeItem;
+    [SerializeField] private WeaponItem weaponItem;
 
-    Weapon weapon;
+    [SerializeField] public List<PassiveItem> Inventory = new List<PassiveItem>();
 
-    public List<PassiveItem> Inventory = new List<PassiveItem>();
+    public ActiveItem ActiveItem { get { return activeItem; } set { activeItem = value; } }
+    public WeaponItem WeaponItem { get { return weaponItem; } set { weaponItem = value; } }
 
-    [SerializeField]private ActiveItem activeItem;
-    public ActiveItem ActiveItem { get; set; }
 
-   
 
-    public void readMovementInput()
-    {
-        horizontalAxis = Input.GetAxis("Horizontal");
-        verticalAxis = Input.GetAxis("Vertical");
-    }
-    public void move()
-    {
-        _rigidbody.AddForce(new Vector2(horizontalAxis*moveSpeed,0),ForceMode2D.Impulse);
-        _rigidbody.AddForce(new Vector2(0,verticalAxis*moveSpeed),ForceMode2D.Impulse);
-    }
 
-    public void readTurnInput()
-    {
 
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            RotDir = RotationDirectionEnum.UpDirection;     //enum opisany w RotationDirectionEnum.cs
-            playerRotated = true;
-        }
-        else if (Input.GetKey(KeyCode.DownArrow))
-        {
-            RotDir = RotationDirectionEnum.DownDirection;
-            playerRotated = true;
-        }
-        else if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            RotDir = RotationDirectionEnum.LeftDirection;
-            playerRotated = true;
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            RotDir = RotationDirectionEnum.RightDirection;
-            playerRotated = true;
-        }
-    }
-
-    public void rotate()
-    {
-        if(playerRotated)
-        {
-            switch (RotDir)
-            {
-                case RotationDirectionEnum.UpDirection:
-                    {
-                        transform.rotation = Quaternion.Euler(0f, 0f, 90f);
-                        break;
-                    }
-                case RotationDirectionEnum.LeftDirection:
-                    {
-                        transform.rotation = Quaternion.Euler(0f, 0f, 180f);
-                        break;
-                    }
-                case RotationDirectionEnum.DownDirection:
-                    {
-                        transform.rotation = Quaternion.Euler(0f, 0f, 270f);
-                        break;
-                    }
-                case RotationDirectionEnum.RightDirection:
-                    {
-                        transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-                        break;
-                    }
-            }
-            weapon.CheckAttack();
-            playerRotated = false;
-        }
-    }
-
-    
-    public override void TakeDamage(float damage)
+    public override void TakeDamage(int damage)
     {
         if ( Time.time >= this.InvincibilityStart + this.InvincibilityDuration)
         {
             this.InvincibilityStart = Time.time;
-            this.HealthPoints -= (int)damage;
+            this.HealthPoints -= damage;
+            healthBar.SetHealth(HealthPoints);
+            healthBar.SetText(HealthPoints, MaxHealth);
         }
     }
-    
 
-    void Awake()
+    private void UpdateHealth()
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
-        characterName = "Hero";
-
+        healthBar.SetHealth(HealthPoints);
+        healthBar.SetText(HealthPoints, MaxHealth);
     }
 
-    void Start()
+    public void SwapWeapon(Collider2D collider)
     {
+        if (Time.time >= itemPickupTime + 1f)
+        {
+            if (WeaponItem != null)
+            {
+                WeaponItem temp = collider.gameObject.GetComponent<WeaponItem>();
+                WeaponItem.gameObject.SetActive(true);
+                WeaponItem.gameObject.transform.position = collider.gameObject.transform.position;
+                Vector2 force = transform.position - WeaponItem.transform.position;
+                WeaponItem.GetComponent<Rigidbody2D>().AddForce(-force * 2000, ForceMode2D.Force);
+                WeaponItem = temp;
+                WeaponItem.weapon.SetAttacker(this);
+                collider.gameObject.SetActive(false);
+                itemPickupTime = Time.time;
+            }
+            else
+            {
+                WeaponItem = collider.gameObject.GetComponent<WeaponItem>();
+                collider.gameObject.SetActive(false);
+                WeaponItem.weapon.SetAttacker(this);
+                itemPickupTime = Time.time;
+            }
+        }
+    }
+
+    public void SwapActiveItem(Collider2D collider)
+    {
+        if (Time.time >= itemPickupTime + 1f)
+        {
+            if (activeItem != null)
+            {
+                if (activeItem.IsActive)
+                    activeItem.RemoveEffect(this);
+                ActiveItem temp = collider.gameObject.GetComponent<ActiveItem>();
+                activeItem.gameObject.SetActive(true);
+                activeItem.gameObject.transform.position = collider.gameObject.transform.position;
+                Vector2 force = transform.position - activeItem.transform.position;
+                activeItem.GetComponent<Rigidbody2D>().AddForce(-force * 2000, ForceMode2D.Force);
+                activeItem = temp;
+                activeUI.SetCurrentActive(activeItem);
+                collider.gameObject.SetActive(false);
+                itemPickupTime = Time.time;
+            }
+            else
+            {
+                activeItem = collider.gameObject.GetComponent<ActiveItem>();
+                activeUI.SetCurrentActive(activeItem);
+                collider.gameObject.SetActive(false);
+                itemPickupTime = Time.time;
+            }
+        }
+    }
+
+    private void UpdateStats()
+    {
+        statsUI.SetStat("MS", MoveSpeed);
+        statsUI.SetStat("DAMAGE", Damage);
+        statsUI.SetStat("AS", AttackSpeed);
+        statsUI.SetStat("SHOTSPEED", ShotSpeed);
+        statsUI.SetStat("RANGE", Range);
+    }
+
+    private void Start()
+    {
+        characterName = "Hero";
+        Invoke("UpdateStats", 0f);
+
         Damage = 2;
         //weapon = new ProjectileSniperRiffle();
         //weapon = new ProjectileShotgun();
         //weapon = new ProjectileRiffle();
-        weapon = new RaycastRifle();
-        weapon.SetAttacker(this);
+        healthBar.SetMaxHealth(MaxHealth);
+        healthBar.SetHealth(HealthPoints);
         range = 10;
         attackSpeed = 1;
         Debug.Log(attackSpeed);
+        healthBar.SetText(HealthPoints, MaxHealth);
+        playerMovement = new PlayerMovement();
+        WeaponItem.weapon = new ProjectileRifle();
+        WeaponItem.weapon.SetAttacker(this);
     }
     void Update()
     {
         if (Input.anyKey)           //INPUT RUCH
         {
-            readMovementInput();
-            readTurnInput();
+            playerMovement.readMovementInput();
+            playerMovement.readTurnInput();
         }
-        WeaponSwap();
+        //WeaponSwap();
         if (activeItem != null && Input.GetKeyDown(KeyCode.E))  //INPUT PRZEDMIOT AKTYWNY    
         {
             activeItem.Effect(this);
+            Invoke("UpdateStats", 0f);
         }
         if (activeItem != null && activeItem.EffectRanOut())
         {
             activeItem.RemoveEffect(this);
+            Invoke("UpdateStats", 0f);
         }
-
     }
 
     void FixedUpdate()
@@ -154,14 +160,14 @@ public class Player : FightingCharacter, IKeyboard, IMovement
 
         if (Input.anyKey)
         {
-            move();
+            playerMovement.move(this);
         }
-
-        rotate();
+        playerMovement.rotate(this);
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
+        Invoke("UpdateStats",0f);
         if (collisionOccured == false)
         {
             collisionOccured = true;
@@ -201,6 +207,7 @@ public class Player : FightingCharacter, IKeyboard, IMovement
                 if (temp.CheckUsability(this))
                 {
                     temp.ImmediateEffectOnPlayer(this);
+                    UpdateHealth();
                     Destroy(collider.gameObject);
                 }
             }
@@ -214,77 +221,28 @@ public class Player : FightingCharacter, IKeyboard, IMovement
                     Debug.Log(i.ItemInfo());
                 }
                 collider.gameObject.SetActive(false);
+                healthBar.SetMaxHealth(MaxHealth);
+                UpdateHealth();
             }
             if (collider.tag.Contains("Active"))
             {
-                if (Time.time >= itemPickupTime + 0.1f)
-                {
-                    if (activeItem != null)
-                    {
-                        if (activeItem.IsActive)
-                            activeItem.RemoveEffect(this);
-                        ActiveItem temp = collider.gameObject.GetComponent<ActiveItem>();
-                        activeItem.gameObject.SetActive(true);
-                        activeItem.gameObject.transform.position = collider.gameObject.transform.position;
-                        Vector2 force = transform.position - activeItem.transform.position;
-                        activeItem.GetComponent<Rigidbody2D>().AddForce(-force * 2000, ForceMode2D.Force);
-                        activeItem = temp;
-                        collider.gameObject.SetActive(false);
-                        itemPickupTime = Time.time;
-                    }
-                    else
-                    {
-                        activeItem = collider.gameObject.GetComponent<ActiveItem>();
-                        Debug.Log(activeItem);
-                        collider.gameObject.SetActive(false);
-                        itemPickupTime = Time.time;
-                    }
-                }
+                SwapActiveItem(collider);
+            }
+            if (collider.tag.Contains("Weapon"))
+            {
+                SwapWeapon(collider);
             }
         }
     }
 
+    
+
     private void OnCollisionStay2D(Collision2D collision)
     {
+        UpdateHealth();
         if(collision.gameObject.tag.Contains("Enemy"))
         {
-            TakeDamage(10);
-        }
-    }
-
-
-
-    //Do testowania
-    void WeaponSwap()
-    {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            weapon = new ProjectileRifle();
-            weapon.SetAttacker(this);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            weapon = new ProjectileShotgun();
-            weapon.SetAttacker(this);
-
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            weapon = new ProjectileSniperRifle();
-            weapon.SetAttacker(this);
-
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            weapon = new RaycastRifle();
-            weapon.SetAttacker(this);
-
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            weapon = new RaycastSniperRifle();
-            weapon.SetAttacker(this);
-
+            TakeDamage(15);
         }
     }
 

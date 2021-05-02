@@ -6,7 +6,7 @@ public abstract class Projectile : Ranged
 {
     protected float bulletSize;
     protected float bulletSpeed;
-    public Projectile(float attackSpeed, float damage, float bulletSpeed, float bulletSize) : base(attackSpeed, damage)
+    public Projectile(float attackSpeed, int damage, float bulletSpeed, float bulletSize) : base(attackSpeed, damage)
     {
         this.bulletSpeed = bulletSpeed;
         this.bulletSize = bulletSize;
