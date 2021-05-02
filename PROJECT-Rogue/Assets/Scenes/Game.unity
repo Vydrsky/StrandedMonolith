@@ -274,11 +274,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1137269904499875302, guid: 64cecd1b19d2f6e43bbaeb2831036b45, type: 3}
   m_PrefabInstance: {fileID: 603070834}
   m_PrefabAsset: {fileID: 0}
---- !u!120 &446832327 stripped
-LineRenderer:
-  m_CorrespondingSourceObject: {fileID: 8898704758614927471, guid: ec7b0bb3ff21c554b8a7c5a2a0abbc98, type: 3}
-  m_PrefabInstance: {fileID: 1563981200}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &603070834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -418,7 +413,8 @@ MonoBehaviour:
   - {fileID: 3065706290164782564, guid: 3dfad37ab7539ca46a0a2e2f1b820807, type: 3}
   - {fileID: 4739059644689150570, guid: 223921331d8e92141bd9f261703ec661, type: 3}
   raycastPrefabs:
-  - {fileID: 446832327}
+  - {fileID: 3890752499245735699, guid: 4f8aa5b0fbfb59f4396d099e1ff2b175, type: 3}
+  - {fileID: 8898704758614927471, guid: ec7b0bb3ff21c554b8a7c5a2a0abbc98, type: 3}
 --- !u!4 &659551500
 Transform:
   m_ObjectHideFlags: 0
