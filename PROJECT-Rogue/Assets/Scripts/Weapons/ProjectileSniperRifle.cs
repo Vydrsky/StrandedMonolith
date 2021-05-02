@@ -10,5 +10,5 @@ public class ProjectileSniperRifle : Projectile
         Vector2 ownerVelocity = (whoAttacks.GetComponent<Rigidbody2D>().velocity / 10);
         obj.GetComponent<Bullet>().SetParameters(whoAttacks, damage * whoAttacks.Damage, bulletSpeed, 1, ownerVelocity, (whoAttacks.Range * 1.5f) / 10);
     }
-    public ProjectileSniperRifle(float attackSpeed = 0.4f, float damage = 50, float bulletSpeed = 30, float bulletSize = 1) : base(attackSpeed, damage, bulletSpeed, bulletSize) { }
+    public ProjectileSniperRifle(float attackSpeed = 0.4f, int damage = 50, float bulletSpeed = 30, float bulletSize = 1) : base(attackSpeed, damage, bulletSpeed, bulletSize) { }
 }

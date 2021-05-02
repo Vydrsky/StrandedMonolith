@@ -20,7 +20,7 @@ public class WeaponItem : MonoBehaviour
                 weapon = new ProjectileShotgun();
                 break;
             case WeaponsEnum.Raycast:
-                weapon = new Raycast();
+                weapon = new RaycastRifle();
                 break;
             default:
                 weapon = new ProjectileRifle();
