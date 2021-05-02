@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileRiffle : Projectile
+public class ProjectileRifle : Projectile
 {
     protected override void Shoot()
     {
@@ -10,5 +10,5 @@ public class ProjectileRiffle : Projectile
         Vector2 ownerVelocity = (whoAttacks.GetComponent<Rigidbody2D>().velocity / 5);
         obj.GetComponent<Bullet>().SetParameters(whoAttacks, damage + whoAttacks.Damage, bulletSpeed, 1, ownerVelocity);
     }
-    public ProjectileRiffle(float attackSpeed = 10, int damage = 15, float bulletSpeed = 20, float bulletSize = 1) : base(attackSpeed, damage, bulletSpeed, bulletSize) { }
+    public ProjectileRifle(float attackSpeed = 10, int damage = 15, float bulletSpeed = 20, float bulletSize = 1) : base(attackSpeed, damage, bulletSpeed, bulletSize) { }
 }

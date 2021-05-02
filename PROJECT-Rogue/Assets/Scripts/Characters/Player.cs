@@ -20,11 +20,14 @@ public class Player : FightingCharacter
     [SerializeField] private PlayerStats statsUI;
     [SerializeField] private ActiveUI activeUI;
     [SerializeField] private LineRenderer lineRenderer;
-    [SerializeField] public List<PassiveItem> Inventory = new List<PassiveItem>();
     [SerializeField] private ActiveItem activeItem;
-    [SerializeField] public WeaponItem weaponItem;
+    [SerializeField] private WeaponItem weaponItem;
 
-    public ActiveItem ActiveItem { get; set; }
+    [SerializeField] public List<PassiveItem> Inventory = new List<PassiveItem>();
+
+    public ActiveItem ActiveItem { get { return activeItem; } set { activeItem = value; } }
+    public WeaponItem WeaponItem { get { return weaponItem; } set { weaponItem = value; } }
+
 
 
 
@@ -50,25 +53,23 @@ public class Player : FightingCharacter
     {
         if (Time.time >= itemPickupTime + 1f)
         {
-            if (weaponItem != null)
+            if (WeaponItem != null)
             {
                 WeaponItem temp = collider.gameObject.GetComponent<WeaponItem>();
-                weaponItem.gameObject.SetActive(true);
-                weaponItem.gameObject.transform.position = collider.gameObject.transform.position;
-                Vector2 force = transform.position - weaponItem.transform.position;
-                weaponItem.GetComponent<Rigidbody2D>().AddForce(-force * 2000, ForceMode2D.Force);
-                weaponItem = temp;
-                weaponItem.SetWeaponType();
-                weaponItem.weapon.SetAttacker(this);
+                WeaponItem.gameObject.SetActive(true);
+                WeaponItem.gameObject.transform.position = collider.gameObject.transform.position;
+                Vector2 force = transform.position - WeaponItem.transform.position;
+                WeaponItem.GetComponent<Rigidbody2D>().AddForce(-force * 2000, ForceMode2D.Force);
+                WeaponItem = temp;
+                WeaponItem.weapon.SetAttacker(this);
                 collider.gameObject.SetActive(false);
                 itemPickupTime = Time.time;
             }
             else
             {
-                weaponItem = collider.gameObject.GetComponent<WeaponItem>();
+                WeaponItem = collider.gameObject.GetComponent<WeaponItem>();
                 collider.gameObject.SetActive(false);
-                weaponItem.SetWeaponType();
-                weaponItem.weapon.SetAttacker(this);
+                WeaponItem.weapon.SetAttacker(this);
                 itemPickupTime = Time.time;
             }
         }
@@ -122,8 +123,8 @@ public class Player : FightingCharacter
         healthBar.SetHealth(HealthPoints);
         healthBar.SetText(HealthPoints, MaxHealth);
         playerMovement = new PlayerMovement();
-        weaponItem.weapon = new ProjectileRiffle();
-        weaponItem.weapon.SetAttacker(this);
+        WeaponItem.weapon = new ProjectileRifle();
+        WeaponItem.weapon.SetAttacker(this);
     }
     void Update()
     {
@@ -136,10 +137,12 @@ public class Player : FightingCharacter
         if (activeItem != null && Input.GetKeyDown(KeyCode.E))  //INPUT PRZEDMIOT AKTYWNY    
         {
             activeItem.Effect(this);
+            Invoke("UpdateStats", 0f);
         }
         if (activeItem != null && activeItem.EffectRanOut())
         {
             activeItem.RemoveEffect(this);
+            Invoke("UpdateStats", 0f);
         }
     }
 
@@ -237,29 +240,5 @@ public class Player : FightingCharacter
             TakeDamage(15);
         }
     }
-
-
-
-    //Do testowania
-    //void WeaponSwap()
-    //{
-    //    if(Input.GetKeyDown(KeyCode.Alpha1))
-    //    {
-    //        weaponItem.weapon = new ProjectileRiffle();
-    //        weaponItem.weapon.SetAttacker(this);
-    //    }
-    //    else if (Input.GetKeyDown(KeyCode.Alpha2))
-    //    {
-    //        weaponItem.weapon = new ProjectileShotgun();
-    //        weaponItem.weapon.SetAttacker(this);
-
-    //    }
-    //    else if (Input.GetKeyDown(KeyCode.Alpha3))
-    //    {
-    //        weaponItem.weapon = new ProjectileSniperRiffle();
-    //        weaponItem.weapon.SetAttacker(this);
-
-    //    }
-    //}
 
 }

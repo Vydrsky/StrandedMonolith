@@ -29,7 +29,7 @@ public class Enemy : FightingCharacter
         _rigidbody = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectsWithTag("Player")[0];
         // ustawianie broni
-        weapon = new ProjectileRiffle(4, 10, 10);
+        weapon = new ProjectileRifle(4, 10, 10);
         weapon.SetAttacker(this);
     }
 

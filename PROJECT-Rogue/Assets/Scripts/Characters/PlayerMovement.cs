@@ -72,7 +72,7 @@ public class PlayerMovement : IKeyboard,IMovement
                         break;
                     }
             }
-            player.weaponItem.weapon.CheckAttack();
+            player.WeaponItem.weapon.CheckAttack();
             playerRotated = false;
         }
     }

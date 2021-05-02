@@ -6,23 +6,33 @@ public class WeaponItem : MonoBehaviour
 {
     public Weapon weapon;
 
-    public int identifier = 0;
-    
-    public void SetWeaponType()
+    public WeaponsEnum weaponType;
+
+    public void FabricateWeapon()
     {
-        
-        switch (identifier)
+
+        switch (weaponType)
         {
-            case 0:
-                weapon = new ProjectileRiffle();
+            case WeaponsEnum.Rifle:
+                weapon = new ProjectileRifle();
                 break;
-            case 1:
+            case WeaponsEnum.Shotgun:
                 weapon = new ProjectileShotgun();
                 break;
+            case WeaponsEnum.Raycast:
+                weapon = new Raycast();
+                break;
             default:
-                weapon = new ProjectileRiffle();
+                weapon = new ProjectileRifle();
                 break;
         }
     }
+
+    private void Start()
+    {
+        FabricateWeapon();
+    }
+
+
 
 }

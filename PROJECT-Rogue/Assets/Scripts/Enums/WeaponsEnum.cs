@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ItemsEnum
+public enum WeaponsEnum 
 {
-    Milk,
-    ColdBullets,
-    BarrelGrease,
+    Rifle,
+    Shotgun,
+    Raycast
 }
