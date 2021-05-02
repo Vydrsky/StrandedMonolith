@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     float lifeTime = 2.0f;
-    float damage;
+    int damage;
     Rigidbody2D rb, charRb;
     Vector2 velocity;
     string attackerTag;
@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
     {
         transform.Translate(velocity * Time.deltaTime);
     }
-    public void SetParameters(FightingCharacter whoAttacks, float damage, float bulletSpeed, float bulletSize, Vector2 ownerVelocity)
+    public void SetParameters(FightingCharacter whoAttacks, int damage, float bulletSpeed, float bulletSize, Vector2 ownerVelocity)
     {
         float bonusBulletSpeed = whoAttacks.AttackSpeed;
         this.damage = damage;

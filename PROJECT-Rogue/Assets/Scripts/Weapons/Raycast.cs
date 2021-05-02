@@ -31,5 +31,5 @@ public class Raycast : Ranged
         yield return new WaitForSeconds(0.03f);
         lineRenderer.enabled = false;
     }
-    public Raycast(float attackSpeed = 10, float damage = 20) : base(attackSpeed, damage) { }
+    public Raycast(float attackSpeed = 10, int damage = 20) : base(attackSpeed, damage) { }
 }

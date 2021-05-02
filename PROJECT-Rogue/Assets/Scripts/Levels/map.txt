@@ -1,8 +1,8 @@
 XXXXXXXXEXXXXXXXXXXXXXXXXXXXXXXXXXXX
 X   BX           XX                X
-X  XXX           XX     W          X
+X  XXX           XX                X
 X                                  X
-X                           W      X
+X                                  X
 X                                  X
 X                                  X
 E                                  E
@@ -11,5 +11,5 @@ X                                  X
 X                                  X
 X                                  X
 X                                  X
-X    W                          W  X
+X                               W  X
 XXXXXXXXEXXXXXXXXXXXXXXXXXXXXXXXXXXX

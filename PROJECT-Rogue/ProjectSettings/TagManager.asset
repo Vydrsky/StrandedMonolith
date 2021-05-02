@@ -17,6 +17,9 @@ TagManager:
   - '|Bullet|ProjRiffle|'
   - Button
   - '|Item|Active|'
+  - '|Bullet|ProjSniper|'
+  - '|Raycast|RayRiffle|'
+  - '|Item|Weapon|'
   layers:
   - Default
   - TransparentFX

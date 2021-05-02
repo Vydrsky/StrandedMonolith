@@ -22,5 +22,5 @@ public class ProjectileShotgun : Projectile
             obj.GetComponent<Bullet>().SetParameters(whoAttacks, damage + whoAttacks.Damage, bulletSpeed + (random / 10), 1, ownerVelocity);
         }
     }
-    public ProjectileShotgun(float attackSpeed = 0.75f, float damage = 4, float bulletSpeed = 15, float bulletSize = 1) : base(attackSpeed, damage, bulletSpeed, bulletSize) { }
+    public ProjectileShotgun(float attackSpeed = 0.75f, int damage = 4, float bulletSpeed = 15, float bulletSize = 1) : base(attackSpeed, damage, bulletSpeed, bulletSize) { }
 }

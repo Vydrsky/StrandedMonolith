@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : FightingCharacter, IMovement
+public class Enemy : FightingCharacter
 {
     private GameObject player;
 
@@ -25,7 +25,7 @@ public class Enemy : FightingCharacter, IMovement
     // Start is called before the first frame update
     void Start()
     {
-        Damage = 10.0f;
+        Damage = 10;
         _rigidbody = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectsWithTag("Player")[0];
         // ustawianie broni
@@ -35,12 +35,12 @@ public class Enemy : FightingCharacter, IMovement
 
     private void Update()
     {
-        weapon.CheckAttack();
+        
     }
 
-    public override void TakeDamage(float damage)
+    public override void TakeDamage(int damage)
     {
-        healthPoints -= (int)damage;
+        healthPoints -= damage;
         if (healthPoints <= 0)
         {
             Level.CheckStatus();
@@ -52,6 +52,7 @@ public class Enemy : FightingCharacter, IMovement
     // Update is called once per frame
     void FixedUpdate()
     {
+        weapon.CheckAttack();
         move();
         rotate();
     }

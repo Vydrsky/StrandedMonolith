@@ -24,4 +24,9 @@ public class PlayerStats : MonoBehaviour
             StatDictionary[key].text = ""+value;
         }
     }
+
+    private void Refresh()
+    {
+
+    }
 }

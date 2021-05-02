@@ -7,5 +7,5 @@ public abstract class Ranged : Weapon
     protected override void Attack() { Shoot(); }
     protected abstract void Shoot();
 
-    public Ranged(float attackSpeed, float damage) : base(attackSpeed, damage) { }
+    public Ranged(float attackSpeed, int damage) : base(attackSpeed, damage) { }
 }
