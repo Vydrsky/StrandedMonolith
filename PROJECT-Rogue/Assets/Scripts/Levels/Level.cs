@@ -6,12 +6,14 @@ using System.IO.MemoryMappedFiles;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using Object = System.Object;
 using Random = UnityEngine.Random;
 
 public class Level : MonoBehaviour
 {
     [SerializeField] private List<GameObject> myPrefab;
+    private static List<GameObject> staticMyPrefab;
     [SerializeField] private List<GameObject> instantItems;
     private static List<GameObject> staticInstantItems;
     [SerializeField] private List<GameObject> passiveItems;
@@ -21,21 +23,25 @@ public class Level : MonoBehaviour
     [SerializeField] private List<GameObject> enemies;
     private static List<GameObject> staticEnemies;
     [SerializeField] private GameObject gracz;
+    private static GameObject staticGracz;
     [SerializeField] private GameObject kamera;
     private static int _currentX;
     private static int _currentY;
     public static GameObject instancjaKamery;
-    private static List<string> files;
+    private static List<string> regularRooms;
+    private static List<string> bossRooms;
+    private static List<string> specialRooms;
     private static Dictionary<string,Room> rooms;
+    public static string[] layout;
 
-    public string ReplaceAtIndex(string text, int index, char c)
+    public static string ReplaceAtIndex(string text, int index, char c)
     {
         var stringBuilder = new System.Text.StringBuilder(text);
         stringBuilder[index] = c;
         return stringBuilder.ToString();
     }
 
-    string GenerateLevel(int mapSize, int wandererIterations, int numberOfWanderers)
+    static string GenerateLevel(int mapSize, int wandererIterations, int numberOfWanderers)
     {
         Random.InitState(Random.Range(-10000,10000));
         string levelLayout="";
@@ -117,88 +123,65 @@ public class Level : MonoBehaviour
     void Start()
     {
         instancjaKamery = kamera;
-        //string test = Wander(7);
-        rooms = new Dictionary<string, Room>();
         staticInstantItems = instantItems;
         staticEnemies = enemies;
         staticPassiveItems = passiveItems;
         staticActivetems = activeItems;
+        staticMyPrefab = myPrefab;
+        staticGracz = gracz;
+        rooms = new Dictionary<string, Room>();
+        regularRooms =
+            RemoveThatBitchAssGarbageFromMyFileListUnityYouAreTheOneThatPutThatThereInTheFirstPlace(Directory
+                .GetFiles("Assets/Scripts/Levels", "map*").ToList());
+        bossRooms = RemoveThatBitchAssGarbageFromMyFileListUnityYouAreTheOneThatPutThatThereInTheFirstPlace(Directory
+            .GetFiles("Assets/Scripts/Levels", "boss*").ToList());
+        specialRooms = RemoveThatBitchAssGarbageFromMyFileListUnityYouAreTheOneThatPutThatThereInTheFirstPlace(Directory
+            .GetFiles("Assets/Scripts/Levels", "special*").ToList());
+
+        /////////////////////////////////////////////////////
+        FillLevel();
+    }
+
+    public static void FillLevel()
+    {
+        layout = GenerateLevel(30, 30, 2).Split('\n');
+        RemoveRooms();
+        PickBossRoom(layout);
         bool start = false;
-        bool flag = false;
-        string layout1D = GenerateLevel(30,30,2);
-        string[] layout = layout1D.Split('\n');
-        files = Directory.GetFiles("Assets/Scripts/Levels","map*").ToList();
-        string compare="meta";
-        for (int i = 0; i < files.Count; i++)
-        {
-            flag = false;
-            for (int j = 0; j < files[i].Length; j++)
-            {
-                int k = 0;
-                while(((j+k)<files[i].Length)&&(k<compare.Length)&&(files[i][j+k] == compare[k]))
-                {
-                    k++;
-                    if (k == compare.Length - 1)
-                    {
-                        flag = true;
-                    }
-                }
-            }
-            if(flag)
-            { 
-                files.RemoveAt(i);
-            }
-        }
-        Debug.Log(files.Count+" LEVEL COUNT");
+        Debug.Log(regularRooms.Count + " LEVEL COUNT");
         for (int i = 0; i < layout.Length; i++)
         {
             for (int j = 0; j < layout[i].Length; j++)
-            {   
-                bool left = false;
-                bool right = false;
-                bool top = false;
-                bool bottom = false;
-                if (layout[i][j] == 'X')
+            {
+                if (layout[i][j] != '0')
                 {
-                    if (i < layout.Length-1)
+                    if (layout[i][j] == 'B')
                     {
-                        if (layout[i + 1][j] == 'X')
+                        int rnd = Random.Range(0, bossRooms.Count);
+                        rooms.Add("" + i + j,
+                            new Room(staticMyPrefab, j, i, bossRooms[rnd]));
+                    }
+                    else if (layout[i][j] == 'S')
+                    {
+                        int rnd = Random.Range(0, specialRooms.Count);
+                        rooms.Add("" + i + j,
+                            new Room(staticMyPrefab, j, i, specialRooms[rnd],true));
+                    }
+                    else
+                    {
+                        int rnd = Random.Range(0, regularRooms.Count);
+                        rooms.Add("" + i + j,
+                            new Room(staticMyPrefab, j, i, regularRooms[rnd]));
+                        if (!start)
                         {
-                            bottom = true;
+                            rooms["" + i + j].DeActivate();
+                            staticGracz.transform.position = new Vector2(7 + (j * (36)), -7 + (i * (-15)));
+                            instancjaKamery.transform.position = new Vector3(16 + (j * (36)), -7 + (i * (-15)), -10);
+                            _currentX = j;
+                            _currentY = i;
                         }
+                        start = true;
                     }
-                    if (i > 0)
-                    {
-                        if (layout[i - 1][j] == 'X')
-                        {
-                            top = true;
-                        }
-                    }
-                    if (j < layout[i].Length - 1)
-                    {
-                        //Debug.Log(layout[i][j + 1]);
-                        if (layout[i][j + 1] == 'X')
-                        {
-                            right = true;
-                        }
-                    }
-                    if (j > 0)
-                    {
-                        if (layout[i][j - 1] == 'X')
-                        {
-                            left = true;
-                        }
-                    }
-                    int rnd=Random.Range(0,files.Count);
-                    rooms.Add(""+i+j,new Room(myPrefab,7+(j*(36)),-7+(i*(-15)),top,left,right,bottom,files[rnd]));
-                    if (!start)
-                    {
-                        gracz.transform.position = new Vector2(14 + (j * (36)), -14 + (i * (-15)));
-                        instancjaKamery.transform.position = new Vector3(26 + (j * (36)), -14 + (i * (-15)),-10);
-                        _currentX = j;
-                        _currentY = i;
-                    }
-                    start = true;
                 }
             }
         }
@@ -257,14 +240,172 @@ public class Level : MonoBehaviour
         return staticEnemies[rnd];
     }
 
-    void RemoveRooms()
+    static void RemoveRooms()
     {
-        foreach (var i in rooms.Values.ToArray())
+        if (rooms.Count > 0)
         {
-            i.Delete();
+            foreach (var i in rooms.Values.ToArray())
+            {
+                i.Delete();
+            }
+
+            rooms.Clear();
         }
-        
-        rooms.Clear();
     }
-    
+
+    static string PickBossRoom(string[] layout)
+    {
+        int cordY=0;
+        int cordX=0;
+        int countS = 0;
+        for (int i = 0; i < layout.Length-1; i++)
+        {
+            for (int j = 0; j < layout[i].Length; j++)
+            {
+                int connectedRooms = 0;
+                if (layout[i][j] == 'X')
+                {
+                    cordX = i;
+                    cordY = j;
+                    if (i < layout.Length - 2)
+                    {
+                        if (layout[i + 1][j] != '0')
+                        {
+                            connectedRooms++;
+                        }
+                    }
+
+                    if (i > 0)
+                    {
+                        if (layout[i - 1][j] != '0')
+                        {
+                            connectedRooms++;
+                        }
+                    }
+
+                    if (j < layout[i].Length - 1)
+                    {
+                        if (layout[i][j + 1] != '0')
+                        {
+                            connectedRooms++;
+                        }
+                    }
+
+                    if (j > 0)
+                    {
+                        if (layout[i][j - 1] != '0')
+                        {
+                            connectedRooms++;
+                        }
+                    }
+                }
+
+                if (connectedRooms == 1)
+                {
+                    countS++;
+                    layout[i] = ReplaceAtIndex(layout[i],j,'S');
+                }
+            }
+        }
+
+        Debug.Log("TUTAJ COUNTS "+countS);
+        while (countS < 2)
+        {
+            bool interrupt = false;
+            for (int i = 0; (i < layout.Length-1) && !interrupt; i++)
+            {
+                for (int j = 0; j < layout[i].Length; j++)
+                {
+                    int connectedRooms = 0;
+                    if (layout[i][j] == '0')
+                    {
+                        if (i < layout.Length - 2)
+                        {
+                            if (layout[i + 1][j] != '0')
+                            {
+                                connectedRooms++;
+                            }
+                        }
+
+                        if (i > 0)
+                        {
+                            if (layout[i - 1][j] != '0')
+                            {
+                                connectedRooms++;
+                            }
+                        }
+
+                        if (j < layout[i].Length - 1)
+                        {
+                            if (layout[i][j + 1] != '0')
+                            {
+                                connectedRooms++;
+                            }
+                        }
+
+                        if (j > 0)
+                        {
+                            if (layout[i][j - 1] != '0')
+                            {
+                                connectedRooms++;
+                            }
+                        }
+
+                        if (connectedRooms == 1)
+                        {
+                            int rng = Random.Range(0, 10);
+                            if (rng == 0)
+                            {
+                                layout[i] = ReplaceAtIndex(layout[i], j, 'S');
+                                countS++;
+                                interrupt = true;
+                                break;
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+
+        if (Random.Range(0, 2) == 0)
+        {
+            cordX += 1;
+        }
+        else
+        {
+            cordY += 1;
+        }
+        layout[cordX]=ReplaceAtIndex(layout[cordX], cordY, 'B');
+        //WTF did I do here? Może dać tu tablicę zawierającą połączenia z pomieszczeniami?
+        return "";
+    }
+
+    List<string> RemoveThatBitchAssGarbageFromMyFileListUnityYouAreTheOneThatPutThatThereInTheFirstPlace(List<string> files)
+    {
+        bool flag = false;
+        string compare="meta";
+        for (int i = 0; i < files.Count; i++)
+        {
+            flag = false;
+            for (int j = 0; j < files[i].Length; j++)
+            {
+                int k = 0;
+                while(((j+k)<files[i].Length)&&(k<compare.Length)&&(files[i][j+k] == compare[k]))
+                {
+                    k++;
+                    if (k == compare.Length - 1)
+                    {
+                        flag = true;
+                    }
+                }
+            }
+            if(flag)
+            { 
+                files.RemoveAt(i);
+            }
+        }
+
+        return files;
+    }
 }
