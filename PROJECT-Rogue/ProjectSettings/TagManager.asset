@@ -20,6 +20,7 @@ TagManager:
   - '|Bullet|ProjSniper|'
   - '|Raycast|RayRiffle|'
   - '|Item|Weapon|'
+  - '|Raycast|RaySniper|'
   layers:
   - Default
   - TransparentFX
@@ -65,4 +66,7 @@ TagManager:
     locked: 0
   - name: ForeGround
     uniqueID: 3423863401
+    locked: 0
+  - name: UI
+    uniqueID: 3820094799
     locked: 0

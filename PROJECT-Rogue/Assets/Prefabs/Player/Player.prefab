@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb451827fab69fb4390d200dcf5c429f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 6609281551830336909}
   maxHealth: 1000
   healthPoints: 1000
   moveSpeed: 1

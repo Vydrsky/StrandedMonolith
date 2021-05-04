@@ -6,8 +6,14 @@ public class PlayerMovement : IKeyboard,IMovement
 {
     private Vector2 movement;
     public Rigidbody2D _rigidbody;
-    private RotationDirectionEnum RotDir = RotationDirectionEnum.RightDirection;
+    private RotationDirectionEnum RotDir;
     private bool playerRotated = false;
+
+    public PlayerMovement(Player player)
+    {
+        RotDir = RotationDirectionEnum.RightDirection;
+        _rigidbody = player.GetComponent<Rigidbody2D>();
+    }
 
     public void readMovementInput()
     {
@@ -16,8 +22,8 @@ public class PlayerMovement : IKeyboard,IMovement
     }
     public void move(Player player)
     {
-        player.GetComponent<Rigidbody2D>().AddForce(new Vector2(movement.x * player.MoveSpeed,0), ForceMode2D.Impulse);
-        player.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, movement.y * player.MoveSpeed), ForceMode2D.Impulse);
+        _rigidbody.AddForce(new Vector2(movement.x * player.MoveSpeed,0), ForceMode2D.Impulse);
+        _rigidbody.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, movement.y * player.MoveSpeed), ForceMode2D.Impulse);
     }
 
     public void readTurnInput()

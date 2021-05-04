@@ -127,7 +127,7 @@ public class Player : FightingCharacter
         attackSpeed = 1;
         Debug.Log(attackSpeed);
         healthBar.SetText(HealthPoints, MaxHealth);
-        playerMovement = new PlayerMovement();
+        playerMovement = new PlayerMovement(this);
         WeaponItem.weapon = new ProjectileRifle();
         WeaponItem.weapon.SetAttacker(this);
     }
