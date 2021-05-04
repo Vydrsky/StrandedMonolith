@@ -196,6 +196,9 @@ public class Player : FightingCharacter
                 case "Button":
                     Level.RemoveFocus();
                     break;
+                case "Trapdoor":
+                    Level.FillLevel();
+                    break;
                 default:
                     break;
             }
