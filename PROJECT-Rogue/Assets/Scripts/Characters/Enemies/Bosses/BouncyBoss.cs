@@ -5,7 +5,7 @@ using UnityEngine;
 public class BouncyBoss : BouncingEnemy
 {
 
-    // Start is called before the first frame update
+
     void Start()
     {
         range = 15;
@@ -16,7 +16,7 @@ public class BouncyBoss : BouncingEnemy
         direction = new Vector2(1f, 0);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         velocity = _rigidbody.velocity;
