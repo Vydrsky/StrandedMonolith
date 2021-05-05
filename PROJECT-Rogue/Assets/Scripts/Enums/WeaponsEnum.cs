@@ -4,7 +4,13 @@ using UnityEngine;
 
 public enum WeaponsEnum 
 {
-    Rifle,
-    Shotgun,
-    Raycast
+    ProjectileRifleA,
+    ProjectileRifleB,
+    ProjectileShotgunA,
+    ProjectileShotgunB,
+    ProjectileSniperRifleA,
+    ProjectileSniperRifleB,
+    RaycastRifleA,
+    RaycastRifleB,
+    RaycastSniperRifle
 }

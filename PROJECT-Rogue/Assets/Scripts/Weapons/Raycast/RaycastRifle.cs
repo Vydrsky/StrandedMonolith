@@ -10,7 +10,7 @@ public class RaycastRifle : Raycast
         LineRenderer lineRenderer = Shooting.instance.raycastPrefabs.Find(x => x.tag.Contains("|RayRiffle|"));
         RaycastHit2D hitInfo = Physics2D.Raycast(whoAttacks.firePoint.position, whoAttacks.firePoint.right);
         var obj = Object.Instantiate(lineRenderer);
-        if (hitInfo && (hitInfo.distance < whoAttacks.Range * 1.5f))
+        if (hitInfo && (hitInfo.distance < whoAttacks.Range * 1.3f))
         {
             FightingCharacter character = hitInfo.transform.GetComponent<FightingCharacter>();
             if (character != null)
@@ -23,10 +23,15 @@ public class RaycastRifle : Raycast
         else
         {
             obj.SetPosition(0, whoAttacks.firePoint.position);
-            obj.SetPosition(1, whoAttacks.firePoint.position + whoAttacks.firePoint.right * (whoAttacks.Range * 1.3f));
+            obj.SetPosition(1, whoAttacks.firePoint.position + whoAttacks.firePoint.right * (whoAttacks.Range * rangeModifier));
         }
         obj.enabled = true;
         yield return new WaitForSeconds(0.03f);
         Object.Destroy(obj.gameObject);
+    }
+
+    public RaycastRifle(WeaponStats weaponStats) : base(weaponStats)
+    {
+
     }
 }

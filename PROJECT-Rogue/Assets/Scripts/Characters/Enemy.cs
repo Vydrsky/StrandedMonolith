@@ -25,12 +25,12 @@ public class Enemy : FightingCharacter
     // Start is called before the first frame update
     void Start()
     {
-        range = 15;
+        range = 20;
         Damage = 2;
         _rigidbody = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectsWithTag("Player")[0];
         // ustawianie broni
-        weapon = new ProjectileRifle(4, 10, 10);
+        weapon = new ProjectileRifle(4, 10, 15);
         weapon.SetAttacker(this);
     }
 

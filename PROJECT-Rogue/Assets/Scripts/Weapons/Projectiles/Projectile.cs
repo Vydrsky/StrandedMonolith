@@ -11,4 +11,10 @@ public abstract class Projectile : Ranged
         this.bulletSpeed = bulletSpeed;
         this.bulletSize = bulletSize;
     }
+
+    public Projectile(ProjectileWeaponStats projectileWeaponStats) : base(projectileWeaponStats as WeaponStats)
+    {
+        bulletSize = projectileWeaponStats.BulletSize;
+        bulletSpeed = projectileWeaponStats.BulletSpeed;
+    }
 }

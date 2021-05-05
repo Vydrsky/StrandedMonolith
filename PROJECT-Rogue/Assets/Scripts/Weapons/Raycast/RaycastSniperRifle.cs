@@ -22,7 +22,7 @@ public class RaycastSniperRifle : Raycast
         else
         {
             obj.SetPosition(0, whoAttacks.firePoint.position);
-            obj.SetPosition(1, whoAttacks.firePoint.position + whoAttacks.firePoint.right * (whoAttacks.Range * 3f));
+            obj.SetPosition(1, whoAttacks.firePoint.position + whoAttacks.firePoint.right * (whoAttacks.Range * rangeModifier));
         }
         obj.enabled = true;
         yield return new WaitForSeconds(0.03f);
@@ -30,4 +30,9 @@ public class RaycastSniperRifle : Raycast
     }
 
     public RaycastSniperRifle(float attackSpeed = 1, int damage = 40) : base(attackSpeed, damage) { }
+
+    public RaycastSniperRifle(WeaponStats weaponStats) : base(weaponStats)
+    {
+
+    }
 }

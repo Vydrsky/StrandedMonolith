@@ -28,7 +28,7 @@ public class Player : FightingCharacter
     public ActiveItem ActiveItem { get { return activeItem; } set { activeItem = value; } }
     public WeaponItem WeaponItem { get { return weaponItem; } set { weaponItem = value; } }
 
-
+    SimpleWeaponFactory weaponFactory;
 
 
 
@@ -114,13 +114,12 @@ public class Player : FightingCharacter
 
     private void Start()
     {
+        weaponFactory = new SimpleWeaponFactory();
+        
         characterName = "Hero";
         Invoke("UpdateStats", 0f);
 
         Damage = 2;
-        //weapon = new ProjectileSniperRiffle();
-        //weapon = new ProjectileShotgun();
-        //weapon = new ProjectileRiffle();
         healthBar.SetMaxHealth(MaxHealth);
         healthBar.SetHealth(HealthPoints);
         range = 10;
@@ -128,7 +127,7 @@ public class Player : FightingCharacter
         Debug.Log(attackSpeed);
         healthBar.SetText(HealthPoints, MaxHealth);
         playerMovement = new PlayerMovement();
-        WeaponItem.weapon = new ProjectileRifle();
+        WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.RaycastRifleA);
         WeaponItem.weapon.SetAttacker(this);
     }
     void Update()
@@ -163,6 +162,7 @@ public class Player : FightingCharacter
             playerMovement.move(this);
         }
         playerMovement.rotate(this);
+        WeaponSwap();
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -232,6 +232,56 @@ public class Player : FightingCharacter
             {
                 SwapWeapon(collider);
             }
+        }
+    }
+
+
+    void WeaponSwap()
+    {     
+        if(Input.GetKey(KeyCode.Alpha1))
+        {
+            WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileRifleA);
+            WeaponItem.weapon.SetAttacker(this);
+        }
+        else if (Input.GetKey(KeyCode.Alpha2))
+        {
+            WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileRifleB);
+            weaponItem.weapon.SetAttacker(this);
+        }
+        else if (Input.GetKey(KeyCode.Alpha3))
+        {
+            WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileShotgunA);
+            weaponItem.weapon.SetAttacker(this);
+        }
+        else if (Input.GetKey(KeyCode.Alpha4))
+        {
+            WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileShotgunB);
+            weaponItem.weapon.SetAttacker(this);
+        }
+        else if (Input.GetKey(KeyCode.Alpha5))
+        {
+            WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileSniperRifleA);
+            weaponItem.weapon.SetAttacker(this);
+        }
+        else if (Input.GetKey(KeyCode.Alpha6))
+        {
+            WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileSniperRifleB);
+            weaponItem.weapon.SetAttacker(this);
+        }
+        else if (Input.GetKey(KeyCode.Alpha7))
+        {
+            WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.RaycastRifleA);
+            weaponItem.weapon.SetAttacker(this);
+        }
+        else if (Input.GetKey(KeyCode.Alpha8))
+        {
+            WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.RaycastRifleB);
+            weaponItem.weapon.SetAttacker(this);
+        }
+        else if (Input.GetKey(KeyCode.Alpha9))
+        {
+            WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.RaycastSniperRifle);
+            weaponItem.weapon.SetAttacker(this);
         }
     }
 
