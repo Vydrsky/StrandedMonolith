@@ -145,7 +145,7 @@ MonoBehaviour:
   shotSpeed: 1
   itemPickupTime: 0
   invincibilityStart: 0
-  invincibilityDuration: 0.5
+  invincibilityDuration: 0.1
   healthBar: {fileID: 0}
   statsUI: {fileID: 0}
   activeUI: {fileID: 0}

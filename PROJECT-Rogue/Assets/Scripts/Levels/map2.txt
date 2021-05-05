@@ -1,4 +1,4 @@
-XXXXXXXXEXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXEEXXXXXXXXXXXXXXXXXXXXXXXXXX
 X                                  X
 X    W                             X
 X                                  X
@@ -12,4 +12,4 @@ X               XXXXX              X
 X                  BX              X
 X                   X        W     X
 X                   X              X
-XXXXXXXXEXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXEEXXXXXXXXXXXXXXXXXXXXXXXXXX
