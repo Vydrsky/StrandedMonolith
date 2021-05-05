@@ -21,7 +21,8 @@ TagManager:
   - '|Raycast|RayRiffle|'
   - '|Item|Weapon|'
   - '|Raycast|RaySniper|'
-  - czapa
+  - Trapdoor
+  - '|Enemy|Boss|'
   layers:
   - Default
   - TransparentFX
@@ -32,7 +33,7 @@ TagManager:
   - ForeGround
   - BackGround
   - MiddleGround
-  - 
+  - Flying
   - 
   - 
   - 
@@ -67,4 +68,10 @@ TagManager:
     locked: 0
   - name: ForeGround
     uniqueID: 3423863401
+    locked: 0
+  - name: Flying
+    uniqueID: 1271095425
+    locked: 0
+  - name: UI
+    uniqueID: 3820094799
     locked: 0

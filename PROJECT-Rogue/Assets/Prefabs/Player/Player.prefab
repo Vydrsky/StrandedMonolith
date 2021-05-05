@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb451827fab69fb4390d200dcf5c429f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 6609281551830336909}
   maxHealth: 1000
   healthPoints: 1000
   moveSpeed: 1
@@ -145,14 +145,14 @@ MonoBehaviour:
   shotSpeed: 1
   itemPickupTime: 0
   invincibilityStart: 0
-  invincibilityDuration: 0.5
+  invincibilityDuration: 0.1
   healthBar: {fileID: 0}
   statsUI: {fileID: 0}
   activeUI: {fileID: 0}
   lineRenderer: {fileID: 0}
-  Inventory: []
   activeItem: {fileID: 0}
   weaponItem: {fileID: 4575320530088364512, guid: 8d944f8158ad2db4081b70994751c38e, type: 3}
+  Inventory: []
 --- !u!1 &8024029002110264293
 GameObject:
   m_ObjectHideFlags: 0
