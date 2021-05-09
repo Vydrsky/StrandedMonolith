@@ -126,8 +126,13 @@ public class Player : FightingCharacter
         attackSpeed = 1;
         Debug.Log(attackSpeed);
         healthBar.SetText(HealthPoints, MaxHealth);
-        playerMovement = new PlayerMovement(this);
+<<<<<<< HEAD
+        playerMovement = new PlayerMovement();
         WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.RaycastRifleA);
+=======
+        playerMovement = new PlayerMovement(this);
+        WeaponItem.weapon = new ProjectileRifle();
+>>>>>>> 9d744f92cb16c45dc1a16f2965d9769b912450ff
         WeaponItem.weapon.SetAttacker(this);
     }
     void Update()

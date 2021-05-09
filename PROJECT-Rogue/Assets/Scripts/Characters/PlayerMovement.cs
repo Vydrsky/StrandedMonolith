@@ -58,7 +58,8 @@ public class PlayerMovement : IKeyboard,IMovement
             switch (RotDir)
             {
                 case RotationDirectionEnum.UpDirection:
-                    {
+                    { 
+                        
                         player.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
                         break;
                     }

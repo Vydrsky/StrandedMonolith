@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2086795293451227086}
   - component: {fileID: 9095956656329085833}
-  - component: {fileID: 4945500550708792251}
   - component: {fileID: 4446074935649672970}
   - component: {fileID: 4895250807224603693}
+  - component: {fileID: -7771316306602969695}
   m_Layer: 2
   m_Name: ShotgunProjectile
   m_TagString: '|Bullet|ProjShotgun|'
@@ -85,22 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &4945500550708792251
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3065706290164782564}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.7
 --- !u!50 &4446074935649672970
 Rigidbody2D:
   serializedVersion: 4
@@ -135,3 +119,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactAnimation: {fileID: 8470515175463483428, guid: 40b18f6618f307c46b1ea3b2c886abe0, type: 3}
+--- !u!58 &-7771316306602969695
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3065706290164782564}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.915

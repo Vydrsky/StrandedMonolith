@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1611749130999187652}
   - component: {fileID: 8399363294926083203}
-  - component: {fileID: 5623358231949692081}
   - component: {fileID: 3970061136697808896}
   - component: {fileID: 5279538883859534631}
+  - component: {fileID: 4528926901192893445}
   m_Layer: 2
   m_Name: RifleProjectile
   m_TagString: '|Bullet|ProjRiffle|'
@@ -85,22 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &5623358231949692081
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2314937791570350830}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.7
 --- !u!50 &3970061136697808896
 Rigidbody2D:
   serializedVersion: 4
@@ -135,3 +119,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactAnimation: {fileID: 8470515175463483428, guid: 40b18f6618f307c46b1ea3b2c886abe0, type: 3}
+--- !u!58 &4528926901192893445
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2314937791570350830}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.8

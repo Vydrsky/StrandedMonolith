@@ -20,22 +20,23 @@ public class Bullet : MonoBehaviour
         ownerVelocity = Quaternion.Euler(0f, 0f, -whoAttacks.firePoint.transform.rotation.eulerAngles.z) * ownerVelocity;
         Vector2 baseBulletVelocity = (Vector3.right * (bulletSpeed + bonusBulletSpeed));
         velocity = (baseBulletVelocity + ownerVelocity);
+        this.transform.localScale = new Vector2(this.transform.localScale.x * bulletSize, this.transform.localScale.y * bulletSize);
         Destroy(gameObject, range);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Jesli dany przeciwnik bedzie mial swoj tag to trzeba bedzie zmienic pierwszy warunek
-        if (collision.gameObject.tag != attackerTag &&
-            !collision.gameObject.tag.Contains("|Bullet|") &&
-            !collision.gameObject.tag.Contains("|Item|"))
-        {
+        if (collision.gameObject.tag == "Player" ||
+            (collision.gameObject.tag.Contains("Enemy") && attackerTag.Contains("Enemy")) ||
+            collision.gameObject.tag.Contains("|Bullet|") ||
+            collision.gameObject.tag.Contains("|Item|"))
+            return;
+
             FightingCharacter character = collision.transform.GetComponent<FightingCharacter>();
             if (character != null)
             {
                 character.TakeDamage(damage);
             }
             Destroy(gameObject);
-        }
     }
 
     private void OnDestroy()
