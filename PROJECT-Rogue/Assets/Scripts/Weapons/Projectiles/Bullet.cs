@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
     }
     public void SetParameters(FightingCharacter whoAttacks, int damage, float bulletSpeed, float bulletSize, Vector2 ownerVelocity, float range)
     {
-        float bonusBulletSpeed = whoAttacks.AttackSpeed;
+        float bonusBulletSpeed = whoAttacks.ShotSpeed;
         this.damage = damage;
         attackerTag = whoAttacks.tag;
         ownerVelocity = Quaternion.Euler(0f, 0f, -whoAttacks.firePoint.transform.rotation.eulerAngles.z) * ownerVelocity;
