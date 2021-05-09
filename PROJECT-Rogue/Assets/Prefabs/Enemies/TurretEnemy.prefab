@@ -135,7 +135,7 @@ MonoBehaviour:
   moveSpeed: 0
   attackSpeed: 1
   damage: 1
-  range: 1
+  range: 20
   shotSpeed: 1
 --- !u!50 &5858271028525974753
 Rigidbody2D:
@@ -153,7 +153,7 @@ Rigidbody2D:
   m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 6200000, guid: 353f1d4c91058164e82803f1f5b6e408, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

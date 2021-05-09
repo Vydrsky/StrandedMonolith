@@ -144,7 +144,7 @@ public class Level : MonoBehaviour
 
     public static void FillLevel()
     {
-        layout = GenerateLevel(5, 5, 2).Split('\n');
+        layout = GenerateLevel(20, 30, 1).Split('\n');
         RemoveRooms();
         PickBossRoom(layout);
         bool start = false;

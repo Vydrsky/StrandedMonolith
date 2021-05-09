@@ -9,7 +9,7 @@ E          RRRRR                   E
 E         RRRRRRR                  E
 X                                  X
 X                                  X
-X          R       R               X
 X         RR       RR              X
-X   W    RRR       RRR      W    W X
+X        RRR       RRR             X
+X   W   RRRR       RRRR     W    W X
 XXXXXXXXXXXXXXXEEXXXXXXXXXXXXXXXXXXX

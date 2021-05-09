@@ -8,7 +8,7 @@ X                                  X
 E          W        RRRRRRR        E
 E              W    R     RR       E
 X                   RR     RRR     X
-X RR                 RR      RRR   X
+XRRR                 RR      RRR   X
 X  RRRR               RRRR     RRRRX
 X     RRRR               RR        X
 X        RRRR         WW  R        X
