@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
+using System.Transactions;
 using UnityEngine;
 using UnityEngine.WSA;
 
@@ -16,10 +17,13 @@ public class Room
     private List<List<int>> itemSpawns;
     private bool _active = false;
     private bool _disarmed = false;
+    public string roomType;
+    private bool Promotion = false;
     public Room(List<GameObject> myPrefab,int x, int y, string filePath, bool isSafe=false)
     {
         string sr = File.ReadAllText(filePath);
-        map= sr.Split('\n');
+        map=sr.Split('\n');
+        roomType = filePath;
         this.myPrefab = myPrefab;
         doors = new List<GameObject>();
         allObjects = new List<GameObject>();
@@ -41,7 +45,7 @@ public class Room
                 switch (pntr)
                 {
                     case 'X':
-                        allObjects.Add(Level.Instantiate(myPrefab[0], new Vector2(x1, y1), Quaternion.identity));
+                        allObjects.Add(Object.Instantiate(myPrefab[0], new Vector2(x1, y1), Quaternion.identity));
                         break;
                     case 'E':
                         //////
@@ -85,7 +89,7 @@ public class Room
 
                         if (isDoor)
                         {
-                            doors.Add(Level.Instantiate(myPrefab[1], new Vector2(x1, y1), Quaternion.identity));
+                            doors.Add(Object.Instantiate(myPrefab[1], new Vector2(x1, y1), Quaternion.identity));
                         }
                         else
                         {
@@ -107,10 +111,16 @@ public class Room
                         spawnIndx++;
                         break;
                     case 'B':
-                        allObjects.Add(Level.Instantiate(myPrefab[2], new Vector2(x1, y1), Quaternion.identity));
+                        allObjects.Add(Object.Instantiate(myPrefab[2], new Vector2(x1, y1), Quaternion.identity));
+                        break;
+                    case 'R':
+                        allObjects.Add(Object.Instantiate(myPrefab[3], new Vector2(x1, y1), Quaternion.identity));
                         break;
                     case 'T':
-                        allObjects.Add(Level.Instantiate(myPrefab[4], new Vector2(x1, y1), Quaternion.identity));
+                        allObjects.Add(Object.Instantiate(myPrefab[4], new Vector2(x1, y1), Quaternion.identity));
+                        break;
+                    case '!':
+                        allObjects.Add(Object.Instantiate(myPrefab[5], new Vector2(x1, y1), Quaternion.identity));
                         break;
                     default:
                         break;
@@ -138,9 +148,17 @@ public class Room
                 doors[i].GetComponent<BoxCollider2D>().size = new Vector2(1, 1);
                 doors[i].GetComponent<SpriteRenderer>().color = Color.red;
             }
+
             for (int i = 0; i < enemySpawns.Count; i++)
             {
-                enemies.Add(Level.Instantiate(Level.GetEnemy(), new Vector2(enemySpawns[i][0], enemySpawns[i][1]), Quaternion.identity));
+                    enemies.Add(Object.Instantiate(Level.GetEnemy(), new Vector2(enemySpawns[i][0], enemySpawns[i][1]),
+                        Quaternion.identity));
+                    if (Promotion)
+                    {
+                        Debug.Log("No nie działa");
+                        enemies[i].GetComponent<Enemy>().IsTarget = true;
+                        Promotion = false;
+                    }
             }
         }
 
@@ -159,7 +177,7 @@ public class Room
             }
             for (int i = 0; i < itemSpawns.Count; i++)
             {
-                allObjects.Add(Level.Instantiate(Level.GetItem(ItemClass.Instant), new Vector2(itemSpawns[i][0], itemSpawns[i][1]), Quaternion.identity));
+                allObjects.Add(Object.Instantiate(Level.GetItem(ItemClass.Instant), new Vector2(itemSpawns[i][0], itemSpawns[i][1]), Quaternion.identity));
             }
         }
         _disarmed = true;
@@ -183,21 +201,26 @@ public class Room
         }
     }
 
+    public void PromoteEnemy()
+    {
+        Promotion = true;
+    }
+
     public void Delete()
     {
         for (int i = 0; i < allObjects.Count; i++)
         {
-            Level.Destroy(allObjects[i]);
+            Object.Destroy(allObjects[i]);
         }
 
         for (int i = 0; i < doors.Count; i++)
         {
-            Level.Destroy(doors[i]);
+            Object.Destroy(doors[i]);
         }
         
         for (int i = 0; i < enemies.Count; i++)
         {
-            Level.Destroy(enemies[i]);
+            Object.Destroy(enemies[i]);
         }
     }
 }

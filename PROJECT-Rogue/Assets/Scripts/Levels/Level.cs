@@ -23,7 +23,7 @@ public class Level : MonoBehaviour
     [SerializeField] private List<GameObject> enemies;
     private static List<GameObject> staticEnemies;
     [SerializeField] private GameObject gracz;
-    private static GameObject staticGracz;
+    public static GameObject staticGracz;
     [SerializeField] private GameObject kamera;
     private static int _currentX;
     private static int _currentY;
@@ -144,7 +144,7 @@ public class Level : MonoBehaviour
 
     public static void FillLevel()
     {
-        layout = GenerateLevel(30, 30, 2).Split('\n');
+        layout = GenerateLevel(5, 5, 2).Split('\n');
         RemoveRooms();
         PickBossRoom(layout);
         bool start = false;
@@ -175,11 +175,14 @@ public class Level : MonoBehaviour
                         if (!start)
                         {
                             rooms["" + i + j].DeActivate();
+                            rooms.Remove("" + i + j);
                             staticGracz.transform.position = new Vector2(7 + (j * (36)), -7 + (i * (-15)));
                             instancjaKamery.transform.position = new Vector3(16 + (j * (36)), -7 + (i * (-15)), -10);
                             _currentX = j;
                             _currentY = i;
                         }
+                        
+                        
                         start = true;
                     }
                 }
@@ -188,7 +191,7 @@ public class Level : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public static void UpdateQuest()
     {
         
     }
@@ -202,17 +205,38 @@ public class Level : MonoBehaviour
     {
         _currentX += x;
         _currentY += y;
-        rooms[""+_currentY+_currentX].Activate();
+        if (rooms.ContainsKey("" + _currentY + _currentX))
+        {
+            rooms["" + _currentY + _currentX].Activate();
+        }
     }
     
     public static void RemoveFocus()
     {
         rooms[""+_currentY+_currentX].DeActivate();
+        rooms.Remove("" + _currentY + _currentX);
     }
     
     public static void CheckStatus()
     {
         rooms[""+_currentY+_currentX].CheckEnemyTable();
+    }
+
+    public static Room PickChampionRoom()
+    {
+         List<Room> tmp = rooms.Values.ToList();
+         List<Room> tmp2 = new List<Room>();
+         for (int i = 0; i < tmp.Count; i++)
+         {
+             if (tmp[i].roomType.Contains("map"))
+             {
+                 tmp2.Add(tmp[i]);
+             }
+         }
+        
+         int rng = Random.Range(0, tmp2.Count);
+         Debug.Log("RNG="+rng);
+         return tmp2[rng];
     }
 
     public static GameObject GetItem(ItemClass itemClass)

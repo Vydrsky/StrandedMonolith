@@ -29,7 +29,7 @@ public class Player : FightingCharacter
     public WeaponItem WeaponItem { get { return weaponItem; } set { weaponItem = value; } }
 
     SimpleWeaponFactory weaponFactory;
-
+    private Quest journal;
 
 
     public override void TakeDamage(int damage)
@@ -165,6 +165,11 @@ public class Player : FightingCharacter
         WeaponSwap();
     }
 
+    public void JournalUpdate()
+    {
+        journal.Update();
+    }
+    
     void OnTriggerEnter2D(Collider2D collider)
     {
         Invoke("UpdateStats",0f);
@@ -198,6 +203,9 @@ public class Player : FightingCharacter
                     break;
                 case "Trapdoor":
                     Level.FillLevel();
+                    break;
+                case "NPC":
+                    journal=new KillQuest();
                     break;
                 default:
                     break;

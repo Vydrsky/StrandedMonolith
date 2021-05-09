@@ -5,6 +5,22 @@ using UnityEngine;
 public abstract class Enemy : FightingCharacter
 {
     protected GameObject player;
+    private bool isTarget;
+    public bool IsTarget
+    {
+        get
+        {
+            return isTarget;
+        }
+        set
+        {
+            isTarget = value;
+            this.GetComponent<SpriteRenderer>().color=Color.blue;
+            this.GetComponent<Transform>().localScale = new Vector2(1.5f, 1.5f);
+        }
+    }
+
+    Weapon weapon; // Do wywalenie, tylko na czas testowania
 
     protected float delay;
 
@@ -18,6 +34,10 @@ public abstract class Enemy : FightingCharacter
         if (healthPoints <= 0)
         {
             Level.CheckStatus();
+            if (IsTarget)
+            {
+                Level.staticGracz.GetComponent<Player>().JournalUpdate();
+            }
             Destroy(gameObject);
             Destroy(this);
         }
