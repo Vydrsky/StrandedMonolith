@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class RushingEnemy : Enemy
 {
+
+    private Vector2 distance;
     private enum Direction
     {
         Left,
@@ -42,21 +44,21 @@ public class RushingEnemy : Enemy
 
     public override void move()
     {
-        if (_rigidbody.velocity.sqrMagnitude < 1)
+        if (_rigidbody.velocity.sqrMagnitude < 1 && distance.magnitude < 10)
         {
             switch (PlayerCrossing())
             {
                 case Direction.Right:
-                    _rigidbody.AddForce(Vector2.right * moveSpeed*3, ForceMode2D.Impulse);
+                    _rigidbody.AddForce(Vector2.right * moveSpeed*6, ForceMode2D.Impulse);
                     break;
                 case Direction.Left:
-                    _rigidbody.AddForce(Vector2.left * moveSpeed * 3, ForceMode2D.Impulse);
+                    _rigidbody.AddForce(Vector2.left * moveSpeed * 6, ForceMode2D.Impulse);
                     break;
                 case Direction.Up:
-                    _rigidbody.AddForce(Vector2.up * moveSpeed * 3, ForceMode2D.Impulse);
+                    _rigidbody.AddForce(Vector2.up * moveSpeed * 6, ForceMode2D.Impulse);
                     break;
                 case Direction.Down:
-                    _rigidbody.AddForce(Vector2.down * moveSpeed * 3, ForceMode2D.Impulse);
+                    _rigidbody.AddForce(Vector2.down * moveSpeed * 6, ForceMode2D.Impulse);
                     break;
             }
         }
@@ -72,6 +74,7 @@ public class RushingEnemy : Enemy
 
     void FixedUpdate()
     {
+        distance = player.transform.position - this.transform.position;
         move();
     }
 }
