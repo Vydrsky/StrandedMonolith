@@ -6,6 +6,7 @@ public class TurretEnemy : Enemy
 {
     SimpleWeaponFactory weaponFactory;   
     private Weapon weapon;
+    private Vector2 distance;
     public override void move()
     {
         _rigidbody.AddRelativeForce(Vector2.right * moveSpeed);
@@ -35,7 +36,9 @@ public class TurretEnemy : Enemy
     // Update is called once per frame
     void FixedUpdate()
     {
-        weapon.CheckAttack();
+        distance = player.transform.position - this.transform.position;
+        if(distance.magnitude<10)
+            weapon.CheckAttack();
         move();
         rotate();
     }

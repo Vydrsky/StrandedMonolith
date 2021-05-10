@@ -172,6 +172,7 @@ MonoBehaviour:
   - {fileID: 7536033884786134240, guid: 62ab4296595d92b72bc6bec5782dffcd, type: 3}
   - {fileID: 3064601481947155346, guid: 55ebb8125588e301e85089d5ffb11cbd, type: 3}
   - {fileID: 9121391146365204264, guid: ab2130767a0189b4dbaab1217014430b, type: 3}
+  - {fileID: 5806055659577980793, guid: 708523c7755707649af942025752dd7b, type: 3}
   instantItems:
   - {fileID: 4289839208373662294, guid: 981944ae073356b4fba1624e8683590b, type: 3}
   - {fileID: 2020100662251061061, guid: 7701d056780ed2842926fdcdf0201071, type: 3}
@@ -226,7 +227,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0.14167367, b: 0.33962262, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

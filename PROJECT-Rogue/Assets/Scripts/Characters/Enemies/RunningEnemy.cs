@@ -33,8 +33,7 @@ public class RunningEnemy : Enemy
 
     void Start()
     {
-        range = 15;
-        Damage = 2;
+
         _rigidbody = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectsWithTag("Player")[0];
         //enemyAIscript = enemyAIobject.GetComponent<EnemyAI>();

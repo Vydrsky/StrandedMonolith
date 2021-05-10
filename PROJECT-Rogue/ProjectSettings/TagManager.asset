@@ -23,6 +23,7 @@ TagManager:
   - '|Raycast|RaySniper|'
   - Trapdoor
   - '|Enemy|Boss|'
+  - NPC
   layers:
   - Default
   - TransparentFX

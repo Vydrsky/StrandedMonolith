@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class BouncyBoss : BouncingEnemy
 {
-
+    public override void move()
+    {
+        if (velocity.magnitude < 2)
+            _rigidbody.AddRelativeForce(Vector2.right * moveSpeed);
+    }
 
     void Start()
     {
@@ -32,7 +36,8 @@ public class BouncyBoss : BouncingEnemy
         {
             float speed = velocity.magnitude;
             direction = Vector2.Reflect(velocity.normalized, collision.contacts[0].normal);
-
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             _rigidbody.velocity = direction * Mathf.Max(speed, 0f);
         }
     }

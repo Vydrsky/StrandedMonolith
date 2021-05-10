@@ -8,7 +8,7 @@ public class BouncingEnemy : Enemy
     protected Vector2 direction;
     public override void move()
     {
-        if(velocity.magnitude<1)
+        if(velocity.magnitude<10)
             _rigidbody.AddRelativeForce(Vector2.right*moveSpeed);
     }
 
@@ -44,7 +44,8 @@ public class BouncingEnemy : Enemy
         {
             float speed = velocity.magnitude;
             direction = Vector2.Reflect(velocity.normalized, collision.contacts[0].normal);
-
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             _rigidbody.velocity = direction * Mathf.Max(speed, 0f);
         }
     }

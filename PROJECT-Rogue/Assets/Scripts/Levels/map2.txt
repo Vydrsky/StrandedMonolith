@@ -1,15 +1,15 @@
-XXXXXXXXEEXXXXXXXXXXXXXXXXXXXXXXXXXX
-X                                  X
-X    W                             X
-X                                  X
-X                                  X
-X                                  X
-X                                  X
-E                                  E
-E                                  E
-X                   X              X
-X               XXXXX       W   W  X
-X                  BX              X
-X               W   X    W   W     X
-X    W    W         X              X
-XXXXXXXXEEXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXEEXXXXXXXXXXXXXXXXXXX
+XRRRRR                             X
+XRRRR    W                W        X
+XRRR                               X
+XRR                                X
+XR            RRRRRRRRR            X
+X           RRRRRRRRRRRRR          X
+E            RRRR   RRRR           E
+E             RR     RR            E
+X            RRRR   RRRR          RX
+X           RRRRRRRRRRRRR        RRX
+X            RRRRRRRRRRR     W  RRRX
+X      W                       RRRRX
+X  W                       W  RRRRRX
+XXXXXXXXXXXXXXXEEXXXXXXXXXXXXXXXXXXX
