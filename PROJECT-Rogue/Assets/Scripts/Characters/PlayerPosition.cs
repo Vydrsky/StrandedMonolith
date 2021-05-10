@@ -17,11 +17,11 @@ public class PlayerPosition : MonoBehaviour
         mapTemplate = new int[map.GetLength(0), map.GetLength(1)];
         mapInt = new int[map.GetLength(0), map.GetLength(1)];
 
-        FillStringMap();
-        ShowArray();
-        ConvertMapToInt();
-        ShowArrayInt();
-        InvokeRepeating("UpdateMapArray", 0.0f, 0.5f);
+        //FillStringMap();
+        //ShowArray();
+        //ConvertMapToInt();
+        //ShowArrayInt();
+        //InvokeRepeating("UpdateMapArray", 0.0f, 0.5f);
         //InvokeRepeating("DebugLocation", 0.0f, 0.5f);
     }
 
@@ -43,13 +43,9 @@ public class PlayerPosition : MonoBehaviour
                     map[i, j] = " ";
             }
         }
-
         map[3, 2] = "X";
         map[2, 3] = "X";
         map[2, 2] = "X";
-        //map[2, 5] = "X";
-        //map[4, 2] = "X";
-
     }
 
     private void ShowArray()

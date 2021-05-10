@@ -4,25 +4,28 @@ using UnityEngine;
 
 public class RunningEnemy : Enemy
 {
-    EnemyAI enemyAIscript;
+    //GameObject EnemyAIobj;
+    //EnemyAI enemyAIscript;
+    //Vector2 difference;
     public override void move()
     {
-        transform.Translate(new Vector2(1 * moveSpeed, 0) * Time.deltaTime);
-        //_rigidbody.AddRelativeForce(Vector2.right * moveSpeed);
+        //transform.Translate(new Vector2(1 * moveSpeed, 0) * Time.deltaTime);
+        _rigidbody.AddRelativeForce(Vector2.right * moveSpeed);
+        //_rigidbody.AddRelativeForce(difference * moveSpeed);
     }
 
     public override void rotate()
     {
-        //Vector2 difference = player.transform.position - this.transform.position;
-        Vector2 difference = enemyAIscript.CheckDirection();
-        float x, y;
-        int enemyX, enemyY;
-        x = difference.x;
-        y = difference.y;
-        enemyX = Mathf.RoundToInt(transform.position.x) + (int)x;
-        enemyY = Mathf.RoundToInt(transform.position.y) + (int)y;
-
-        difference = new Vector2(enemyX, enemyY) - new Vector2(transform.position.x, transform.position.y); 
+        Vector2 difference = player.transform.position - this.transform.position;
+        
+        //difference = enemyAIscript.CheckDirection();
+        //float x, y;
+        //int enemyX, enemyY;
+        //x = difference.x;
+        //y = difference.y;
+        //enemyX = Mathf.RoundToInt(transform.position.x) + (int)x;
+        //enemyY = Mathf.RoundToInt(transform.position.y) + (int)y;
+        //difference = new Vector2(enemyX, enemyY) - new Vector2(transform.position.x, transform.position.y); 
 
 
         difference = difference.normalized;
@@ -33,11 +36,11 @@ public class RunningEnemy : Enemy
 
     void Start()
     {
-
+        moveSpeed = 3;
         _rigidbody = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectsWithTag("Player")[0];
-        //enemyAIscript = enemyAIobject.GetComponent<EnemyAI>();
-        enemyAIscript = transform.GetChild(0).gameObject.GetComponent<EnemyAI>();//GetComponent<EnemyAI>();
+        //EnemyAIobj = transform.GetChild(0).gameObject;
+        //enemyAIscript = transform.GetChild(0).gameObject.GetComponent<EnemyAI>();
     }
 
     void FixedUpdate()
