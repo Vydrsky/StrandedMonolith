@@ -12,5 +12,6 @@ public enum WeaponsEnum
     ProjectileSniperRifleB,
     RaycastRifleA,
     RaycastRifleB,
-    RaycastSniperRifle
+    RaycastSniperRifle,
+    EnemyProjectileRifle
 }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2897405356625178078}
   - component: {fileID: 3858571287119709628}
   m_Layer: 6
-  m_Name: RunningEnemy
+  m_Name: RunningEnemy 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -174,7 +174,7 @@ MonoBehaviour:
   firePoint: {fileID: 0}
   maxHealth: 100
   healthPoints: 100
-  moveSpeed: 4
+  moveSpeed: 6
   attackSpeed: 1
   damage: 1
   range: 1

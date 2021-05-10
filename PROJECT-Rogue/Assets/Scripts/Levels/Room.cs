@@ -46,7 +46,7 @@ public class Room
                     case 'E':
                         //////
                         bool isDoor=false;
-                        Debug.Log(Level.layout.Length);// HERE WEWOOWEWOOO
+                       // Debug.Log(Level.layout.Length);// HERE WEWOOWEWOOO
                         if (y < Level.layout.Length - 1 && k == map.GetLength(0) - 2)
                         {
                             if (Level.layout[y + 1][x] != '0')
@@ -170,7 +170,7 @@ public class Room
         int cnt = 0;
         for (int i = 0; i < enemies.Count; i++)
         {
-            Debug.Log(i+" "+enemies[i]);
+           // Debug.Log(i+" "+enemies[i]);
             if (enemies[i] == null)
             {
                 cnt++;
