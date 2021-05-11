@@ -21,6 +21,11 @@ public class Room
     private bool _disarmed = false;
     public string roomType;
     private bool Promotion = false;
+
+    // zmienne do pathfindingu
+    int roomX, roomY;
+    //
+
     public Room(List<GameObject> myPrefab,int x, int y, string filePath, bool isSafe=false)
     {
         string sr = File.ReadAllText(filePath);
@@ -39,6 +44,13 @@ public class Room
         int geoIndx = 0;
         int k = 0;
         int y1 = y*(-15);
+
+        //pathfinding
+        roomX = x * 36;
+        roomY = y1 - 14;
+        //Debug.Log(roomX + " " + roomY);
+        //
+
 
         while (k < map.GetLength(0))
         {
@@ -176,8 +188,10 @@ public class Room
                     }
             }
         }
-
-
+        //pathfinding
+        PlayerPosition.instance.UpdateMapInfo(map, roomX, roomY);
+        Debug.Log("zmiana pokoju");
+        //
     }
 
     public void DeActivate()
