@@ -13,6 +13,7 @@ public class Room
     private List<GameObject> doors;
     private List<GameObject> allObjects;
     private List<GameObject> enemies;
+    private List<GameObject> enemyPool;
     private List<List<int>> enemySpawns;
     private List<List<int>> itemSpawns;
     private List<List<int>> geoSpawns;
@@ -30,6 +31,7 @@ public class Room
         allObjects = new List<GameObject>();
         enemies = new List<GameObject>();
         enemySpawns = new List<List<int>>();
+        enemyPool = new List<GameObject>();
         itemSpawns = new List<List<int>>();
         geoSpawns = new List<List<int>>();
         int spawnIndx = 0;
@@ -111,6 +113,14 @@ public class Room
                         enemySpawns.Add(new List<int>());
                         enemySpawns[spawnIndx].Add(x1);
                         enemySpawns[spawnIndx].Add(y1);
+                        enemyPool.Add(Level.GetEnemy(EnemyType.Regular));
+                        spawnIndx++;
+                        break;
+                    case '#':
+                        enemySpawns.Add(new List<int>());
+                        enemySpawns[spawnIndx].Add(x1);
+                        enemySpawns[spawnIndx].Add(y1);
+                        enemyPool.Add(Level.GetEnemy(EnemyType.Boss));
                         spawnIndx++;
                         break;
                     case 'B':
@@ -157,11 +167,10 @@ public class Room
 
             for (int i = 0; i < enemySpawns.Count; i++)
             {
-                    enemies.Add(Object.Instantiate(Level.GetEnemy(), new Vector2(enemySpawns[i][0], enemySpawns[i][1]),
+                    enemies.Add(Object.Instantiate(enemyPool[i], new Vector2(enemySpawns[i][0], enemySpawns[i][1]),
                         Quaternion.identity));
                     if (Promotion)
                     {
-                        Debug.Log("No nie działa");
                         enemies[i].GetComponent<Enemy>().IsTarget = true;
                         Promotion = false;
                     }

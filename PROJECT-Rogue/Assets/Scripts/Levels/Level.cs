@@ -22,6 +22,8 @@ public class Level : MonoBehaviour
     private static List<GameObject> staticActivetems;
     [SerializeField] private List<GameObject> enemies;
     private static List<GameObject> staticEnemies;
+    [SerializeField] private List<GameObject> bosses;
+    private static List<GameObject> staticBosses;
     [SerializeField] private GameObject gracz;
     public static GameObject staticGracz;
     [SerializeField] private GameObject kamera;
@@ -126,6 +128,7 @@ public class Level : MonoBehaviour
         instancjaKamery = kamera;
         staticInstantItems = instantItems;
         staticEnemies = enemies;
+        staticBosses = bosses;
         staticPassiveItems = passiveItems;
         staticActivetems = activeItems;
         staticMyPrefab = myPrefab;
@@ -256,10 +259,20 @@ public class Level : MonoBehaviour
         }
     }
     
-    public static GameObject GetEnemy()
+    public static GameObject GetEnemy(EnemyType type)
     {
-        int rnd=Random.Range(0, staticEnemies.Count);
-        return staticEnemies[rnd];
+        int rnd;
+        switch (type)
+        {
+            case EnemyType.Regular:
+                rnd=Random.Range(0, staticEnemies.Count);
+                return staticEnemies[rnd];
+            case EnemyType.Boss:
+                rnd=Random.Range(0, staticBosses.Count);
+                return staticBosses[rnd];
+            default:
+                return null;
+        }
     }
 
     static void RemoveRooms()

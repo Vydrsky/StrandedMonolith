@@ -298,6 +298,11 @@ public class Player : FightingCharacter
             WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.RaycastSniperRifle);
             weaponItem.weapon.SetAttacker(this);
         }
+        else if (Input.GetKey(KeyCode.Space))
+        {
+            Level.FillLevel();
+            
+        }
     }
 
     
