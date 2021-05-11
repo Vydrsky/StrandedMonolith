@@ -17,12 +17,12 @@ public class PlayerPosition : MonoBehaviour
         mapTemplate = new int[map.GetLength(0), map.GetLength(1)];
         mapInt = new int[map.GetLength(0), map.GetLength(1)];
 
-        //FillStringMap();
-        //ShowArray();
-        //ConvertMapToInt();
-        //ShowArrayInt();
-        //InvokeRepeating("UpdateMapArray", 0.0f, 0.5f);
-        //InvokeRepeating("DebugLocation", 0.0f, 0.5f);
+        FillStringMap();
+        ShowArray();
+        ConvertMapToInt();
+        ShowArrayInt();
+        InvokeRepeating("UpdateMapArray", 0.0f, 0.5f);
+        InvokeRepeating("DebugLocation", 0.0f, 0.5f);
     }
 
     private void FillStringMap()
