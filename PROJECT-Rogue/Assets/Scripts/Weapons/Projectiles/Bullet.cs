@@ -8,6 +8,19 @@ public class Bullet : MonoBehaviour
     int damage;
     Vector2 velocity;
     string attackerTag;
+    private AudioSource sound;
+    public AudioClip Audio;
+
+    private void Start()
+    {
+        
+        sound = GetComponent<AudioSource>();
+        Audio = sound.clip;
+        float rand = Random.Range(0.8f, 1.2f);
+        sound.pitch = rand;
+
+        AudioSource.PlayClipAtPoint(Audio, transform.position);
+    }
     private void Update()
     {
         transform.Translate(velocity * Time.deltaTime);
