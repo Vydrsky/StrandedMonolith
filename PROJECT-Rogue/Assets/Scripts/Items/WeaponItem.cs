@@ -13,6 +13,9 @@ public class WeaponItem : MonoBehaviour
         weapon = weaponFactory.CreateWeapon(weaponType);
     }
 
-
+    private void Update()
+    {
+        
+    }
 
 }

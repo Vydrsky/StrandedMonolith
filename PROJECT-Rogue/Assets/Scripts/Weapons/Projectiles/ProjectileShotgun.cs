@@ -28,6 +28,7 @@ public class ProjectileShotgun : Projectile
 
     public ProjectileShotgun(ProjectileShotgunWeaponStats projectileShotgunWeaponStats) : base(projectileShotgunWeaponStats as ProjectileWeaponStats)
     {
+        
         spread = projectileShotgunWeaponStats.Spread;
         numberOfPellets = projectileShotgunWeaponStats.NumberOfPellets;
     }
