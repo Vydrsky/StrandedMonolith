@@ -120,6 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactAnimation: {fileID: 8470515175463483428, guid: 40b18f6618f307c46b1ea3b2c886abe0, type: 3}
+  Audio: {fileID: 8300000, guid: 0350aeedd86a72341a928215cb2912fc, type: 3}
+  mixer: {fileID: 24100000, guid: 9911fa11cf8eb0c4d872c24cd6b6b512, type: 2}
 --- !u!58 &3773966447023568262
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -147,8 +149,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0350aeedd86a72341a928215cb2912fc, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.83
+  m_PlayOnAwake: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -156,7 +158,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.53427476
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
