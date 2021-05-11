@@ -507,10 +507,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1213604552}
     - target: {fileID: 8436528144785984185, guid: 321f8dceaaac1a94ca2b87f0f541e74e, type: 3}
-      propertyPath: firePoint
-      value: 
-      objectReference: {fileID: 1431067135}
-    - target: {fileID: 8436528144785984185, guid: 321f8dceaaac1a94ca2b87f0f541e74e, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1463109849}
@@ -604,11 +600,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43dd2ed74c98ce74eb54d4712d201770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1431067135 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6609281551830336909, guid: 321f8dceaaac1a94ca2b87f0f541e74e, type: 3}
-  m_PrefabInstance: {fileID: 942437812}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1463109849 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1137269904806064110, guid: 64cecd1b19d2f6e43bbaeb2831036b45, type: 3}
