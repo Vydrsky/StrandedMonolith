@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TurretEnemy : Enemy
 {
-    
+    SimpleWeaponFactory weaponFactory;   
     private Weapon weapon;
     private Vector2 distance;
     public override void move()
@@ -23,12 +23,13 @@ public class TurretEnemy : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        weaponFactory = new SimpleWeaponFactory();
         range = 15;
         Damage = 2;
         _rigidbody = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectsWithTag("Player")[0];
         // ustawianie broni
-        weapon = new ProjectileRifle(4, 10, 10);
+        weapon = weaponFactory.CreateWeapon(WeaponsEnum.EnemyProjectileRifle);
         weapon.SetAttacker(this);
     }
 

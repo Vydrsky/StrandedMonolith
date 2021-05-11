@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player" ||
+        if ((collision.gameObject.tag == "Player" && attackerTag == "Player") ||
             (collision.gameObject.tag.Contains("Enemy") && attackerTag.Contains("Enemy")) ||
             collision.gameObject.tag.Contains("|Bullet|") ||
             collision.gameObject.tag.Contains("|Item|"))

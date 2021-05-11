@@ -62,7 +62,7 @@ public class Level : MonoBehaviour
         }
 
         pivotIndex = ((mapSideLength * ((mapSideLength+1) / 2)-mapSideLength/2)-1)+(mapSideLength/2);
-        Debug.Log(pivotIndex);
+        //Debug.Log(pivotIndex);
         levelLayout = ReplaceAtIndex(levelLayout, pivotIndex, 'X');
         for (int j = 0; j < numberOfWanderers; j++)
         {
@@ -114,8 +114,8 @@ public class Level : MonoBehaviour
                 levelLayout = ReplaceAtIndex(levelLayout, pivotIndex, 'X');
             }
         }
-        Debug.Log(levelLayout);
-        Debug.Log(levelLayout.Length);
+       // Debug.Log(levelLayout);
+       // Debug.Log(levelLayout.Length);
 
         return levelLayout;
     }
@@ -148,7 +148,7 @@ public class Level : MonoBehaviour
         RemoveRooms();
         PickBossRoom(layout);
         bool start = false;
-        Debug.Log(regularRooms.Count + " LEVEL COUNT");
+        //Debug.Log(regularRooms.Count + " LEVEL COUNT");
         for (int i = 0; i < layout.Length; i++)
         {
             for (int j = 0; j < layout[i].Length; j++)
@@ -332,7 +332,7 @@ public class Level : MonoBehaviour
             }
         }
 
-        Debug.Log("TUTAJ COUNTS "+countS);
+       // Debug.Log("TUTAJ COUNTS "+countS);
         while (countS < 2)
         {
             bool interrupt = false;
