@@ -205,7 +205,11 @@ public class Player : FightingCharacter
                     Level.FillLevel();
                     break;
                 case "NPC":
-                    journal=new KillQuest();
+                    if (Level.PickChampionRoom() != null && journal==null)
+                    {
+                        journal = new KillQuest();
+                    }
+
                     break;
                 default:
                     break;

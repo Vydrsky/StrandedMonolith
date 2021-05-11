@@ -14,6 +14,5 @@ public class KillQuest : Quest
     
     public void Update()
     {
-        Debug.Log("Zabij elitarnego wroga 1/1");
     }
 }
