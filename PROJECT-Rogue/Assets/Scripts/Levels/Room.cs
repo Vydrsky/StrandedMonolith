@@ -74,7 +74,7 @@ public class Room
                             }
                         }
 
-                        if (x < Level.layout[y].Length - 1 && i == map[k].Length - 2)
+                        if (x < Level.layout[y].Length - 1 && i == map[k].Length - 1)
                         {
                             if (Level.layout[y][x + 1] != '0')
                             {
@@ -116,7 +116,7 @@ public class Room
                         enemyPool.Add(Level.GetEnemy(EnemyType.Regular));
                         spawnIndx++;
                         break;
-                    case '#':
+                    case 'Q':
                         enemySpawns.Add(new List<int>());
                         enemySpawns[spawnIndx].Add(x1);
                         enemySpawns[spawnIndx].Add(y1);

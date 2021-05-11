@@ -4,7 +4,7 @@ XRRRRRRRRR           RRRRRRRRRRRRRRX
 XRR                              RRX
 XRR                              RRX
 XR                                RX
-XR               #                RX
+XR               Q                RX
 E                T                 E
 E                                  E
 XR                                RX

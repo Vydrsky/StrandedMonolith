@@ -396,7 +396,6 @@ public class Level : MonoBehaviour
                                 interrupt = true;
                                 break;
                             }
-
                         }
                     }
                 }
