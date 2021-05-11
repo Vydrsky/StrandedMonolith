@@ -9,11 +9,17 @@ public class Bullet : MonoBehaviour
     Vector2 velocity;
     string attackerTag;
     private AudioSource sound;
+    public AudioClip Audio;
 
     private void Start()
     {
+        
         sound = GetComponent<AudioSource>();
-        AudioSource.PlayClipAtPoint(sound.clip, transform.position);
+        Audio = sound.clip;
+        float rand = Random.Range(0.8f, 1.2f);
+        sound.pitch = rand;
+
+        AudioSource.PlayClipAtPoint(Audio, transform.position);
     }
     private void Update()
     {
