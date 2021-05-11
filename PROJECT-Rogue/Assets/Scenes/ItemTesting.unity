@@ -1018,11 +1018,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d33c31b129815b34da5f951db0eb80b4, type: 3}
---- !u!4 &1550784204 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6609281551830336909, guid: 321f8dceaaac1a94ca2b87f0f541e74e, type: 3}
-  m_PrefabInstance: {fileID: 2084593429}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1654927698
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1603,10 +1598,6 @@ PrefabInstance:
       propertyPath: activeUI
       value: 
       objectReference: {fileID: 868087266}
-    - target: {fileID: 8436528144785984185, guid: 321f8dceaaac1a94ca2b87f0f541e74e, type: 3}
-      propertyPath: firePoint
-      value: 
-      objectReference: {fileID: 1550784204}
     - target: {fileID: 8436528144785984185, guid: 321f8dceaaac1a94ca2b87f0f541e74e, type: 3}
       propertyPath: healthBar
       value: 

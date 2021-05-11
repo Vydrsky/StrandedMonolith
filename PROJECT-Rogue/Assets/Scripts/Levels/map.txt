@@ -4,12 +4,12 @@ X    W                     W     W X
 X                             W    X
 XRRRRRRRRRR          RRRR          X
 XRRRRRR              RRRRRRRRR     X
-X                     RRRRRRRRRRRRRX
+X             I       RRRRRRRRRRRRRX
 E          RRRRR                   E
 E         RRRRRRR                  E
+X            RRR                   X
 X                                  X
-X                                  X
-X         RR       RR              X
-X        RRR       RRR             X
-X   W   RRRR       RRRR     W    W X
+X    W   RRR       RRRR            X
+X     RRRRRR       RRRRR           X
+XRRRRRRRRRRR       RRRRRRRR W    W X
 XXXXXXXXXXXXXXXEEXXXXXXXXXXXXXXXXXXX

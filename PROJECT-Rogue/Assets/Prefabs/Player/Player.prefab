@@ -136,8 +136,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 6913427503174522006}
-  maxHealth: 1000
-  healthPoints: 1000
+  maxHealth: 300
+  healthPoints: 300
   moveSpeed: 1
   attackSpeed: 1
   damage: 10

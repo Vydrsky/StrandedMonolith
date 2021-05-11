@@ -36,7 +36,6 @@ public class RunningEnemy : Enemy
 
     void Start()
     {
-        moveSpeed = 3;
         _rigidbody = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectsWithTag("Player")[0];
         //EnemyAIobj = transform.GetChild(0).gameObject;

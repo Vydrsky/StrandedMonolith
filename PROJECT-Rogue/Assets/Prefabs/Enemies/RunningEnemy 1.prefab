@@ -174,7 +174,7 @@ MonoBehaviour:
   firePoint: {fileID: 0}
   maxHealth: 100
   healthPoints: 100
-  moveSpeed: 50
+  moveSpeed: 25
   attackSpeed: 1
   damage: 1
   range: 1
