@@ -63,9 +63,21 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.0008454987
       objectReference: {fileID: 0}
+    - target: {fileID: 5839486516359406624, guid: 52c923da96d61d5439db7086a73bbb34, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5839486516359406624, guid: 52c923da96d61d5439db7086a73bbb34, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1080782271
+      objectReference: {fileID: 0}
     - target: {fileID: 7544207183005877249, guid: 52c923da96d61d5439db7086a73bbb34, type: 3}
       propertyPath: m_Name
       value: Rock
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544207183005877249, guid: 52c923da96d61d5439db7086a73bbb34, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52c923da96d61d5439db7086a73bbb34, type: 3}
