@@ -15,6 +15,7 @@ public class Room
     private List<GameObject> enemies;
     private List<List<int>> enemySpawns;
     private List<List<int>> itemSpawns;
+    private List<List<int>> geoSpawns;
     private bool _active = false;
     private bool _disarmed = false;
     public string roomType;
@@ -30,8 +31,10 @@ public class Room
         enemies = new List<GameObject>();
         enemySpawns = new List<List<int>>();
         itemSpawns = new List<List<int>>();
+        geoSpawns = new List<List<int>>();
         int spawnIndx = 0;
         int itemIndx = 0;
+        int geoIndx = 0;
         int k = 0;
         int y1 = y*(-15);
 
@@ -69,7 +72,7 @@ public class Room
                             }
                         }
 
-                        if (x < Level.layout[y].Length - 1 && i == map[k].Length - 2)
+                        if (x < Level.layout[y].Length - 1 && i == map[k].Length - 1)
                         {
                             if (Level.layout[y][x + 1] != '0')
                             {
@@ -117,7 +120,10 @@ public class Room
                         allObjects.Add(Object.Instantiate(myPrefab[3], new Vector2(x1, y1), Quaternion.identity));
                         break;
                     case 'T':
-                        allObjects.Add(Object.Instantiate(myPrefab[4], new Vector2(x1, y1), Quaternion.identity));
+                        geoSpawns.Add(new List<int>());
+                        geoSpawns[geoIndx].Add(x1);
+                        geoSpawns[geoIndx].Add(y1);
+                        geoIndx++;
                         break;
                     case '!':
                         allObjects.Add(Object.Instantiate(myPrefab[5], new Vector2(x1, y1), Quaternion.identity));
@@ -179,6 +185,10 @@ public class Room
             {
                 allObjects.Add(Object.Instantiate(Level.GetItem(ItemClass.Instant), new Vector2(itemSpawns[i][0], itemSpawns[i][1]), Quaternion.identity));
             }
+            for (int i = 0; i < geoSpawns.Count; i++)
+            {
+                allObjects.Add(Object.Instantiate(myPrefab[4], new Vector2(geoSpawns[i][0], geoSpawns[i][1]), Quaternion.identity));
+            }
         }
         _disarmed = true;
     }
@@ -198,6 +208,7 @@ public class Room
         if (cnt == enemies.Count-1)
         {
             DeActivate();
+            Level.RemoveFocus();
         }
     }
 

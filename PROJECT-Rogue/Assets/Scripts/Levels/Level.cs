@@ -32,6 +32,7 @@ public class Level : MonoBehaviour
     private static List<string> bossRooms;
     private static List<string> specialRooms;
     private static Dictionary<string,Room> rooms;
+    private static List<Room> unclearedRooms;
     public static string[] layout;
 
     public static string ReplaceAtIndex(string text, int index, char c)
@@ -145,6 +146,7 @@ public class Level : MonoBehaviour
     public static void FillLevel()
     {
         layout = GenerateLevel(20, 30, 1).Split('\n');
+        unclearedRooms = new List<Room>();
         RemoveRooms();
         PickBossRoom(layout);
         bool start = false;
@@ -172,10 +174,11 @@ public class Level : MonoBehaviour
                         int rnd = Random.Range(0, regularRooms.Count);
                         rooms.Add("" + i + j,
                             new Room(staticMyPrefab, j, i, regularRooms[rnd]));
+                        unclearedRooms.Add(rooms["" + i + j]);
                         if (!start)
                         {
                             rooms["" + i + j].DeActivate();
-                            rooms.Remove("" + i + j);
+                            unclearedRooms.Remove(rooms["" + i + j]);
                             staticGracz.transform.position = new Vector2(7 + (j * (36)), -7 + (i * (-15)));
                             instancjaKamery.transform.position = new Vector3(16 + (j * (36)), -7 + (i * (-15)), -10);
                             _currentX = j;
@@ -214,7 +217,8 @@ public class Level : MonoBehaviour
     public static void RemoveFocus()
     {
         rooms[""+_currentY+_currentX].DeActivate();
-        rooms.Remove("" + _currentY + _currentX);
+        unclearedRooms.Remove(rooms[""+_currentY+_currentX]);
+        Debug.Log("UNCLEARED"+unclearedRooms.Count);
     }
     
     public static void CheckStatus()
@@ -224,19 +228,13 @@ public class Level : MonoBehaviour
 
     public static Room PickChampionRoom()
     {
-         List<Room> tmp = rooms.Values.ToList();
-         List<Room> tmp2 = new List<Room>();
-         for (int i = 0; i < tmp.Count; i++)
-         {
-             if (tmp[i].roomType.Contains("map"))
-             {
-                 tmp2.Add(tmp[i]);
-             }
-         }
-        
-         int rng = Random.Range(0, tmp2.Count);
+        if (unclearedRooms.Count == 0)
+        {
+            return null;
+        }
+         int rng = Random.Range(0, unclearedRooms.Count);
          Debug.Log("RNG="+rng);
-         return tmp2[rng];
+         return unclearedRooms[rng];
     }
 
     public static GameObject GetItem(ItemClass itemClass)
@@ -272,7 +270,7 @@ public class Level : MonoBehaviour
             {
                 i.Delete();
             }
-
+            unclearedRooms.Clear();
             rooms.Clear();
         }
     }
