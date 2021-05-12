@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1148256650}
   - component: {fileID: -1147752033621226564}
   - component: {fileID: 3090913205875434877}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: RushingEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}

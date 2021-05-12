@@ -6,8 +6,12 @@ public class RaycastSniperRifle : Raycast
 {
     protected override IEnumerator ShootRaycast()
     {
+        LayerMask newMask = (1 << LayerMask.NameToLayer("Hole"));
+        newMask |= (1 << LayerMask.NameToLayer("Ignore Raycast"));
+        newMask = ~newMask;
+
         LineRenderer lineRenderer = Shooting.instance.raycastPrefabs.Find(x => x.tag.Contains("|RaySniper|"));
-        RaycastHit2D hitInfo = Physics2D.Raycast(whoAttacks.firePoint.position, whoAttacks.firePoint.right);
+        RaycastHit2D hitInfo = Physics2D.Raycast(whoAttacks.firePoint.position, whoAttacks.firePoint.right, whoAttacks.Range * rangeModifier, newMask);
         var obj = Object.Instantiate(lineRenderer);
         if (hitInfo && (hitInfo.distance < whoAttacks.Range * rangeModifier))
         {

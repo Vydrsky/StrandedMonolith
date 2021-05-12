@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 290811408884704678}
   - component: {fileID: 888928483958789582}
   - component: {fileID: -6190350591291390719}
-  m_Layer: 2
+  m_Layer: 11
   m_Name: PathfindingEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -156,7 +156,7 @@ MonoBehaviour:
   firePoint: {fileID: 96887558214200296}
   maxHealth: 100
   healthPoints: 100
-  moveSpeed: 10
+  moveSpeed: 25
   attackSpeed: 0
   damage: 0
   range: 0
@@ -170,7 +170,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 96887558214200296}
-  m_Layer: 2
+  m_Layer: 11
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1381976571506176929, guid: c930220b640a3644eb882d5e520e02f7, type: 3}
       propertyPath: m_Layer
-      value: 2
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1381976571506176930, guid: c930220b640a3644eb882d5e520e02f7, type: 3}
       propertyPath: m_RootOrder

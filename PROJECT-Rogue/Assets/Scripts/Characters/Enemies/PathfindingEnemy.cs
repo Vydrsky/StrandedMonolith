@@ -10,47 +10,40 @@ public class PathfindingEnemy : Enemy
     public override void move()
     {
         //transform.Translate(new Vector2(1 * moveSpeed, 0) * Time.deltaTime);
-        //_rigidbody.AddRelativeForce(Vector2.right * moveSpeed);
+        _rigidbody.AddRelativeForce(Vector2.right * moveSpeed);
         //_rigidbody.AddRelativeForce(difference * moveSpeed);
     }
 
     public override void rotate()
     {
-        //Vector2 temp = player.transform.position - this.firePoint.transform.position;
-        //float rotation = Mathf.Atan2(temp.y, temp.x) * Mathf.Rad2Deg; ;
-        //this.firePoint.rotation = Quaternion.Euler(0f, 0f, rotation);
-
-        
-
+        LayerMask newMask = 1 << LayerMask.NameToLayer("Enemy");
+        newMask |= 1 << LayerMask.NameToLayer("Flying");
+        newMask |= 1 << LayerMask.NameToLayer("Raycast Ignore");
+        newMask = ~newMask;
 
 
+        Vector2 temp = player.transform.position - this.firePoint.transform.position;
+        float rotation = Mathf.Atan2(temp.y, temp.x) * Mathf.Rad2Deg; ;
+        this.firePoint.rotation = Quaternion.Euler(0f, 0f, rotation);
 
-        Vector2 difference = Player.instance.transform.position - this.transform.position;
+        RaycastHit2D hitInfo = Physics2D.Raycast(this.firePoint.position, this.firePoint.right, 100, newMask);
 
-        difference = difference.normalized;
-        float rotationOnZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, rotationOnZ);
-
-
-        RaycastHit2D hitInfo = Physics2D.Raycast(this.firePoint.position, this.firePoint.right);
         //do usuniecia
-        LineRenderer lineRenderer = Shooting.instance.raycastPrefabs.Find(x => x.tag.Contains("|RayRiffle|"));
+        //LineRenderer lineRenderer = Shooting.instance.raycastPrefabs.Find(x => x.tag.Contains("|RayRiffle|"));
 
-        var obj = Object.Instantiate(lineRenderer);
-        obj.SetPosition(0, this.firePoint.position);
-        obj.SetPosition(1, hitInfo.transform.position);
-        obj.enabled = true;
+        //var obj = Object.Instantiate(lineRenderer);
+        //obj.SetPosition(0, this.firePoint.position);
+        //obj.SetPosition(1, hitInfo.transform.position);
+        //obj.enabled = true;
         //
-
-
 
         if (hitInfo.transform.gameObject.tag == "Player")
         {
+            difference = Player.instance.transform.position - this.transform.position;
             Debug.Log("Player hit");
         }
         else
-        {
-            Debug.Log(hitInfo.transform.gameObject.tag);    
+        {    
             difference = enemyAIscript.CheckDirection();
             float x, y;
             int enemyX, enemyY;
@@ -62,7 +55,9 @@ public class PathfindingEnemy : Enemy
             Debug.Log("Not player hit");
         }
 
-
+        difference = difference.normalized;
+        float rotationOnZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotationOnZ);
     }
 
     void Start()
