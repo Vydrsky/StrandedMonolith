@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BouncyBoss : BouncingEnemy
 {
+
+    [SerializeField] private GameObject minion;
+    private GameObject[] minions=new GameObject[20];
     public override void move()
     {
         if (velocity.magnitude < 2)
@@ -12,6 +15,7 @@ public class BouncyBoss : BouncingEnemy
 
     void Start()
     {
+        InvokeRepeating("SpawnMinion",0,5);
         range = 15;
         Damage = 2;
         player = GameObject.FindGameObjectsWithTag("Player")[0];
@@ -20,7 +24,24 @@ public class BouncyBoss : BouncingEnemy
         direction = new Vector2(1f, 0);
     }
 
+    public override void TakeDamage(int damage)
+    {
+        healthPoints -= damage;
+        if (healthPoints <= 0)
+        {
+            Level.CheckStatus();
 
+            for (int i = 0; i < minions.Length; i++)
+            {
+                if (minions[i] != null)
+                {
+                    Destroy(minions[i]);
+                }
+            }
+            Destroy(gameObject);
+            Destroy(this);
+        }
+    }
     void Update()
     {
         velocity = _rigidbody.velocity;
@@ -39,6 +60,18 @@ public class BouncyBoss : BouncingEnemy
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             _rigidbody.velocity = direction * Mathf.Max(speed, 0f);
+        }
+    }
+
+    private void SpawnMinion()
+    {
+        for (int i=0; i < minions.Length; i++)
+        {
+            if (minions[i]==null)
+            {
+                minions[i] = Instantiate(minion,
+                    new Vector2(this.transform.localPosition.x, this.transform.localPosition.y), Quaternion.identity);
+            }
         }
     }
 }
