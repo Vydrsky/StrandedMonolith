@@ -76,7 +76,7 @@ public class Room
                             }
                         }
 
-                        if (x < Level.layout[y].Length - 1 && i == map[k].Length - 1)
+                        if (x < Level.layout[y].Length - 1 && i == map[k].Length - 2)
                         {
                             if (Level.layout[y][x + 1] != '0')
                             {
