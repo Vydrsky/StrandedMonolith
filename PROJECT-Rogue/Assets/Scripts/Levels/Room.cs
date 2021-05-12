@@ -212,7 +212,8 @@ public class Room
         }
         //pathfinding
         PlayerPosition.instance.UpdateMapInfo(map, roomX, roomY);
-        Debug.Log("zmiana pokoju");
+        PlayerPosition.instance.InvokeRepeating("UpdateMapArray", 0.0f, 0.5f);
+        //Debug.Log("zmiana pokoju");
         //
     }
 
@@ -236,6 +237,9 @@ public class Room
             }
         }
         _disarmed = true;
+
+        if(PlayerPosition.instance != null)
+            PlayerPosition.instance.CancelInvoke();
     }
 
     public void CheckEnemyTable()

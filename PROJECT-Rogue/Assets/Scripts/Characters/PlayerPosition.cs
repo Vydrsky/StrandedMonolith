@@ -7,13 +7,10 @@ public class PlayerPosition : MonoBehaviour
     public static PlayerPosition instance;
     public int[,] mapInt;
     public int mapX, mapY;
-
-
     
     int playerNumber = 200;
     int[,] mapTemplate;
     string[] map;
-
 
     private void Start()
     {
@@ -27,8 +24,8 @@ public class PlayerPosition : MonoBehaviour
         }
         //FillStringMap();
         ConvertMapToInt();
-        ShowArrayInt();
-        InvokeRepeating("UpdateMapArray", 0.0f, 0.5f);
+        //ShowArrayInt();
+        //InvokeRepeating("UpdateMapArray", 0.0f, 0.5f);
         //InvokeRepeating("DebugLocation", 0.0f, 0.5f);
     }
 
@@ -38,6 +35,7 @@ public class PlayerPosition : MonoBehaviour
         this.mapX = mapX;
         this.mapY = mapY;
         ConvertMapToInt();
+        
     }
 
     //private void FillStringMap()
@@ -62,7 +60,6 @@ public class PlayerPosition : MonoBehaviour
     //    map[2, 3] = "X";
     //    map[2, 2] = "X";
     //}
-
 
     private void FillWithNumbers()
     {     
@@ -116,7 +113,6 @@ public class PlayerPosition : MonoBehaviour
         }
     }
 
-
     private void ConvertMapToInt()
     {
         for (int j = 0; j < 15; j++)
@@ -141,15 +137,15 @@ public class PlayerPosition : MonoBehaviour
     void UpdateMapArray()
     {
         ClearMap();
-        ShowArrayInt();
+        //ShowArrayInt();
         int playerX, playerY;
         playerX = Mathf.RoundToInt(transform.position.x) - mapX;
         playerY = Mathf.RoundToInt(transform.position.y) - mapY;
-        Debug.Log(playerX + " " + playerY);
+        //Debug.Log(playerX + " " + playerY);
         mapInt[playerX, playerY] = playerNumber;
         FillWithNumbers();
-        ShowArrayInt();
-
+        //ShowArrayInt();
+        Debug.Log("dupa");
     }
 
     void ClearMap()
@@ -182,11 +178,6 @@ public class PlayerPosition : MonoBehaviour
     private void ShowArrayString()
     {
         string mapLine = "";
-
-            //for (int i = 0; i < 16; i++)
-            //{
-            //mapLine += map[i] + System.Environment.NewLine;
-            //}
 
         for (int j = 0; j < 15; j++)
         {

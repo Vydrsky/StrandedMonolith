@@ -40,7 +40,7 @@ public class PathfindingEnemy : Enemy
         if (hitInfo.transform.gameObject.tag == "Player")
         {
             difference = Player.instance.transform.position - this.transform.position;
-            Debug.Log("Player hit");
+            //Debug.Log("Player hit");
         }
         else
         {    
@@ -52,7 +52,7 @@ public class PathfindingEnemy : Enemy
             enemyX = Mathf.RoundToInt(transform.position.x) + (int)x;
             enemyY = Mathf.RoundToInt(transform.position.y) + (int)y;
             difference = new Vector2(enemyX, enemyY) - new Vector2(transform.position.x, transform.position.y);
-            Debug.Log("Not player hit");
+            //Debug.Log("Not player hit");
         }
 
         difference = difference.normalized;

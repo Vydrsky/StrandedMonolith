@@ -103,7 +103,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
@@ -120,7 +120,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactAnimation: {fileID: 8470515175463483428, guid: 40b18f6618f307c46b1ea3b2c886abe0, type: 3}
-  Audio: {fileID: 8300000, guid: 0350aeedd86a72341a928215cb2912fc, type: 3}
   mixer: {fileID: 24100000, guid: 9911fa11cf8eb0c4d872c24cd6b6b512, type: 2}
 --- !u!58 &3773966447023568262
 CircleCollider2D:
