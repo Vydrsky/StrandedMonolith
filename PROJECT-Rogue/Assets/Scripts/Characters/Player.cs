@@ -19,6 +19,7 @@ public class Player : FightingCharacter
     public float InvincibilityDuration { get { return invincibilityDuration; } set { invincibilityDuration = value; } }
 
     [SerializeField] private HealthBar healthBar;
+    [SerializeField] private PlayerJournal activeQuest;
     [SerializeField] private PlayerStats statsUI;
     [SerializeField] private ActiveUI activeUI;
     [SerializeField] private LineRenderer lineRenderer;
@@ -171,7 +172,12 @@ public class Player : FightingCharacter
 
     public void JournalUpdate()
     {
-        journal.Update();
+        if (journal.Update())
+        {
+            activeQuest.SetColor(Color.green);
+        }
+
+        activeQuest.SetText(journal.JournalEntry());
     }
     
     void OnTriggerEnter2D(Collider2D collider)
@@ -207,11 +213,13 @@ public class Player : FightingCharacter
                     break;
                 case "Trapdoor":
                     Level.FillLevel();
+                    journal = null;
                     break;
                 case "NPC":
                     if (Level.PickChampionRoom() != null && journal==null)
                     {
                         journal = new KillQuest();
+                        activeQuest.SetText(journal.JournalEntry());
                     }
 
                     break;

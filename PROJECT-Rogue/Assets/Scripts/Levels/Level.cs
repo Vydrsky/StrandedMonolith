@@ -205,11 +205,6 @@ public class Level : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    public static void UpdateQuest()
-    {
-        
-    }
 
     public static void MoveCamera(float x, float y)
     {
