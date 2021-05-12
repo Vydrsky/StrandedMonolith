@@ -177,20 +177,26 @@ public class Level : MonoBehaviour
                     }
                     else
                     {
-                        int rnd = Random.Range(0, regularRooms.Count);
-                        rooms.Add("" + i + j,
-                            new Room(staticMyPrefab, j, i, regularRooms[rnd]));
-                        unclearedRooms.Add(rooms["" + i + j]);
                         if (!start)
                         {
+                            rooms.Add("" + i + j,
+                                new Room(staticMyPrefab, j, i, "Assets/Scripts/Levels/TEMPLATE.txt"));
                             rooms["" + i + j].DeActivate();
-                            unclearedRooms.Remove(rooms["" + i + j]);
+                            //unclearedRooms.Remove(rooms["" + i + j]);
                             staticGracz.transform.position = new Vector2(7 + (j * (36)), -7 + (i * (-15)));
-                            instancjaKamery.transform.position = new Vector3(16 + (j * (36)), -7 + (i * (-15)), -10);
+                            instancjaKamery.transform.position = new Vector3(17.5f + (j * (36)), -7 + (i * (-15)), -10);
                             _currentX = j;
                             _currentY = i;
                         }
-                        
+                        else
+                        {
+                            Debug.Log("Henlo");
+                            int rnd = Random.Range(0, regularRooms.Count);
+                            rooms.Add("" + i + j,
+                                new Room(staticMyPrefab, j, i, regularRooms[rnd]));
+                            
+                            unclearedRooms.Add(rooms["" + i + j]);
+                        }
                         
                         start = true;
                     }
