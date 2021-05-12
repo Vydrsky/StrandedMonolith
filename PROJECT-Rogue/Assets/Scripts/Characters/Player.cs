@@ -213,6 +213,8 @@ public class Player : FightingCharacter
                     break;
                 case "Trapdoor":
                     Level.FillLevel();
+                    activeQuest.SetText("");
+                    activeQuest.SetColor(Color.white);
                     journal = null;
                     break;
                 case "NPC":

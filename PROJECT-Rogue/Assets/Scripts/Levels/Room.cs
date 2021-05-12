@@ -199,6 +199,7 @@ public class Room
                 doors[i].GetComponent<SpriteRenderer>().color = Color.red;
             }
 
+            
             for (int i = 0; i < enemySpawns.Count; i++)
             {
                     enemies.Add(Object.Instantiate(enemyPool[i], new Vector2(enemySpawns[i][0], enemySpawns[i][1]),
