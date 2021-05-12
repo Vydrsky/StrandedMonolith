@@ -37,6 +37,7 @@ public abstract class Enemy : FightingCharacter
             if (IsTarget)
             {
                 Level.staticGracz.GetComponent<Player>().JournalUpdate();
+                IsTarget = false;
             }
             Destroy(gameObject);
             Destroy(this);

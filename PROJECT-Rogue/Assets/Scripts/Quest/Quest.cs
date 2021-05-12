@@ -4,5 +4,6 @@ using UnityEngine;
 
 public interface Quest
 {
-    void Update();
+    bool Update();
+    string JournalEntry();
 }
