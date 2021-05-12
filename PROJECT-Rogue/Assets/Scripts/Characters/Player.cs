@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Player : FightingCharacter
 {
+    public static Player instance;
+    
     private bool collisionOccured = false;
 
     private PlayerMovement playerMovement; //podklasa do chodzenia
@@ -114,6 +116,8 @@ public class Player : FightingCharacter
 
     private void Start()
     {
+
+        instance = this;
         weaponFactory = new SimpleWeaponFactory();
         
         characterName = "Hero";

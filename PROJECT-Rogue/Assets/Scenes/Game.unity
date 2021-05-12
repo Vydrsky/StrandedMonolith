@@ -189,6 +189,7 @@ MonoBehaviour:
   - {fileID: 6847359738231118968, guid: 743d9c4370b06054ab7cca40798c8638, type: 3}
   - {fileID: 1622639691569838978, guid: 9f7db1c53aa785d40b258c810d2a521c, type: 3}
   - {fileID: 1622788121487781810, guid: 48d84f01a991df94fa3dd76a401d9b50, type: 3}
+  - {fileID: 1622639691569838978, guid: 5caf19bb3eb5fd745bcfdb3ecfc80867, type: 3}
   bosses: []
   gracz: {fileID: 1668147794}
   kamera: {fileID: 100963646}
@@ -709,3 +710,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd60707a40f1839478b2bedcc47a7404, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapX: 0
+  mapY: 0

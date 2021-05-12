@@ -10,7 +10,7 @@ public class RaycastRifle : Raycast
         LineRenderer lineRenderer = Shooting.instance.raycastPrefabs.Find(x => x.tag.Contains("|RayRiffle|"));
         RaycastHit2D hitInfo = Physics2D.Raycast(whoAttacks.firePoint.position, whoAttacks.firePoint.right);
         var obj = Object.Instantiate(lineRenderer);
-        if (hitInfo && (hitInfo.distance < whoAttacks.Range * 1.3f))
+        if (hitInfo && (hitInfo.distance < whoAttacks.Range * rangeModifier))
         {
             FightingCharacter character = hitInfo.transform.GetComponent<FightingCharacter>();
             if (character != null)
