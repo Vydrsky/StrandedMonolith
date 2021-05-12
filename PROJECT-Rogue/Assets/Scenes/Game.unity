@@ -189,7 +189,9 @@ MonoBehaviour:
   - {fileID: 6847359738231118968, guid: 743d9c4370b06054ab7cca40798c8638, type: 3}
   - {fileID: 1622639691569838978, guid: 9f7db1c53aa785d40b258c810d2a521c, type: 3}
   - {fileID: 1622788121487781810, guid: 48d84f01a991df94fa3dd76a401d9b50, type: 3}
-  bosses: []
+  bosses:
+  - {fileID: 5954488639560277365, guid: 65c53b3f45476b4439d21ec17de8a44c, type: 3}
+  - {fileID: 3507134811174455622, guid: 6ea77f3e3fb355646bb756c6818edf6e, type: 3}
   gracz: {fileID: 1668147794}
   kamera: {fileID: 100963646}
 --- !u!1 &100963646

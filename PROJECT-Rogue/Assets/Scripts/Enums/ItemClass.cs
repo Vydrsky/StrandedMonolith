@@ -6,5 +6,6 @@ public enum ItemClass
 {
     Instant,
     Passive,
-    Active
+    Active,
+    Weapon
 }
