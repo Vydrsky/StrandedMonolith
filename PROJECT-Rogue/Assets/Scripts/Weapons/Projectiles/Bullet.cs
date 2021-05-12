@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Bullet : MonoBehaviour
 {
@@ -9,17 +10,14 @@ public class Bullet : MonoBehaviour
     Vector2 velocity;
     string attackerTag;
     private AudioSource sound;
-    public AudioClip Audio;
+    public AudioMixer mixer;
 
     private void Start()
     {
-        
         sound = GetComponent<AudioSource>();
-        Audio = sound.clip;
-        float rand = Random.Range(0.8f, 1.2f);
-        sound.pitch = rand;
-
-        AudioSource.PlayClipAtPoint(Audio, transform.position);
+        //float rand = Random.Range(0.75f, 1.25f);
+        //sound.pitch = rand;
+        AudioSource.PlayClipAtPoint(sound.clip, transform.position,sound.volume);
     }
     private void Update()
     {

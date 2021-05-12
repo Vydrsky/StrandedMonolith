@@ -8,7 +8,7 @@ public class Spyglass : PassiveItem
     {
         this.itemName = "Spyglass";
         this.itemDescription = "Be careful where you look";
-        this.rangeModification = 0.2f;
+        this.rangeModification = 3f;
     }
 
 

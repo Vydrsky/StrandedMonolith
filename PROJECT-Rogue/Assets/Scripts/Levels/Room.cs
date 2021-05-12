@@ -16,6 +16,7 @@ public class Room
     private List<GameObject> enemyPool;
     private List<List<int>> enemySpawns;
     private List<List<int>> itemSpawns;
+    private List<GameObject> itemPool;
     private List<List<int>> geoSpawns;
     private bool _active = false;
     private bool _disarmed = false;
@@ -37,6 +38,7 @@ public class Room
         enemies = new List<GameObject>();
         enemySpawns = new List<List<int>>();
         enemyPool = new List<GameObject>();
+        itemPool = new List<GameObject>();
         itemSpawns = new List<List<int>>();
         geoSpawns = new List<List<int>>();
         int spawnIndx = 0;
@@ -119,6 +121,7 @@ public class Room
                         itemSpawns.Add(new List<int>());
                         itemSpawns[itemIndx].Add(x1);
                         itemSpawns[itemIndx].Add(y1);
+                        itemPool.Add(Level.GetItem(ItemClass.Instant));
                         itemIndx++;
                         break;
                     case 'W':
@@ -149,6 +152,25 @@ public class Room
                         break;
                     case '!':
                         allObjects.Add(Object.Instantiate(myPrefab[5], new Vector2(x1, y1), Quaternion.identity));
+                        break;
+                    case 'A':
+                        itemSpawns.Add(new List<int>());
+                        itemSpawns[itemIndx].Add(x1);
+                        itemSpawns[itemIndx].Add(y1);
+                        int rng = Random.Range(0, 3);
+                        switch (rng)
+                        {
+                            case 0:
+                                itemPool.Add(Level.GetItem(ItemClass.Active));
+                                break;
+                            case 1:
+                                itemPool.Add(Level.GetItem(ItemClass.Passive));
+                                break;
+                            case 2: 
+                                itemPool.Add(Level.GetItem(ItemClass.Weapon));
+                                break;
+                        }
+                        itemIndx++;
                         break;
                     default:
                         break;
@@ -206,7 +228,7 @@ public class Room
             }
             for (int i = 0; i < itemSpawns.Count; i++)
             {
-                allObjects.Add(Object.Instantiate(Level.GetItem(ItemClass.Instant), new Vector2(itemSpawns[i][0], itemSpawns[i][1]), Quaternion.identity));
+                allObjects.Add(Object.Instantiate(itemPool[i], new Vector2(itemSpawns[i][0], itemSpawns[i][1]), Quaternion.identity));
             }
             for (int i = 0; i < geoSpawns.Count; i++)
             {

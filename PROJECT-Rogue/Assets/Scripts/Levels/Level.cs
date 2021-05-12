@@ -18,6 +18,8 @@ public class Level : MonoBehaviour
     private static List<GameObject> staticInstantItems;
     [SerializeField] private List<GameObject> passiveItems;
     private static List<GameObject> staticPassiveItems;
+    [SerializeField] private List<GameObject> weaponItems;
+    private static List<GameObject> staticWeaponItems;
     [SerializeField] private List<GameObject> activeItems;
     private static List<GameObject> staticActivetems;
     [SerializeField] private List<GameObject> enemies;
@@ -131,6 +133,7 @@ public class Level : MonoBehaviour
         staticBosses = bosses;
         staticPassiveItems = passiveItems;
         staticActivetems = activeItems;
+        staticWeaponItems = weaponItems;
         staticMyPrefab = myPrefab;
         staticGracz = gracz;
         rooms = new Dictionary<string, Room>();
@@ -148,7 +151,7 @@ public class Level : MonoBehaviour
 
     public static void FillLevel()
     {
-        layout = GenerateLevel(20, 30, 1).Split('\n');
+        layout = GenerateLevel(7, 7, 1).Split('\n');
         unclearedRooms = new List<Room>();
         RemoveRooms();
         PickBossRoom(layout);
@@ -174,20 +177,26 @@ public class Level : MonoBehaviour
                     }
                     else
                     {
-                        int rnd = Random.Range(0, regularRooms.Count);
-                        rooms.Add("" + i + j,
-                            new Room(staticMyPrefab, j, i, regularRooms[rnd]));
-                        unclearedRooms.Add(rooms["" + i + j]);
                         if (!start)
                         {
+                            rooms.Add("" + i + j,
+                                new Room(staticMyPrefab, j, i, "Assets/Scripts/Levels/TEMPLATE.txt"));
                             rooms["" + i + j].DeActivate();
-                            unclearedRooms.Remove(rooms["" + i + j]);
+                            //unclearedRooms.Remove(rooms["" + i + j]);
                             staticGracz.transform.position = new Vector2(7 + (j * (36)), -7 + (i * (-15)));
-                            instancjaKamery.transform.position = new Vector3(16 + (j * (36)), -7 + (i * (-15)), -10);
+                            instancjaKamery.transform.position = new Vector3(17.5f + (j * (36)), -7 + (i * (-15)), -10);
                             _currentX = j;
                             _currentY = i;
                         }
-                        
+                        else
+                        {
+                            Debug.Log("Henlo");
+                            int rnd = Random.Range(0, regularRooms.Count);
+                            rooms.Add("" + i + j,
+                                new Room(staticMyPrefab, j, i, regularRooms[rnd]));
+                            
+                            unclearedRooms.Add(rooms["" + i + j]);
+                        }
                         
                         start = true;
                     }
@@ -250,10 +259,13 @@ public class Level : MonoBehaviour
                 return staticInstantItems[rnd];
             case ItemClass.Passive:
                 rnd=Random.Range(0, staticPassiveItems.Count);
-                return staticInstantItems[rnd];
+                return staticPassiveItems[rnd];
             case ItemClass.Active:
                 rnd = Random.Range(0, staticActivetems.Count);
                 return staticActivetems[rnd];
+            case ItemClass.Weapon:
+                rnd = Random.Range(0, staticWeaponItems.Count);
+                return staticWeaponItems[rnd];
             default:
                 return null;
         }
@@ -341,6 +353,11 @@ public class Level : MonoBehaviour
                     layout[i] = ReplaceAtIndex(layout[i],j,'S');
                 }
             }
+        }
+
+        if (layout[cordX][cordY] == 'S')
+        {
+            layout[cordX] = ReplaceAtIndex(layout[cordX],cordY,'X');
         }
 
        // Debug.Log("TUTAJ COUNTS "+countS);
