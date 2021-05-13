@@ -70,11 +70,23 @@ public class RushingEnemy : Enemy
         Damage = 2;
         _rigidbody = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectsWithTag("Player")[0];
+        timeToWait = Time.time + 1f;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
     {
-        distance = player.transform.position - this.transform.position;
-        move();
+        if (Wait())
+        {
+            distance = player.transform.position - this.transform.position;
+            move();
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag.Contains("Bullet"))
+        {
+            AudioSource.PlayClipAtPoint(_audioSource.clip, this.transform.position, _audioSource.volume);
+        }
     }
 }

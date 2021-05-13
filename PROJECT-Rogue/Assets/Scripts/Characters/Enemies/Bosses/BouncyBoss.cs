@@ -22,6 +22,8 @@ public class BouncyBoss : BouncingEnemy
         _rigidbody = GetComponent<Rigidbody2D>();
         transform.rotation = Quaternion.Euler(0f, 0f, 45f);
         direction = new Vector2(1f, 0);
+        timeToWait = Time.time + 1f;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public override void TakeDamage(int damage)
@@ -42,14 +44,14 @@ public class BouncyBoss : BouncingEnemy
             Destroy(this);
         }
     }
-    void Update()
-    {
-        velocity = _rigidbody.velocity;
-    }
 
     void FixedUpdate()
     {
-        move();
+        if (Wait())
+        {
+            velocity = _rigidbody.velocity;
+            move();
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -72,6 +74,14 @@ public class BouncyBoss : BouncingEnemy
                 minions[i] = Instantiate(minion,
                     new Vector2(this.transform.localPosition.x, this.transform.localPosition.y), Quaternion.identity);
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag.Contains("Bullet"))
+        {
+            AudioSource.PlayClipAtPoint(_audioSource.clip, this.transform.position, _audioSource.volume);
         }
     }
 }

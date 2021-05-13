@@ -38,6 +38,7 @@ public class BouncyBossMinion : RunningEnemy
         Damage = 2;
         _rigidbody = GetComponent<Rigidbody2D>();
         boss = GameObject.FindGameObjectsWithTag("|Enemy|Boss|")[0];
+        _audioSource = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -46,5 +47,11 @@ public class BouncyBossMinion : RunningEnemy
         if(CheckDistance())
             move();
     }
-    
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag.Contains("Bullet"))
+        {
+            AudioSource.PlayClipAtPoint(_audioSource.clip, this.transform.position, _audioSource.volume);
+        }
+    }
 }

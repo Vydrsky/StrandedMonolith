@@ -35,6 +35,9 @@ public class Player : FightingCharacter
     private Quest journal;
 
 
+    private AudioSource _audioSource;
+    [SerializeField] AudioClip[] clipArray;
+
     public override void TakeDamage(int damage)
     {
         if ( Time.time >= this.InvincibilityStart + this.InvincibilityDuration)
@@ -134,6 +137,8 @@ public class Player : FightingCharacter
         playerMovement = new PlayerMovement(this);
         WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.RaycastRifleA);
         WeaponItem.weapon.SetAttacker(this);
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _audioSource = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -164,6 +169,11 @@ public class Player : FightingCharacter
 
         if (Input.anyKey)
         {
+            _audioSource.clip = clipArray[Random.Range(0, clipArray.Length)];
+            if (!_audioSource.isPlaying && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
+            {
+                _audioSource.PlayOneShot(_audioSource.clip);
+            }
             playerMovement.move(this);
         }
         playerMovement.rotate(this);

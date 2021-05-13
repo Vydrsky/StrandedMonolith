@@ -31,15 +31,29 @@ public class TurretEnemy : Enemy
         // ustawianie broni
         weapon = weaponFactory.CreateWeapon(WeaponsEnum.EnemyProjectileRifle);
         weapon.SetAttacker(this);
+        timeToWait = Time.time + 1f;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        distance = player.transform.position - this.transform.position;
-        if(distance.magnitude<10)
-            weapon.CheckAttack();
-        move();
-        rotate();
+        if (Wait())
+        {
+            distance = player.transform.position - this.transform.position;
+            if(distance.magnitude<10)
+                weapon.CheckAttack();
+            move();
+            rotate();
+
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag.Contains("Bullet"))
+        {
+            AudioSource.PlayClipAtPoint(_audioSource.clip, this.transform.position, _audioSource.volume);
+        }
     }
 }

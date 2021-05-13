@@ -8,7 +8,7 @@ public class PlayerMovement : IKeyboard,IMovement
     public Rigidbody2D _rigidbody;
     private RotationDirectionEnum RotDir;
     private bool playerRotated = false;
-
+    
     public PlayerMovement(Player player)
     {
         RotDir = RotationDirectionEnum.RightDirection;

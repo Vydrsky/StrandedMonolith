@@ -17,24 +17,36 @@ public class RunningBoss : RunningEnemy
         originalMS = moveSpeed;
         _rigidbody = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectsWithTag("Player")[0];
+        timeToWait = Time.time + 1f;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
     {
-        distance = player.transform.position - transform.position;
-        if (distance.sqrMagnitude > 50)
+        if (Wait())
         {
-            moveSpeed = originalMS;
-            rotate();
-            move();
-        }
-        else
-        {
-            if (distance.sqrMagnitude > 20)
+            distance = player.transform.position - transform.position;
+            if (distance.sqrMagnitude > 50)
             {
+                moveSpeed = originalMS;
                 rotate();
+                move();
             }
-            Charge();
+            else
+            {
+                if (distance.sqrMagnitude > 20)
+                {
+                    rotate();
+                }
+                Charge();
+            }
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag.Contains("Bullet"))
+        {
+            AudioSource.PlayClipAtPoint(_audioSource.clip, this.transform.position, _audioSource.volume);
         }
     }
 }
