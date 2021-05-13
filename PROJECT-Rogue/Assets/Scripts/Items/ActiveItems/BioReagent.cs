@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stimpak : ActiveItem
+public class BioReagent : ActiveItem
 {
-    
     public override void Effect(Player player)  //jesli mozna uzyc przedmiotu, uzyj przedmiotu
     {
-        
-        if (EffectCanBeUsed())
+
+        if (EffectCanBeUsed() && player.HealthPoints <= player.MaxHealth/2)
         {
             isActive = true;
-            player.MoveSpeed *= moveSpeedModification;
+            player.HealthPoints += maxHPIncrease;
+            player.healthBar.SetText(player.HealthPoints, player.MaxHealth);
+            player.healthBar.SetHealth(player.HealthPoints);
             currentItemCooldown = maxItemCooldown;
             timeWhenUsed = Time.time;
         }
@@ -20,14 +21,15 @@ public class Stimpak : ActiveItem
     public override void RemoveEffect(Player player)    //cofnij efekt na graczu
     {
         isActive = false;
-        player.MoveSpeed *= 1.0f/moveSpeedModification;
+        
     }
 
     private void Start()
     {
-        itemName = "Stimpak";
-        itemDescription = "Works like coffee but better";
+        itemName = "Bio Reagent";
+        itemDescription = "Closes severe wounds";
         maxItemCooldown = currentItemCooldown;
-        moveSpeedModification = 2.0f;
+        maxHPIncrease = 50;
+        
     }
 }
