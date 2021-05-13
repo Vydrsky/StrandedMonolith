@@ -21,6 +21,16 @@ public class BouncyBossMinion : RunningEnemy
         }
         return false;
     }
+    
+    public override void TakeDamage(int damage)
+    {
+        healthPoints -= damage;
+        if (healthPoints <= 0)
+        {
+            Destroy(gameObject);
+            Destroy(this);
+        }
+    }
 
     void Start()
     {

@@ -6,17 +6,20 @@ public class EnemyAI : MonoBehaviour
 {
     int currentX, currentY;
     int[,] map;
+    int mapX, mapY;
     Vector2 debug;
     
     private void Start()
     {
-        InvokeRepeating("ShowDebug", 0, 3f);
+        mapX = PlayerPosition.instance.mapX;
+        mapY = PlayerPosition.instance.mapY;
+        //InvokeRepeating("ShowDebug", 0, 3f);
     }
 
     private void CheckPosition()
     {
-        currentX = Mathf.RoundToInt(transform.position.x);
-        currentY = Mathf.RoundToInt(transform.position.y);   
+        currentX = Mathf.RoundToInt(transform.position.x) - mapX;
+        currentY = Mathf.RoundToInt(transform.position.y) - mapY;   
     }
 
     public Vector2 CheckDirection()

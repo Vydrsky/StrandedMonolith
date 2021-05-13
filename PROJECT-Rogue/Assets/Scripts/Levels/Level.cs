@@ -151,7 +151,7 @@ public class Level : MonoBehaviour
 
     public static void FillLevel()
     {
-        layout = GenerateLevel(7, 7, 1).Split('\n');
+        layout = GenerateLevel(8, 6, 1).Split('\n');
         unclearedRooms = new List<Room>();
         RemoveRooms();
         PickBossRoom(layout);
@@ -190,7 +190,7 @@ public class Level : MonoBehaviour
                         }
                         else
                         {
-                            Debug.Log("Henlo");
+                            //Debug.Log("Henlo");
                             int rnd = Random.Range(0, regularRooms.Count);
                             rooms.Add("" + i + j,
                                 new Room(staticMyPrefab, j, i, regularRooms[rnd]));
@@ -205,11 +205,6 @@ public class Level : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    public static void UpdateQuest()
-    {
-        
-    }
 
     public static void MoveCamera(float x, float y)
     {

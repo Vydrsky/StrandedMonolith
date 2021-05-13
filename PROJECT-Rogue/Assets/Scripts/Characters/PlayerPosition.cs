@@ -5,64 +5,64 @@ using UnityEngine;
 public class PlayerPosition : MonoBehaviour
 {
     public static PlayerPosition instance;
+    public int[,] mapInt;
+    public int mapX, mapY;
     
     int playerNumber = 200;
     int[,] mapTemplate;
-    public int[,] mapInt;
-    string[,] map;
+    string[] map;
+
     private void Start()
     {
         instance = this;
-        map = new string[36, 15];
-        mapTemplate = new int[map.GetLength(0), map.GetLength(1)];
-        mapInt = new int[map.GetLength(0), map.GetLength(1)];
-
-        FillStringMap();
-        ShowArray();
+        map = new string[16];
+        mapTemplate = new int[36, 15];
+        mapInt = new int[36, 15];
+        for (int i = 0; i < 16; i++)
+        {
+            map[i] = "                                    ";
+        }
+        //FillStringMap();
         ConvertMapToInt();
-        ShowArrayInt();
-        InvokeRepeating("UpdateMapArray", 0.0f, 0.5f);
-        InvokeRepeating("DebugLocation", 0.0f, 0.5f);
+        //ShowArrayInt();
+        //InvokeRepeating("UpdateMapArray", 0.0f, 0.5f);
+        //InvokeRepeating("DebugLocation", 0.0f, 0.5f);
     }
 
-    private void FillStringMap()
+    public void UpdateMapInfo(string[] map, int mapX, int mapY)
     {
-        for (int j = 0; j < map.GetLength(1); j++)
-        {
-            for (int i = 0; i < map.GetLength(0); i++)
-            {
-                if (j == 0 || j == map.GetLength(1) - 1)
-                {
-                    map[i, j] = "X";
-                }
-                else if (i == 0 || i == map.GetLength(0) - 1)
-                {
-                    map[i, j] = "X";
-                }
-                else
-                    map[i, j] = " ";
-            }
-        }
-        map[3, 2] = "X";
-        map[2, 3] = "X";
-        map[2, 2] = "X";
+        map.CopyTo(this.map, 0);
+        this.mapX = mapX;
+        this.mapY = mapY;
+        ConvertMapToInt();
+        
     }
 
-    private void ShowArray()
-    {
-        for (int j = 0; j < map.GetLength(1); j++)
-        {
-            string mapLine = "";
-            for (int i = 0; i < map.GetLength(0); i++)
-            {
-                mapLine += string.Format("{0, -4}", map[i, j]);
-            }
-            Debug.Log(mapLine);
-        }
-    }
+    //private void FillStringMap()
+    //{
+    //    for (int j = 0; j < map.GetLength(1); j++)
+    //    {
+    //        for (int i = 0; i < map.GetLength(0); i++)
+    //        {
+    //            if (j == 0 || j == map.GetLength(1) - 1)
+    //            {
+    //                map[i, j] = "X";
+    //            }
+    //            else if (i == 0 || i == map.GetLength(0) - 1)
+    //            {
+    //                map[i, j] = "X";
+    //            }
+    //            else
+    //                map[i, j] = " ";
+    //        }
+    //    }
+    //    map[3, 2] = "X";
+    //    map[2, 3] = "X";
+    //    map[2, 2] = "X";
+    //}
 
     private void FillWithNumbers()
-    {
+    {     
         int currentPlayerNumber = playerNumber;
         bool anyEmpty = true;
         while(anyEmpty)
@@ -113,33 +113,17 @@ public class PlayerPosition : MonoBehaviour
         }
     }
 
-    private void ShowArrayInt()
-    {
-            string mapLine = "";
-        for (int j = mapInt.GetLength(1) - 1; j >= 0 ; j--)
-        {
-            for (int i = 0; i < mapInt.GetLength(0); i++)
-            {
-                mapLine += string.Format("{0, 5}", mapInt[i, j].ToString());
-                if (mapInt[i, j] == 0)
-                    mapLine += "  ";
-            }
-            mapLine += System.Environment.NewLine;
-        }
-            Debug.Log(mapLine);
-    }
-
-
     private void ConvertMapToInt()
     {
-        for (int j = 0; j < map.GetLength(1); j++)
+        for (int j = 0; j < 15; j++)
         {
-            for (int i = 0; i < map.GetLength(0); i++)
+            for (int i = 0; i < 36; i++)
             {
-                switch(map[i, j])
+                switch(map[j][i])
                 {
-                    case "X":
-                    case "E":
+                    case 'X':
+                    case 'E':
+                    case 'R':
                         mapTemplate[i, j] = 0;
                         break;
                     default:
@@ -153,31 +137,66 @@ public class PlayerPosition : MonoBehaviour
     void UpdateMapArray()
     {
         ClearMap();
+        //ShowArrayInt();
         int playerX, playerY;
-        playerX = Mathf.RoundToInt(transform.position.x);
-        playerY = Mathf.RoundToInt(transform.position.y);
+        playerX = Mathf.RoundToInt(transform.position.x) - mapX;
+        playerY = Mathf.RoundToInt(transform.position.y) - mapY;
+        //Debug.Log(playerX + " " + playerY);
         mapInt[playerX, playerY] = playerNumber;
         FillWithNumbers();
         //ShowArrayInt();
+        Debug.Log("dupa");
     }
-    
+
     void ClearMap()
     {
         for (int j = 0; j < mapTemplate.GetLength(1); j++)
         {   
             for (int i = 0; i < mapTemplate.GetLength(0); i++)
             {
-                mapInt[i, j] = mapTemplate[i, j]; 
+                mapInt[i, mapTemplate.GetLength(1) - 1 - j] = mapTemplate[i, j]; 
             }
         }
+    }
+
+    private void ShowArrayInt()
+    {
+        string mapLine = "";
+        for (int j = mapInt.GetLength(1) - 1; j >= 0 ; j--)
+        {
+            for (int i = 0; i < mapInt.GetLength(0); i++)
+            {
+                mapLine += string.Format("{0, 5}", mapInt[i, j].ToString());
+                //if (mapInt[i, j] == 0)
+                    //mapLine += "  ";
+            }
+            mapLine += System.Environment.NewLine;
+        }
+            Debug.Log(mapLine);
+    }
+
+    private void ShowArrayString()
+    {
+        string mapLine = "";
+
+        for (int j = 0; j < 15; j++)
+        {
+            for (int i = 0; i < 36; i++)
+            {
+                char temp = map[j][i];
+                mapLine += temp;
+            }
+            mapLine += System.Environment.NewLine;
+        }
+        Debug.Log(mapLine);
     }
 
     void DebugLocation()
     {
         Debug.Log("Player position(x: " + transform.position.x + " y: " + transform.position.y + ")");
-        for (int j = 0; j < map.GetLength(1); j++)
+        for (int j = 0; j < mapInt.GetLength(1); j++)
         {
-            for (int i = 0; i < map.GetLength(0); i++)
+            for (int i = 0; i < mapInt.GetLength(0); i++)
             {
                 if (mapInt[i, j] == 200)
                     Debug.Log("Player position in array: x - " + i + " y -  " + j);

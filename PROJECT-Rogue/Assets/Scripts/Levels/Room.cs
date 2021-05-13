@@ -22,6 +22,11 @@ public class Room
     private bool _disarmed = false;
     public string roomType;
     private bool Promotion = false;
+
+    // zmienne do pathfindingu
+    int roomX, roomY;
+    //
+
     public Room(List<GameObject> myPrefab,int x, int y, string filePath, bool isSafe=false)
     {
         string sr = File.ReadAllText(filePath);
@@ -41,6 +46,13 @@ public class Room
         int geoIndx = 0;
         int k = 0;
         int y1 = y*(-15);
+
+        //pathfinding
+        roomX = x * 36;
+        roomY = y1 - 14;
+        //Debug.Log(roomX + " " + roomY);
+        //
+
 
         while (k < map.GetLength(0))
         {
@@ -76,7 +88,7 @@ public class Room
                             }
                         }
 
-                        if (x < Level.layout[y].Length - 1 && i == map[k].Length - 2)
+                        if (x < Level.layout[y].Length - 1 && i == map[k].Length - 1)
                         {
                             if (Level.layout[y][x + 1] != '0')
                             {
@@ -187,6 +199,7 @@ public class Room
                 doors[i].GetComponent<SpriteRenderer>().color = Color.red;
             }
 
+            
             for (int i = 0; i < enemySpawns.Count; i++)
             {
                     enemies.Add(Object.Instantiate(enemyPool[i], new Vector2(enemySpawns[i][0], enemySpawns[i][1]),
@@ -198,8 +211,11 @@ public class Room
                     }
             }
         }
-
-
+        //pathfinding
+        PlayerPosition.instance.UpdateMapInfo(map, roomX, roomY);
+        PlayerPosition.instance.InvokeRepeating("UpdateMapArray", 0.0f, 0.5f);
+        //Debug.Log("zmiana pokoju");
+        //
     }
 
     public void DeActivate()
@@ -222,6 +238,9 @@ public class Room
             }
         }
         _disarmed = true;
+
+        if(PlayerPosition.instance != null)
+            PlayerPosition.instance.CancelInvoke();
     }
 
     public void CheckEnemyTable()

@@ -16,7 +16,7 @@ public abstract class Enemy : FightingCharacter
         {
             isTarget = value;
             this.GetComponent<SpriteRenderer>().color=Color.blue;
-            this.GetComponent<Transform>().localScale = new Vector2(1.5f, 1.5f);
+            this.GetComponent<Transform>().localScale = new Vector2(this.transform.localScale.x*1.5f, this.transform.localScale.y*1.5f);
         }
     }
 
@@ -37,6 +37,7 @@ public abstract class Enemy : FightingCharacter
             if (IsTarget)
             {
                 Level.staticGracz.GetComponent<Player>().JournalUpdate();
+                IsTarget = false;
             }
             Destroy(gameObject);
             Destroy(this);

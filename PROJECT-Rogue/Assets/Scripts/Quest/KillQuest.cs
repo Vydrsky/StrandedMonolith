@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class KillQuest : Quest
 {
-    // Update is called once per frame
+    private int killCount = 0;
+    private bool finished = false;
     public KillQuest()
     {
         Room championRoom = Level.PickChampionRoom();
         championRoom.PromoteEnemy();
-        Debug.Log("Zabij elitarnego wroga 0/1");
     }
     
-    public void Update()
+    public bool Update()
     {
+        killCount++;
+        if (killCount >= 1)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public string JournalEntry()
+    {
+        return "Zabij elitarnego wroga "+killCount+"/1";
     }
 }

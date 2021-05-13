@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Player : FightingCharacter
 {
+    public static Player instance;
+    
     private bool collisionOccured = false;
 
     private PlayerMovement playerMovement; //podklasa do chodzenia
@@ -114,6 +116,8 @@ public class Player : FightingCharacter
 
     private void Start()
     {
+
+        instance = this;
         weaponFactory = new SimpleWeaponFactory();
         
         characterName = "Hero";
@@ -167,7 +171,12 @@ public class Player : FightingCharacter
 
     public void JournalUpdate()
     {
-        journal.Update();
+        if (journal.Update())
+        {
+            activeQuest.SetColor(Color.green);
+        }
+
+        activeQuest.SetText(journal.JournalEntry());
     }
     
     void OnTriggerEnter2D(Collider2D collider)
@@ -203,11 +212,15 @@ public class Player : FightingCharacter
                     break;
                 case "Trapdoor":
                     Level.FillLevel();
+                    activeQuest.SetText("");
+                    activeQuest.SetColor(Color.white);
+                    journal = null;
                     break;
                 case "NPC":
                     if (Level.PickChampionRoom() != null && journal==null)
                     {
                         journal = new KillQuest();
+                        activeQuest.SetText(journal.JournalEntry());
                     }
 
                     break;
