@@ -145,7 +145,6 @@ public class PlayerPosition : MonoBehaviour
         mapInt[playerX, playerY] = playerNumber;
         FillWithNumbers();
         //ShowArrayInt();
-        Debug.Log("dupa");
     }
 
     void ClearMap()

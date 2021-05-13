@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TurretEnemy : Enemy
 {
+    public AudioSource sound;
     SimpleWeaponFactory weaponFactory;   
     private Weapon weapon;
     private Vector2 distance;
@@ -31,6 +32,7 @@ public class TurretEnemy : Enemy
         // ustawianie broni
         weapon = weaponFactory.CreateWeapon(WeaponsEnum.EnemyProjectileRifle);
         weapon.SetAttacker(this);
+        weapon.SetWeaponSound(sound);
     }
 
     // Update is called once per frame

@@ -6,10 +6,12 @@ public class BouncingEnemy : Enemy
 {
     protected Vector2 velocity;
     protected Vector2 direction;
+
     public override void move()
     {
         if(velocity.magnitude<10)
-            _rigidbody.AddRelativeForce(Vector2.right*moveSpeed);
+               //_rigidbody.AddRelativeForce(direction*moveSpeed * 3);
+            _rigidbody.AddRelativeForce(Vector2.right * moveSpeed);
     }
 
     public override void rotate()
@@ -26,6 +28,9 @@ public class BouncingEnemy : Enemy
         _rigidbody = GetComponent<Rigidbody2D>();
         transform.rotation = Quaternion.Euler(0f, 0f, 45f);
         direction = new Vector2(1f, 0);
+
+        //direction = new Vector2(1f, 1f);
+
     }
 
     private void Update()
@@ -47,6 +52,14 @@ public class BouncingEnemy : Enemy
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             _rigidbody.velocity = direction * Mathf.Max(speed, 0f);
+
+
+            //float speed = velocity.magnitude;
+            //direction = Vector2.Reflect(direction.normalized, collision.GetContact(0).normal);
+            ////float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            ////transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            //_rigidbody.velocity = direction * Mathf.Max(speed, 0f);
+
         }
     }
 }

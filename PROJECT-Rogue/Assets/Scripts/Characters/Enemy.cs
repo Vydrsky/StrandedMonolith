@@ -20,7 +20,7 @@ public abstract class Enemy : FightingCharacter
         }
     }
 
-    Weapon weapon; // Do wywalenie, tylko na czas testowania
+    Weapon weapon; // Do wywalenie, tylko na czas testowania xD
 
     protected float delay;
 

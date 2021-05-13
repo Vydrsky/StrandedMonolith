@@ -117,7 +117,6 @@ public class Player : FightingCharacter
 
     private void Start()
     {
-
         instance = this;
         weaponFactory = new SimpleWeaponFactory();
         
@@ -129,11 +128,17 @@ public class Player : FightingCharacter
         healthBar.SetHealth(HealthPoints);
         range = 10;
         attackSpeed = 1;
-        Debug.Log(attackSpeed);
+        //Debug.Log(attackSpeed);
         healthBar.SetText(HealthPoints, MaxHealth);
         playerMovement = new PlayerMovement(this);
-        WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.RaycastRifleA);
+        WeaponItem = Instantiate(WeaponItem);
+        WeaponItem.gameObject.SetActive(false);
+        WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileRifleA);
         WeaponItem.weapon.SetAttacker(this);
+
+        //sound
+        weaponItem.weapon.SetWeaponSound(weaponItem.sound);
+        //
     }
     void Update()
     {
@@ -317,9 +322,10 @@ public class Player : FightingCharacter
             Level.FillLevel();
             
         }
+        weaponItem.weapon.SetWeaponSound(weaponItem.sound);
     }
 
-    
+
 
     private void OnCollisionStay2D(Collision2D collision)
     {
