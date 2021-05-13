@@ -25,6 +25,8 @@ public class Stimpak : ActiveItem
 
     private void Start()
     {
+        itemName = "Stimpak";
+        itemDescription = "Works like coffee but better";
         maxItemCooldown = currentItemCooldown;
         moveSpeedModification = 2.0f;
     }

@@ -25,6 +25,8 @@ public class VolatileEnemy : Enemy
         Damage = 2;
         _rigidbody = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectsWithTag("Player")[0];
+        timeToWait = Time.time + 1f;
+        _audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -36,7 +38,17 @@ public class VolatileEnemy : Enemy
 
     private void FixedUpdate()
     {
-        move();
-        rotate();
+        if (Wait())
+        {
+            move();
+            rotate();
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag.Contains("Bullet"))
+        {
+            AudioSource.PlayClipAtPoint(_audioSource.clip, this.transform.position, _audioSource.volume);
+        }
     }
 }

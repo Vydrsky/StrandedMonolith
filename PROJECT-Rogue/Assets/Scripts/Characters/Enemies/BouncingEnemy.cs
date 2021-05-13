@@ -30,18 +30,20 @@ public class BouncingEnemy : Enemy
         direction = new Vector2(1f, 0);
 
         //direction = new Vector2(1f, 1f);
+        timeToWait = Time.time + 1f;
+        _audioSource = GetComponent<AudioSource>();
 
-    }
 
-    private void Update()
-    {
-        velocity = _rigidbody.velocity;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        move();
+        if (Wait())
+        {
+            velocity = _rigidbody.velocity;
+            move();
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -60,6 +62,14 @@ public class BouncingEnemy : Enemy
             ////transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             //_rigidbody.velocity = direction * Mathf.Max(speed, 0f);
 
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag.Contains("Bullet"))
+        {
+            AudioSource.PlayClipAtPoint(_audioSource.clip, this.transform.position, _audioSource.volume);
         }
     }
 }

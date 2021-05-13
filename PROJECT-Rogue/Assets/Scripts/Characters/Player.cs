@@ -18,7 +18,7 @@ public class Player : FightingCharacter
     public float InvincibilityStart { get { return invincibilityStart; } set { invincibilityStart = value; } }
     public float InvincibilityDuration { get { return invincibilityDuration; } set { invincibilityDuration = value; } }
 
-    [SerializeField] private HealthBar healthBar;
+    [SerializeField] public HealthBar healthBar;
     [SerializeField] private PlayerJournal activeQuest;
     [SerializeField] private PlayerStats statsUI;
     [SerializeField] private ActiveUI activeUI;
@@ -34,6 +34,9 @@ public class Player : FightingCharacter
     SimpleWeaponFactory weaponFactory;
     private Quest journal;
 
+
+    private AudioSource _audioSource;
+    [SerializeField] AudioClip[] clipArray;
 
     public override void TakeDamage(int damage)
     {
@@ -135,6 +138,8 @@ public class Player : FightingCharacter
         WeaponItem.gameObject.SetActive(false);
         WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileRifleA);
         WeaponItem.weapon.SetAttacker(this);
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _audioSource = GetComponent<AudioSource>();
 
         //sound
         weaponItem.weapon.SetWeaponSound(weaponItem.sound);
@@ -169,6 +174,11 @@ public class Player : FightingCharacter
 
         if (Input.anyKey)
         {
+            _audioSource.clip = clipArray[Random.Range(0, clipArray.Length)];
+            if (!_audioSource.isPlaying && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
+            {
+                _audioSource.PlayOneShot(_audioSource.clip);
+            }
             playerMovement.move(this);
         }
         playerMovement.rotate(this);

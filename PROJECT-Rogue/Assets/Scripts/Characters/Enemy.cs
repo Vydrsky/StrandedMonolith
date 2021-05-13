@@ -4,8 +4,10 @@ using UnityEngine;
 
 public abstract class Enemy : FightingCharacter
 {
+    public float timeToWait;
     protected GameObject player;
     private bool isTarget;
+    protected AudioSource _audioSource;
     public bool IsTarget
     {
         get
@@ -44,5 +46,13 @@ public abstract class Enemy : FightingCharacter
         }
     }
 
-    
+    protected bool Wait()
+    {
+        if (Time.time > timeToWait)
+        {
+            return true;
+        }
+        return false;
+    }
+
 }
