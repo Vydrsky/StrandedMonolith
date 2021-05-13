@@ -19,6 +19,7 @@ public class Player : FightingCharacter
     public float InvincibilityDuration { get { return invincibilityDuration; } set { invincibilityDuration = value; } }
 
     [SerializeField] public HealthBar healthBar;
+    [SerializeField] private PlayerJournal activeQuest;
     [SerializeField] private PlayerStats statsUI;
     [SerializeField] private ActiveUI activeUI;
     [SerializeField] private LineRenderer lineRenderer;
