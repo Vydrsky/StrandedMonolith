@@ -17,4 +17,24 @@ public abstract class Projectile : Ranged
         bulletSize = projectileWeaponStats.BulletSize;
         bulletSpeed = projectileWeaponStats.BulletSpeed;
     }
+
+    protected Vector2 CalculateOwnersVelocity(Vector2 rawVelocity, float limitX, float limitY)
+    {
+        int signX, signY;
+        float velocityX = rawVelocity.x;
+        float velocityY = rawVelocity.y;
+
+        if (velocityX != 0)
+            signX = (int)(velocityX / Mathf.Abs(velocityX));
+        else
+            signX = 1;
+        if (velocityY != 0)
+            signY = (int)(velocityY / Mathf.Abs(velocityY));
+        else
+            signY = 1;
+        velocityX = Mathf.Min(limitX, Mathf.Abs(velocityX)) * signX;
+        velocityY = Mathf.Min(limitY, Mathf.Abs(velocityY)) * signY;
+        Debug.Log($"x vel: {velocityX} x limit: {limitX} y vel: {velocityY} y limit: {limitY}");
+        return new Vector2(velocityX, velocityY);
+    }
 }

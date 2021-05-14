@@ -18,7 +18,8 @@ public class ProjectileShotgun : Projectile
             rotationVector.z += (i + (random / 10)) / spread;  // troche losowe
             //rotationVector.z += Random.Range(-5.0f, 5.0f) / spread; // totalnie losowe
             //rotationVector.z += i / spread; // totalnie nie losowe
-            Vector2 ownerVelocity = (whoAttacks.GetComponent<Rigidbody2D>().velocity / 5);
+            Vector2 ownerVelocity = CalculateOwnersVelocity((whoAttacks.GetComponent<Rigidbody2D>().velocity / 4), 2f, 4f);
+
             var obj = Object.Instantiate(bullet, whoAttacks.firePoint.position, Quaternion.Euler(rotationVector));
             obj.transform.localScale = new Vector2(obj.transform.localScale.x * 1f, obj.transform.localScale.y * 1f);
             obj.GetComponent<Bullet>().SetParameters(whoAttacks, damage * whoAttacks.Damage, bulletSpeed + (random / 10), bulletSize, ownerVelocity, (whoAttacks.Range * rangeModifier) / 10);
