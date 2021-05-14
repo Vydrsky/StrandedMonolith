@@ -138,6 +138,7 @@ MonoBehaviour:
   damage: 1
   range: 20
   shotSpeed: 1
+  timeToWait: 0
   sound: {fileID: 59798449728939636}
 --- !u!50 &5858271028525974753
 Rigidbody2D:
@@ -223,7 +224,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4727241935121ed489ccecb2598c9332, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
