@@ -22,8 +22,6 @@ public abstract class Enemy : FightingCharacter
         }
     }
 
-    Weapon weapon; // Do wywalenie, tylko na czas testowania xD
-
     protected float delay;
 
     public abstract void move();
@@ -53,6 +51,38 @@ public abstract class Enemy : FightingCharacter
             return true;
         }
         return false;
+    }
+
+    protected LayerMask MakeMask(string[] layerName)
+    {
+        LayerMask mask = 0;
+        foreach (var item in layerName)
+        {
+            mask |= 1 << LayerMask.NameToLayer(item);
+        }
+        return ~mask;
+    }
+
+    protected bool IsPlayerInSight(LayerMask mask, int distance = 100, bool showRay = false)
+    {
+        Vector2 temp = player.transform.position - this.firePoint.transform.position;
+        float rotation = (Mathf.Atan2(temp.y, temp.x) * Mathf.Rad2Deg) - (Mathf.Atan2(this.transform.rotation.y, this.transform.rotation.x) * Mathf.Rad2Deg);
+        this.firePoint.rotation = Quaternion.Euler(0f, 0f, rotation);
+
+        RaycastHit2D hitInfo = Physics2D.Raycast(this.firePoint.position, this.firePoint.right, distance, mask);
+
+        if(showRay)
+        {
+            LineRenderer lineRenderer = Shooting.instance.raycastPrefabs.Find(x => x.tag.Contains("|RayRiffle|"));
+
+            var obj = Object.Instantiate(lineRenderer);
+            obj.SetPosition(0, this.firePoint.position);
+            obj.SetPosition(1, hitInfo.transform.position);
+            obj.enabled = true;
+        }
+
+        return hitInfo.transform.gameObject.tag == "Player";
+
     }
 
 }

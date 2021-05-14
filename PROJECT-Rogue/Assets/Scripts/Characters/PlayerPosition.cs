@@ -6,7 +6,7 @@ public class PlayerPosition : MonoBehaviour
 {
     public static PlayerPosition instance;
     public int[,] mapInt;
-    public int mapX, mapY;
+    public int mapX = 0, mapY = 0;
     
     int playerNumber = 200;
     int[,] mapTemplate;
