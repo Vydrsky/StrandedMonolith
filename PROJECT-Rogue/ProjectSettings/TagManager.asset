@@ -70,6 +70,9 @@ TagManager:
   - name: ForeGround
     uniqueID: 3423863401
     locked: 0
+  - name: Enemy
+    uniqueID: 3078806321
+    locked: 0
   - name: Flying
     uniqueID: 1271095425
     locked: 0

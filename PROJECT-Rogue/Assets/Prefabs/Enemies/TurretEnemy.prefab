@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 5858271028525974753}
   - component: {fileID: 2183375798871770053}
   - component: {fileID: 788969276097762874}
-  - component: {fileID: -1441891493365808728}
+  - component: {fileID: 59798449728939636}
   m_Layer: 11
   m_Name: TurretEnemy
   m_TagString: Enemy
@@ -138,7 +138,7 @@ MonoBehaviour:
   damage: 1
   range: 20
   shotSpeed: 1
-  timeToWait: 0
+  sound: {fileID: 59798449728939636}
 --- !u!50 &5858271028525974753
 Rigidbody2D:
   serializedVersion: 4
@@ -212,7 +212,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.984375, y: 0.984375}
   m_EdgeRadius: 0
---- !u!82 &-1441891493365808728
+--- !u!82 &59798449728939636
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -222,8 +222,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d3f4bf93e22c01f498a6aa220ec09874, type: 3}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: 4727241935121ed489ccecb2598c9332, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

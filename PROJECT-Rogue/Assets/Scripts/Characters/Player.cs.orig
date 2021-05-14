@@ -138,12 +138,15 @@ public class Player : FightingCharacter
         WeaponItem.gameObject.SetActive(false);
         WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileRifleA);
         WeaponItem.weapon.SetAttacker(this);
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _audioSource = GetComponent<AudioSource>();
+<<<<<<< HEAD
 
         //sound
         weaponItem.weapon.SetWeaponSound(weaponItem.sound);
         //
+=======
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _audioSource = GetComponent<AudioSource>();
+>>>>>>> e9b0285a2a3f8ac41a52df268203c97aafc3c1b5
     }
     void Update()
     {

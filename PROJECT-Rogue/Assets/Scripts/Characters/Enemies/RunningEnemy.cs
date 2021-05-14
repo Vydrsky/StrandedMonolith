@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RunningEnemy : Enemy
+public class RunningEnemy : PathfindingEnemy
 {
-    //GameObject EnemyAIobj;
-    //EnemyAI enemyAIscript;
-    //Vector2 difference;
     public override void move()
     {
         //transform.Translate(new Vector2(1 * moveSpeed, 0) * Time.deltaTime);
@@ -17,20 +14,9 @@ public class RunningEnemy : Enemy
     public override void rotate()
     {
         Vector2 difference = player.transform.position - this.transform.position;
+        string[] layerName = { "Raycast Ignore", "Enemy", "Flying" };
         
-        //difference = enemyAIscript.CheckDirection();
-        //float x, y;
-        //int enemyX, enemyY;
-        //x = difference.x;
-        //y = difference.y;
-        //enemyX = Mathf.RoundToInt(transform.position.x) + (int)x;
-        //enemyY = Mathf.RoundToInt(transform.position.y) + (int)y;
-        //difference = new Vector2(enemyX, enemyY) - new Vector2(transform.position.x, transform.position.y); 
-
-
-        difference = difference.normalized;
-        float rotationOnZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-        
+        float rotationOnZ = GetRotation(layerName);
         transform.rotation = Quaternion.Euler(0f, 0f, rotationOnZ);
     }
 
@@ -40,9 +26,7 @@ public class RunningEnemy : Enemy
         player = GameObject.FindGameObjectsWithTag("Player")[0];
         timeToWait = Time.time + 1f;
         _audioSource = GetComponent<AudioSource>();
-        //EnemyAIobj = transform.GetChild(0).gameObject;
-        //enemyAIscript = transform.GetChild(0).gameObject.GetComponent<EnemyAI>();
-
+        enemyAIscript = transform.GetChild(0).gameObject.GetComponent<EnemyAI>();
     }
 
     void FixedUpdate()

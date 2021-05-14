@@ -4,6 +4,11 @@ using UnityEngine;
 
 public abstract class Weapon
 {
+
+    // sound
+    AudioSource sound;
+    //
+
     protected FightingCharacter whoAttacks;
     protected string name;
     protected string description;
@@ -40,7 +45,17 @@ public abstract class Weapon
         if(Time.time > lastShot + delay)
         {
             Attack();
+            // sound
+            //weaponObject.PlaySound();
+            AudioSource.PlayClipAtPoint(sound.clip, whoAttacks.transform.position, sound.volume);
+            //
             lastShot = Time.time;
         }
+    }
+
+    // sound
+    public void SetWeaponSound(AudioSource sound)
+    {
+        this.sound = sound;
     }
 }

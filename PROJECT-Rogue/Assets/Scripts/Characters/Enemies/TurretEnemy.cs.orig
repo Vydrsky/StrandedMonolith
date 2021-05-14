@@ -32,9 +32,12 @@ public class TurretEnemy : Enemy
         // ustawianie broni
         weapon = weaponFactory.CreateWeapon(WeaponsEnum.EnemyProjectileRifle);
         weapon.SetAttacker(this);
+<<<<<<< HEAD
         weapon.SetWeaponSound(sound);
+=======
         timeToWait = Time.time + 1f;
         _audioSource = GetComponent<AudioSource>();
+>>>>>>> e9b0285a2a3f8ac41a52df268203c97aafc3c1b5
     }
 
     // Update is called once per frame
