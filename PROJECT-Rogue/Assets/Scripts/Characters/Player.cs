@@ -157,7 +157,7 @@ public class Player : FightingCharacter
         WeaponItem.weapon.SetAttacker(this);
         _rigidbody = GetComponent<Rigidbody2D>();
         _audioSource = GetComponent<AudioSource>();
-
+        Money = 10;
         //sound
         weaponItem.weapon.SetWeaponSound(weaponItem.sound);
         //
