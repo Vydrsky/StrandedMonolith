@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &26793300 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3061401561220569840, guid: 64cecd1b19d2f6e43bbaeb2831036b45, type: 3}
+  m_PrefabInstance: {fileID: 691956748}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &63462058
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,7 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea883342a099324486856a89df06ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
+  text: {fileID: 26793300}
 --- !u!114 &895026902 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1137269904653042458, guid: 64cecd1b19d2f6e43bbaeb2831036b45, type: 3}
@@ -639,7 +650,7 @@ PrefabInstance:
     - target: {fileID: 8436528144785984185, guid: 321f8dceaaac1a94ca2b87f0f541e74e, type: 3}
       propertyPath: activeQuest
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 691956751}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 321f8dceaaac1a94ca2b87f0f541e74e, type: 3}
 --- !u!114 &955584220 stripped
