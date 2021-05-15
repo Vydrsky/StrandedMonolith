@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 5493189888781259458}
   - component: {fileID: 5493189888781259459}
   - component: {fileID: 4191078050371251832}
-  m_Layer: 0
+  - component: {fileID: 3544161365036691852}
+  m_Layer: 2
   m_Name: FocusModeModule
   m_TagString: '|Item|Active|'
   m_Icon: {fileID: 0}
@@ -124,3 +125,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &3544161365036691852
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5493189888781259460}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 2
+  m_LinearDrag: 10
+  m_AngularDrag: 5
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
