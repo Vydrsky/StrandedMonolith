@@ -87,27 +87,19 @@ public class EnemyAI : MonoBehaviour
         {
             if (max2nd > 1)
             {
+                // przekatne
                 int tempX, tempY;
                 tempX = (maxX - currentX) + (maxX2nd - currentX);
                 tempY = (maxY - currentY) + (maxY2nd - currentY);
                 if (max < map[tempX + currentX, tempY + currentY])
                 {
-                    debug = new Vector2(tempX, tempY);
-                    return debug;
+                    return new Vector2(tempX, tempY);
                 }
             }
 
-            debug = new Vector2(maxX - currentX, maxY - currentY);
-            return debug;
-        }
-        debug = new Vector2(0, 0);
-        return debug;
-           
-    }
+            return new Vector2(maxX - currentX, maxY - currentY);
+        } 
+        return new Vector2(0, 0);
 
-    private void ShowDebug()
-    {
-        Debug.Log("Current position: " + currentX + " " + currentY);
-        Debug.Log("Rotation vector: " + debug.x + " " + debug.y);
     }
 }
