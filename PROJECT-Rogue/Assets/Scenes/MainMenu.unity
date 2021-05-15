@@ -279,9 +279,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8260519283364671418, guid: 4b316c7f92a6a3444b496511895156c4, type: 3}
+      propertyPath: m_Name
+      value: ControlsButton
+      objectReference: {fileID: 0}
     - target: {fileID: 8260519283935294372, guid: 4b316c7f92a6a3444b496511895156c4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8260519283946277104, guid: 4b316c7f92a6a3444b496511895156c4, type: 3}
       propertyPath: m_Pivot.x
@@ -371,25 +375,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Menu
       objectReference: {fileID: 0}
-    - target: {fileID: 8260519284374587072, guid: 4b316c7f92a6a3444b496511895156c4, type: 3}
+    - target: {fileID: 8260519284298072096, guid: 4b316c7f92a6a3444b496511895156c4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 19.0297
+      objectReference: {fileID: 0}
+    - target: {fileID: 8260519284298072096, guid: 4b316c7f92a6a3444b496511895156c4, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -58
+      value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 8260519284374587072, guid: 4b316c7f92a6a3444b496511895156c4, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 197.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8260519284374587073, guid: 4b316c7f92a6a3444b496511895156c4, type: 3}
+    - target: {fileID: 8260519284298072097, guid: 4b316c7f92a6a3444b496511895156c4, type: 3}
       propertyPath: m_text
-      value: CONTROLS
+      value: Controls
       objectReference: {fileID: 0}
-    - target: {fileID: 8260519284374587073, guid: 4b316c7f92a6a3444b496511895156c4, type: 3}
+    - target: {fileID: 8260519284298072097, guid: 4b316c7f92a6a3444b496511895156c4, type: 3}
+      propertyPath: m_margin.x
+      value: -33.830505
+      objectReference: {fileID: 0}
+    - target: {fileID: 8260519284298072097, guid: 4b316c7f92a6a3444b496511895156c4, type: 3}
       propertyPath: m_margin.z
-      value: -97.95239
+      value: -32.773376
       objectReference: {fileID: 0}
     - target: {fileID: 8260519284391262874, guid: 4b316c7f92a6a3444b496511895156c4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b316c7f92a6a3444b496511895156c4, type: 3}

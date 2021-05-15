@@ -34,6 +34,23 @@ public class Player : FightingCharacter
     SimpleWeaponFactory weaponFactory;
     private Quest journal;
 
+    private int money;
+    public int Money
+    {
+        get
+        {
+            return money;
+        }
+        set
+        {
+            money = value;
+            if (money < 0)
+            {
+                money = 0;
+            }
+        }
+    }
+
 
     private AudioSource _audioSource;
     [SerializeField] AudioClip[] clipArray;
