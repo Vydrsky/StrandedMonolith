@@ -10,6 +10,7 @@ public abstract class ActiveItem : Item
     [SerializeField] protected int durationOfEffect;
     protected float timeWhenUsed;
     protected bool isActive = false;
+    public Sprite sprite;
 
     public int ItemCooldown { get { return currentItemCooldown; } set { currentItemCooldown = value; } }
     public int DurationOfEffect { get { return durationOfEffect; } set { durationOfEffect = value; } }
@@ -48,6 +49,8 @@ public abstract class ActiveItem : Item
 
     private void OnDisable()            //po podniesieniu przedmiotu aka wylaczeniu go w przestrzeni gry, zacznij odliczac cooldown co sekunde
     {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        sprite = sr.sprite;
         InvokeRepeating("ReduceCooldown", 1f, 1f);
     }
 

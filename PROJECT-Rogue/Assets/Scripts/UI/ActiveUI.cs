@@ -18,14 +18,15 @@ public class ActiveUI : MonoBehaviour
     {
         if(item != null)
         {
-            if(item.ItemCooldown == 0)
+            img.sprite = item.sprite;
+            if (item.ItemCooldown == 0)
             {
-                img.color = Color.green;
+                img.color = new Color(img.color.r, img.color.g, img.color.b, 1f);
                 text.text = "";
             }
             else
             {
-                img.color = Color.red;
+                img.color = new Color(img.color.r, img.color.g, img.color.b, 0.25f);
                 text.text = ""+item.ItemCooldown;
             }
         }

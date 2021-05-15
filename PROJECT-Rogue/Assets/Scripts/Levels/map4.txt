@@ -2,14 +2,14 @@ XXXXXXXXXXXXXXXEEXXXXXXXXXXXXXXXXXXX
 X                            W     X
 X   W                              X
 X      R   RRRRRRRRRRRRR    RRRRRRRX
-X     RR   RRR     RRRRR      W  RRX
+X  RRRRR   RRR     RRRRR      W  RRX
 XRRRRRRR   RR         RR         RRX
 X          R    I      R    R      X
 E                      R    R      E
 E                W     R    RR     E
 XRRRR    RRRR          RRRRRRR     X
-X        RRRRRR        RR W RR     X
-X      RRRRRRRRRRR     RR   RR   W X
-X                                  X
-X   W               W              X
+XRR      RRRRRR        RR W RR     X
+XR     RRRRRRRRRRR     R    RR   W X
+XRR                                X
+XR  W               W              X
 XXXXXXXXXXXXXXXEEXXXXXXXXXXXXXXXXXXX
