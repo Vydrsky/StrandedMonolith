@@ -157,7 +157,7 @@ public class Player : FightingCharacter
         WeaponItem.weapon.SetAttacker(this);
         _rigidbody = GetComponent<Rigidbody2D>();
         _audioSource = GetComponent<AudioSource>();
-
+        Money = 0;
         //sound
         weaponItem.weapon.SetWeaponSound(weaponItem.sound);
         //
@@ -207,6 +207,7 @@ public class Player : FightingCharacter
         if (journal.Update())
         {
             activeQuest.SetColor(Color.green);
+            Money += Random.Range(5, 10);
         }
 
         activeQuest.SetText(journal.JournalEntry());

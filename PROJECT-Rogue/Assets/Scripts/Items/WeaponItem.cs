@@ -7,12 +7,14 @@ public class WeaponItem : MonoBehaviour
 {
     public Weapon weapon;
     SimpleWeaponFactory weaponFactory = new SimpleWeaponFactory();
-    public WeaponsEnum weaponType; 
-
+    public WeaponsEnum weaponType;
+    public Sprite weaponSprite;
     public AudioSource sound;
 
     private void Start()
     {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        weaponSprite = sr.sprite;
         weapon = weaponFactory.CreateWeapon(weaponType);
         weapon.SetWeaponSound(sound);
     }

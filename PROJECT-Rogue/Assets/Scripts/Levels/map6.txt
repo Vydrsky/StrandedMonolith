@@ -1,7 +1,7 @@
 XXXXXXXXXXXXXXXEEXXXXXXXXXXXXXXXXXXX
 XRRRRRRRRRRRRRR  RRRRRRRRRRRRRRRRRRX
 XRRRRRRRRRRRRRR  RRRRRRRRRRRRRRRRRRX
-XRR                              RRX
+XRRRR                          RRRRX
 XRR    W                    W    RRX
 XRR           W      W           RRX
 XRR             I                RRX
@@ -9,7 +9,7 @@ E            W     W               E
 E                                  E
 XRR                              RRX
 XRR      W                  W    RRX
-XRR                              RRX
+XRRRR                          RRRRX
 XRRRRRRRRRRRRRR  RRRRRRRRRRRRRRRRRRX
 XRRRRRRRRRRRRRR  RRRRRRRRRRRRRRRRRRX
 XXXXXXXXXXXXXXXEEXXXXXXXXXXXXXXXXXXX
