@@ -5,7 +5,6 @@ using UnityEngine;
 public class KillQuest : Quest
 {
     private int killCount = 0;
-    private bool finished = false;
     public KillQuest()
     {
         Room championRoom = Level.PickChampionRoom();
