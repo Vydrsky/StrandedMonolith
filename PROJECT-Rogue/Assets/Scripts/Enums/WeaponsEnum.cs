@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum WeaponsEnum 
 {
+    ProjectileStartingWeapon,
     ProjectileRifleA,
     ProjectileRifleB,
     ProjectileShotgunA,

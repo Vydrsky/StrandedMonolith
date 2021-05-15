@@ -22,7 +22,7 @@ public class Player : FightingCharacter
     [SerializeField] private PlayerJournal activeQuest;
     [SerializeField] private PlayerStats statsUI;
     [SerializeField] private ActiveUI activeUI;
-    [SerializeField] private LineRenderer lineRenderer;
+    //[SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private ActiveItem activeItem;
     [SerializeField] private WeaponItem weaponItem;
 
@@ -153,7 +153,7 @@ public class Player : FightingCharacter
         playerMovement = new PlayerMovement(this);
         WeaponItem = Instantiate(WeaponItem);
         WeaponItem.gameObject.SetActive(false);
-        WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileRifleA);
+        WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileStartingWeapon);
         WeaponItem.weapon.SetAttacker(this);
         _rigidbody = GetComponent<Rigidbody2D>();
         _audioSource = GetComponent<AudioSource>();

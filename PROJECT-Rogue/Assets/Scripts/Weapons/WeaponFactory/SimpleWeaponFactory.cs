@@ -8,8 +8,19 @@ public class SimpleWeaponFactory
     {
         switch(weaponType)
         {
-            case WeaponsEnum.ProjectileRifleA:
+            case WeaponsEnum.ProjectileStartingWeapon:
                 ProjectileWeaponStats projWeaponStats = new ProjectileWeaponStats();
+                projWeaponStats.Name = "";
+                projWeaponStats.Description = "";
+                projWeaponStats.AttackSpeed = 3f;
+                projWeaponStats.Damage = 10;
+                projWeaponStats.RangeModifier = 0.6f;
+                projWeaponStats.BulletSize = 0.8f;
+                projWeaponStats.BulletSpeed = 18;
+                return new ProjectileRifle(projWeaponStats);
+
+            case WeaponsEnum.ProjectileRifleA:
+                projWeaponStats = new ProjectileWeaponStats();
                 projWeaponStats.Name = "";
                 projWeaponStats.Description = "";
                 projWeaponStats.AttackSpeed = 7f;
