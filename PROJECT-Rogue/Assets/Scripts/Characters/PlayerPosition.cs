@@ -111,6 +111,8 @@ public class PlayerPosition : MonoBehaviour
             }
             currentPlayerNumber--;
         }
+
+
     }
 
     private void ConvertMapToInt()

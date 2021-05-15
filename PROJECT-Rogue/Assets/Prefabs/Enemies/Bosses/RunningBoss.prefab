@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 3507134811174455622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.75, y: -0.9, z: 0}
-  m_LocalScale: {x: 3.075, y: 3.075, z: 3.075}
+  m_LocalScale: {x: 3, y: 2.9999998, z: 3}
   m_Children:
   - {fileID: 7816476440010953779}
   m_Father: {fileID: 0}
@@ -77,12 +77,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3625043607559282579, guid: 045b15ec09bba42448d89db77fa6f20a, type: 3}
-  m_Color: {r: 0.35686275, g: 0, b: 0.36862746, a: 1}
+  m_Sprite: {fileID: 21300000, guid: e8f2a21ca7a59554ab2be9c36ac9239a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 0.5}
+  m_DrawMode: 1
+  m_Size: {x: 1, y: 0.9}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -147,10 +147,10 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.5}
-    newSize: {x: 1, y: 0.5}
+    oldSize: {x: 0.16, y: 0.16}
+    newSize: {x: 1, y: 0.9}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
@@ -160,8 +160,8 @@ PolygonCollider2D:
       - {x: -0.5, y: -0.015625}
       - {x: -0.0703125, y: -0.25}
       - {x: 0.02734375, y: -0.25}
-      - {x: 0.5, y: -0.02734375}
-      - {x: 0.5, y: 0.015625}
+      - {x: 0.35081398, y: -0.007452309}
+      - {x: 0.35412914, y: -0.0009512119}
       - {x: 0.0703125, y: 0.25}
 --- !u!60 &3033295887036941988
 PolygonCollider2D:
@@ -180,10 +180,10 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.5}
-    newSize: {x: 1, y: 0.5}
+    oldSize: {x: 0.16, y: 0.16}
+    newSize: {x: 1, y: 0.9}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
@@ -193,8 +193,8 @@ PolygonCollider2D:
       - {x: -0.5, y: -0.015625}
       - {x: -0.0703125, y: -0.25}
       - {x: 0.02734375, y: -0.25}
-      - {x: 0.5, y: -0.02734375}
-      - {x: 0.5, y: 0.015625}
+      - {x: 0.3541293, y: -0.00082178786}
+      - {x: 0.350814, y: 0.0023640385}
       - {x: 0.0703125, y: 0.25}
 --- !u!82 &7915004511792775653
 AudioSource:

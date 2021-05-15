@@ -71,7 +71,7 @@ public class Level : MonoBehaviour
         levelLayout = ReplaceAtIndex(levelLayout, pivotIndex, 'X');
         for (int j = 0; j < numberOfWanderers; j++)
         {
-            Random.InitState(Random.Range(-10000, 10000));
+            Random.InitState((int) DateTime.Now.Ticks & 0x0000FFFF);
             pivotIndex = ((mapSideLength * ((mapSideLength + 1) / 2) - mapSideLength / 2) - 1) + (mapSideLength / 2);
             for (int i = 0; i < wandererIterations; i++)
             {
@@ -127,6 +127,7 @@ public class Level : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         instancjaKamery = kamera;
         staticInstantItems = instantItems;
         staticEnemies = enemies;
@@ -295,7 +296,7 @@ public class Level : MonoBehaviour
         }
     }
 
-    static string PickBossRoom(string[] layout)
+    static void PickBossRoom(string[] layout)
     {
         int cordY=0;
         int cordX=0;
@@ -414,17 +415,7 @@ public class Level : MonoBehaviour
             }
         }
 
-        if (Random.Range(0, 2) == 0)
-        {
-            cordX += 1;
-        }
-        else
-        {
-            cordY += 1;
-        }
         layout[cordX]=ReplaceAtIndex(layout[cordX], cordY, 'B');
-        //WTF did I do here? Może dać tu tablicę zawierającą połączenia z pomieszczeniami?
-        return "";
     }
 
     List<string> RemoveThatBitchAssGarbageFromMyFileListUnityYouAreTheOneThatPutThatThereInTheFirstPlace(List<string> files)

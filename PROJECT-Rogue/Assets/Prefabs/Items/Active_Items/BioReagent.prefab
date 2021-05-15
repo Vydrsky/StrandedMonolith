@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 888325534832792346}
   - component: {fileID: 888325534832792347}
   - component: {fileID: 888325534832792344}
-  m_Layer: 0
+  - component: {fileID: -6218967078399080359}
+  m_Layer: 2
   m_Name: BioReagent
   m_TagString: '|Item|Active|'
   m_Icon: {fileID: 0}
@@ -124,3 +125,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentItemCooldown: 5
   durationOfEffect: 1
+--- !u!50 &-6218967078399080359
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888325534832792345}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 2
+  m_LinearDrag: 10
+  m_AngularDrag: 5
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -271,7 +271,10 @@ public class Room
     {
         for (int i = 0; i < allObjects.Count; i++)
         {
-            Object.Destroy(allObjects[i]);
+            if (allObjects[i].activeInHierarchy)
+            {
+                Object.Destroy(allObjects[i]);
+            }
         }
 
         for (int i = 0; i < doors.Count; i++)
