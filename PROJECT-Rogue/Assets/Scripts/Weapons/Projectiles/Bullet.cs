@@ -40,7 +40,9 @@ public class Bullet : MonoBehaviour
             {
                 character.TakeDamage(damage);
             }
-            Destroy(gameObject);
+        //Destroy(gameObject);
+        gameObject.SetActive(false);
+        PlayImpactAnimation();
     }
 
     private void OnDestroy()
@@ -48,5 +50,13 @@ public class Bullet : MonoBehaviour
         GameObject obj = Instantiate(impactAnimation, gameObject.transform.position, gameObject.transform.rotation);
         obj.transform.localScale = new Vector2(this.transform.localScale.x * 3, this.transform.localScale.x * 3);
         Destroy(obj, 0.17f);
+    }
+
+    private void PlayImpactAnimation()
+    {
+        GameObject obj = Instantiate(impactAnimation, gameObject.transform.position, gameObject.transform.rotation);
+        obj.transform.localScale = new Vector2(this.transform.localScale.x * 3, this.transform.localScale.x * 3);
+        Destroy(obj, 0.17f);
+        Destroy(gameObject);
     }
 }

@@ -34,6 +34,8 @@ public class Player : FightingCharacter
     SimpleWeaponFactory weaponFactory;
     private Quest journal;
 
+    bool hasStartingWeapon = true;
+
     private int money;
     public int Money
     {
@@ -77,6 +79,11 @@ public class Player : FightingCharacter
     {
         if (Time.time >= itemPickupTime + 1f)
         {
+            if(hasStartingWeapon)
+            {
+                hasStartingWeapon = false;
+                Destroy(WeaponItem.gameObject);
+            }
             if (WeaponItem != null)
             {
                 WeaponItem temp = collider.gameObject.GetComponent<WeaponItem>();
