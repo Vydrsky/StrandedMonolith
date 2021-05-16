@@ -22,8 +22,6 @@ public class BouncingEnemy : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        range = 15;
-        Damage = 2;
         player = GameObject.FindGameObjectsWithTag("Player")[0];
         _rigidbody = GetComponent<Rigidbody2D>();
         transform.rotation = Quaternion.Euler(0f, 0f, 45f);

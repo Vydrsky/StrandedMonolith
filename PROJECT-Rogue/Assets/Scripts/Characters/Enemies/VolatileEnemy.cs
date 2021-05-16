@@ -16,13 +16,11 @@ public class VolatileEnemy : Enemy
     public override void move()
     {
         _rigidbody.AddForce(randomMovement * 1, ForceMode2D.Impulse);
-        _rigidbody.AddRelativeForce(Vector2.right * 40);
+        _rigidbody.AddRelativeForce(Vector2.right * 35);
     }
 
     void Start()
     {
-        range = 15;
-        Damage = 2;
         _rigidbody = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectsWithTag("Player")[0];
         timeToWait = Time.time + 1f;

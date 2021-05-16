@@ -151,11 +151,8 @@ public class Player : FightingCharacter
         characterName = "Hero";
         Invoke("UpdateStats", 0f);
 
-        Damage = 2;
         healthBar.SetMaxHealth(MaxHealth);
         healthBar.SetHealth(HealthPoints);
-        range = 10;
-        attackSpeed = 1;
         //Debug.Log(attackSpeed);
         healthBar.SetText(HealthPoints, MaxHealth);
         playerMovement = new PlayerMovement(this);
@@ -165,7 +162,7 @@ public class Player : FightingCharacter
         WeaponItem.weapon.SetAttacker(this);
         _rigidbody = GetComponent<Rigidbody2D>();
         _audioSource = GetComponent<AudioSource>();
-        Money = 20;
+        Money = 10;
         //sound
         weaponItem.weapon.SetWeaponSound(weaponItem.sound);
         //

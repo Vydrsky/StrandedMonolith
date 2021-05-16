@@ -25,8 +25,6 @@ public class TurretEnemy : Enemy
     void Start()
     {
         weaponFactory = new SimpleWeaponFactory();
-        range = 15;
-        Damage = 2;
         _rigidbody = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectsWithTag("Player")[0];
         // ustawianie broni
