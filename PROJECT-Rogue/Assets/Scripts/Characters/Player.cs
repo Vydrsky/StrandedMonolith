@@ -22,7 +22,7 @@ public class Player : FightingCharacter
     [SerializeField] private PlayerJournal activeQuest;
     [SerializeField] private PlayerStats statsUI;
     [SerializeField] private ActiveUI activeUI;
-    [SerializeField] private LineRenderer lineRenderer;
+    //[SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private ActiveItem activeItem;
     [SerializeField] private WeaponItem weaponItem;
 
@@ -54,6 +54,7 @@ public class Player : FightingCharacter
 
     private AudioSource _audioSource;
     [SerializeField] AudioClip[] clipArray;
+    [SerializeField] AudioClip takeDamageSound;
 
     public override void TakeDamage(int damage)
     {
@@ -153,7 +154,7 @@ public class Player : FightingCharacter
         playerMovement = new PlayerMovement(this);
         WeaponItem = Instantiate(WeaponItem);
         WeaponItem.gameObject.SetActive(false);
-        WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileRifleA);
+        WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileStartingWeapon);
         WeaponItem.weapon.SetAttacker(this);
         _rigidbody = GetComponent<Rigidbody2D>();
         _audioSource = GetComponent<AudioSource>();
@@ -302,6 +303,12 @@ public class Player : FightingCharacter
             {
                 SwapWeapon(collider);
             }
+            if (collider.tag.Contains("Bullet"))
+            {
+                Bullet bulletCollision = collider.gameObject.GetComponent<Bullet>();
+                if(bulletCollision.attackerTag != "Player")
+                    AudioSource.PlayClipAtPoint(takeDamageSound, transform.position);
+            }
         }
     }
 
@@ -369,6 +376,7 @@ public class Player : FightingCharacter
         if(collision.gameObject.tag.Contains("Enemy"))
         {
             TakeDamage(15);
+            AudioSource.PlayClipAtPoint(takeDamageSound, transform.position);
         }
     }
 

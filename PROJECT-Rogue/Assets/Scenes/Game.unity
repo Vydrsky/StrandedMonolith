@@ -180,9 +180,21 @@ MonoBehaviour:
   - {fileID: 4950710638087347114, guid: 8202012abe08cdf4fae99fbb21113eaf, type: 3}
   passiveItems:
   - {fileID: 3154118405834782459, guid: d33c31b129815b34da5f951db0eb80b4, type: 3}
+  - {fileID: 2229361963050273021, guid: d6fa5e2dc0a1e88488cbf8e3da6becb8, type: 3}
+  - {fileID: 8619447125451640682, guid: 1489112a747d08a4aad29f5c99bb3587, type: 3}
+  - {fileID: 6457581444190179412, guid: 63705e053f3b8f34bb2af10fe0510058, type: 3}
+  - {fileID: 6239608895727872802, guid: 14ff4c84331cc6f4484cf4032ee9b47c, type: 3}
+  - {fileID: 6076751739019191917, guid: 8e4261c51011e364083c3c284fb139a4, type: 3}
   weaponItems:
   - {fileID: 6750684285784114821, guid: 74ea36437ebdcd948b31bcc74556cd28, type: 3}
   - {fileID: 4575320530088364515, guid: 8d944f8158ad2db4081b70994751c38e, type: 3}
+  - {fileID: 639988597588773389, guid: e15049e1806722d4686f128a6daa75d0, type: 3}
+  - {fileID: 7396645428333330483, guid: 0f6d46bb179c72a42b95d10490a4454d, type: 3}
+  - {fileID: 7792867989077242615, guid: 96f1ce7c210a88f4ab491b1249866951, type: 3}
+  - {fileID: 3853971308694469443, guid: 18e5ad3d4646a5d43955b5dd1e7597dd, type: 3}
+  - {fileID: 4165082271899113420, guid: 20aa1403242cf884d93eb59b353465d1, type: 3}
+  - {fileID: 3427551467861678034, guid: 74aab20997dfcfc4c90496356cbd8619, type: 3}
+  - {fileID: 4221470673385661184, guid: 1cd03c9009da54f4d85aca465a636299, type: 3}
   activeItems:
   - {fileID: 7568886785927769199, guid: c37de28b8ae9dc54da6b5054df66cdf8, type: 3}
   - {fileID: 5493189888781259460, guid: 504fffc4709bb9e47b824b7f2e5a75f3, type: 3}
@@ -614,6 +626,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1332463217}
+    - target: {fileID: 8436528144785984185, guid: 321f8dceaaac1a94ca2b87f0f541e74e, type: 3}
+      propertyPath: weaponItem
+      value: 
+      objectReference: {fileID: 448616952927527265, guid: 8a8f9775ae500b54d9602af4b3ea0650, type: 3}
     - target: {fileID: 8436528144785984185, guid: 321f8dceaaac1a94ca2b87f0f541e74e, type: 3}
       propertyPath: activeQuest
       value: 

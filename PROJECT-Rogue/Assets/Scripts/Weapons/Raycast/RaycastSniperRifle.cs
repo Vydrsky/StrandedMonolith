@@ -33,7 +33,7 @@ public class RaycastSniperRifle : Raycast
         Object.Destroy(obj.gameObject);
     }
 
-    public RaycastSniperRifle(float attackSpeed = 1, int damage = 40) : base(attackSpeed, damage) { }
+//public RaycastSniperRifle(float attackSpeed = 1, int damage = 40) : base(attackSpeed, damage) { }
 
     public RaycastSniperRifle(WeaponStats weaponStats) : base(weaponStats)
     {
