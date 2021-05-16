@@ -53,7 +53,6 @@ public class Room
         //Debug.Log(roomX + " " + roomY);
         //
 
-
         while (k < map.GetLength(0))
         {
             int x1 = x*36;
@@ -90,7 +89,7 @@ public class Room
                             }
                         }
 
-                        if (x < Level.layout[y].Length - 1 && i == map[k].Length - 2) // tu zmienic z -1 na -2
+                        if (x < Level.layout[y].Length - 1 && i == map[k].Length - 1) // tu zmienic z -1 na -2
                         {
                             if (Level.layout[y][x + 1] != '0')
                             {
@@ -212,6 +211,34 @@ public class Room
         }
     }
 
+    public void Disable()
+    {
+        for (int i = 0; i < allObjects.Count; i++)
+        {
+            if (allObjects[i]!=null && allObjects[i].activeInHierarchy)
+            {
+                allObjects[i].SetActive(false);
+            }
+        }
+
+        for (int i = 0; i < doors.Count; i++)
+        {
+            doors[i].SetActive(false);
+        }
+    }
+
+    public void Enable()
+    {
+        for (int i = 0; i < allObjects.Count; i++)
+        {
+                allObjects[i].SetActive(true);
+        }
+
+        for (int i = 0; i < doors.Count; i++)
+        {
+            doors[i].SetActive(true);
+        }
+    }
     public void Activate()
     {
         if (!_active && !_disarmed)

@@ -6,15 +6,22 @@ public class Bullet : MonoBehaviour
 {
     public GameObject impactAnimation;
     int damage;
+    float range;
     Vector2 velocity;
     public string attackerTag;
+    float time;
 
     private void Start()
     {
+        time = Time.time;
     }
     private void Update()
     {
         transform.Translate(velocity * Time.deltaTime);
+        if(Time.time > time + range)
+        {
+            PlayImpactAnimation();
+        }
     }
     public void SetParameters(FightingCharacter whoAttacks, int damage, float bulletSpeed, float bulletSize, Vector2 ownerVelocity, float range)
     {
@@ -25,7 +32,7 @@ public class Bullet : MonoBehaviour
         Vector2 baseBulletVelocity = (Vector3.right * (bulletSpeed + bonusBulletSpeed));
         velocity = (baseBulletVelocity + ownerVelocity);
         this.transform.localScale = new Vector2(this.transform.localScale.x * bulletSize, this.transform.localScale.y * bulletSize);
-        Destroy(gameObject, range);
+        this.range = range;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -40,13 +47,18 @@ public class Bullet : MonoBehaviour
             {
                 character.TakeDamage(damage);
             }
-            Destroy(gameObject);
+        PlayImpactAnimation();
     }
 
-    private void OnDestroy()
+
+    private void PlayImpactAnimation()
     {
+        gameObject.SetActive(false);
         GameObject obj = Instantiate(impactAnimation, gameObject.transform.position, gameObject.transform.rotation);
+        obj.transform.parent = null;
+        obj.SetActive(true);
         obj.transform.localScale = new Vector2(this.transform.localScale.x * 3, this.transform.localScale.x * 3);
         Destroy(obj, 0.17f);
+        Destroy(gameObject);
     }
 }

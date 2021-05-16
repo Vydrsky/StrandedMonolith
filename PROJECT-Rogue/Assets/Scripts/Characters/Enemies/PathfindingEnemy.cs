@@ -31,13 +31,13 @@ public abstract class PathfindingEnemy : Enemy
             temp = enemyAIscript.CheckDirection();
 
             // srodek kratki na mapie
-            float x, y;
-            int enemyX, enemyY;
-            x = temp.x;
-            y = temp.y;
-            enemyX = Mathf.RoundToInt(transform.position.x) + (int)x;
-            enemyY = Mathf.RoundToInt(transform.position.y) + (int)y;
-            temp = new Vector2(enemyX, enemyY) - new Vector2(transform.position.x, transform.position.y);
+            //float x, y;
+            //int enemyX, enemyY;
+            //x = temp.x;
+            //y = temp.y;
+            //enemyX = Mathf.RoundToInt(transform.position.x) + (int)x;
+            //enemyY = Mathf.RoundToInt(transform.position.y) + (int)y;
+            //temp = new Vector2(enemyX, enemyY) - new Vector2(transform.position.x, transform.position.y);
             //
 
         }
