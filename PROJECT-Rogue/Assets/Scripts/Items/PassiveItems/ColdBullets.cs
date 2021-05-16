@@ -8,7 +8,7 @@ public class ColdBullets : PassiveItem
     {
         this.itemName = "Cold Bullets";
         this.itemDescription = "Keep Your cool";
-        attackSpeedModification = 0.2f;
+        attackSpeedModification = 0.1f;
     }
 
 

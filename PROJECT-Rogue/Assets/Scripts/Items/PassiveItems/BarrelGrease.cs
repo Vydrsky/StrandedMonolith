@@ -8,7 +8,7 @@ public class BarrelGrease : PassiveItem
     {
         this.itemName = "Barrel Grease";
         this.itemDescription = "Just slide into the action";
-        this.shotSpeedModification = 0.1f;
+        this.shotSpeedModification = 0.15f;
     }
 
 

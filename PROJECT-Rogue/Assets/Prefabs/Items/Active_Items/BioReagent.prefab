@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63bb1e24df8d713429206008421b1293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentItemCooldown: 5
+  currentItemCooldown: 60
   durationOfEffect: 1
   sprite: {fileID: 0}
 --- !u!50 &-6218967078399080359

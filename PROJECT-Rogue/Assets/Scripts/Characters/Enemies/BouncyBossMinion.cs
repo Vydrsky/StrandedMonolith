@@ -35,9 +35,9 @@ public class BouncyBossMinion : RunningEnemy
         return false;
     }
     
-    public override void TakeDamage(int damage)
+    public override void TakeDamage(float damage)
     {
-        healthPoints -= damage;
+        healthPoints -= (int)damage;
         if (healthPoints <= 0)
         {
             Destroy(gameObject);
@@ -47,15 +47,12 @@ public class BouncyBossMinion : RunningEnemy
 
     void Start()
     {
-        range = 15;
-        Damage = 2;
         player = GameObject.FindGameObjectsWithTag("Player")[0];
         _rigidbody = GetComponent<Rigidbody2D>();
         boss = GameObject.FindGameObjectsWithTag("|Enemy|Boss|")[0];
         _audioSource = GetComponent<AudioSource>();
         weaponFactory = new SimpleWeaponFactory();
         weapon = weaponFactory.CreateWeapon(WeaponsEnum.EnemyProjectilePistol);
-        attackSpeed = 1f;
         weapon.SetAttacker(this);
         weapon.SetWeaponSound(sound);
     }

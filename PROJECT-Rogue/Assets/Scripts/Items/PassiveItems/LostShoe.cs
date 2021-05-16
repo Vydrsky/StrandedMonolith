@@ -8,7 +8,7 @@ public class LostShoe : PassiveItem
     {
         this.itemName = "Lost Shoe";
         this.itemDescription = "There you are";
-        this.moveSpeedModification = 0.3f;
+        this.moveSpeedModification = 0.1f;
     }
 
 

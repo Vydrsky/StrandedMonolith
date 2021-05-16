@@ -212,12 +212,12 @@ MonoBehaviour:
   healthPoints: 100
   moveSpeed: 1
   attackSpeed: 1
-  damage: 10
-  range: 1
+  damage: 1
+  range: 10
   shotSpeed: 1
   itemPickupTime: 0
   invincibilityStart: 0
-  invincibilityDuration: 0.1
+  invincibilityDuration: 0.2
   healthBar: {fileID: 0}
   activeQuest: {fileID: 0}
   statsUI: {fileID: 0}
