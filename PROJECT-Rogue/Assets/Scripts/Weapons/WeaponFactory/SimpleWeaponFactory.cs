@@ -123,7 +123,7 @@ public class SimpleWeaponFactory
                 projWeaponStats.Damage = 10;
                 projWeaponStats.RangeModifier = 1.5f;
                 projWeaponStats.BulletSize = 1f;
-                projWeaponStats.BulletSpeed = 17;
+                projWeaponStats.BulletSpeed = 12;
                 return new ProjectileSniperRifle(projWeaponStats);
 
             default:

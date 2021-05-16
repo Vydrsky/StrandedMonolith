@@ -43,11 +43,10 @@ public class TurretEnemy : Enemy
         if (Wait())
         {
             distance = player.transform.position - this.transform.position;
-            if(distance.magnitude<10)
-                weapon.CheckAttack();
             move();
             rotate();
-
+            if (distance.magnitude < 10)
+                weapon.CheckAttack();
         }
     }
 
