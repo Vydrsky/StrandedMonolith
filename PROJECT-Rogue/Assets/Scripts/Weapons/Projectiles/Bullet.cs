@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     public GameObject impactAnimation;
     int damage;
     Vector2 velocity;
-    string attackerTag;
+    public string attackerTag;
 
     private void Start()
     {
