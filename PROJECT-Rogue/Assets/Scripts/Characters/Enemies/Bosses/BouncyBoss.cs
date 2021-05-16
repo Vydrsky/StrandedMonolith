@@ -24,9 +24,9 @@ public class BouncyBoss : BouncingEnemy
         _audioSource = GetComponent<AudioSource>();
     }
 
-    public override void TakeDamage(int damage)
+    public override void TakeDamage(float damage)
     {
-        healthPoints -= damage;
+        healthPoints -= (int)damage;
         if (healthPoints <= 0)
         {
             Level.CheckStatus();

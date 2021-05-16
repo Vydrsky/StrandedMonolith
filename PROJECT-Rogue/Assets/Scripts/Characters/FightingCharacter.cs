@@ -10,16 +10,16 @@ public abstract class FightingCharacter : Character
     [SerializeField] protected int healthPoints;
     [SerializeField] protected float moveSpeed;
     [SerializeField] protected float attackSpeed;
-    [SerializeField] protected int damage;
+    [SerializeField] protected float damage;
     [SerializeField] protected float range;
     [SerializeField] protected float shotSpeed;
     public int MaxHealth { get { return maxHealth; } set { maxHealth = value; } }
     public int HealthPoints { get { return healthPoints; } set { healthPoints = value; } }
     public float MoveSpeed { get { return moveSpeed; } set { moveSpeed = value; } }
     public float AttackSpeed { get { return attackSpeed; } set { attackSpeed = value; } }
-    public int Damage { get { return damage; } set { damage = value; } }
+    public float Damage { get { return damage; } set { damage = value; } }
     public float Range { get { return range; } set { range = value; } }
     public float ShotSpeed { get { return shotSpeed; } set { shotSpeed = value; } }
 
-    public abstract void TakeDamage(int damage);  
+    public abstract void TakeDamage(float damage);  
 }

@@ -59,13 +59,13 @@ public class Player : FightingCharacter
     [SerializeField] AudioClip[] clipArray;
     [SerializeField] AudioClip takeDamageSound;
 
-    public override void TakeDamage(int damage)
+    public override void TakeDamage(float damage)
     {
         
         if ( Time.time >= this.InvincibilityStart + this.InvincibilityDuration)
         {
             this.InvincibilityStart = Time.time;
-            this.HealthPoints -= damage;
+            this.HealthPoints -= (int)damage;
             healthBar.SetHealth(HealthPoints);
             healthBar.SetText(HealthPoints, MaxHealth);
             AudioSource.PlayClipAtPoint(takeDamageSound, transform.position);

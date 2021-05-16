@@ -97,8 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd6ca0fa18129484faea440efc0764b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentItemCooldown: 10
+  currentItemCooldown: 30
   durationOfEffect: 5
+  sprite: {fileID: 0}
 --- !u!61 &4191078050371251832
 BoxCollider2D:
   m_ObjectHideFlags: 0

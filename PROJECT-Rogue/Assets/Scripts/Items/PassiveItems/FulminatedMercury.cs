@@ -8,7 +8,7 @@ public class FulminatedMercury : PassiveItem
     {
         this.itemName = "Fulminated Mercury";
         this.itemDescription = "Are you sure this is safe?";
-        this.damageModification = 5;
+        this.damageModification = 0.1f;
     }
 
 

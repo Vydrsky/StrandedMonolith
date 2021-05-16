@@ -29,7 +29,7 @@ public class BioReagent : ActiveItem
         itemName = "Bio Reagent";
         itemDescription = "Closes severe wounds";
         maxItemCooldown = currentItemCooldown;
-        maxHPIncrease = 50;
+        maxHPIncrease = 30;
         
     }
 }
