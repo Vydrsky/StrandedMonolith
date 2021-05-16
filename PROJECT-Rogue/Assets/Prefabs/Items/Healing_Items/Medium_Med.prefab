@@ -19,6 +19,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3695007154126814290, guid: 981944ae073356b4fba1624e8683590b, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3695007154126814290, guid: 981944ae073356b4fba1624e8683590b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -871103895
+      objectReference: {fileID: 0}
     - target: {fileID: 4289839208373662294, guid: 981944ae073356b4fba1624e8683590b, type: 3}
       propertyPath: m_Name
       value: Medium_Med

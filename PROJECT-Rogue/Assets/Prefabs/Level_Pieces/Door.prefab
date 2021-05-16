@@ -81,15 +81,15 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 108cb1da8bc0bc747b166ca6117f0720, type: 3}
     - target: {fileID: 5839486516359406624, guid: 52c923da96d61d5439db7086a73bbb34, type: 3}
       propertyPath: m_Color.b
-      value: 0.9433962
+      value: 0.34178606
       objectReference: {fileID: 0}
     - target: {fileID: 5839486516359406624, guid: 52c923da96d61d5439db7086a73bbb34, type: 3}
       propertyPath: m_Color.g
-      value: 0.25157207
+      value: 0.4245283
       objectReference: {fileID: 0}
     - target: {fileID: 5839486516359406624, guid: 52c923da96d61d5439db7086a73bbb34, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 0.08610716
       objectReference: {fileID: 0}
     - target: {fileID: 5839486516359406624, guid: 52c923da96d61d5439db7086a73bbb34, type: 3}
       propertyPath: m_WasSpriteAssigned
@@ -101,7 +101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7544207183005877249, guid: 52c923da96d61d5439db7086a73bbb34, type: 3}
       propertyPath: m_TagString
-      value: DoorUp
+      value: DoorLeft
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52c923da96d61d5439db7086a73bbb34, type: 3}

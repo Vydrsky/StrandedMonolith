@@ -278,7 +278,7 @@ public class Room
             {
                 doors[i].GetComponent<Collider2D>().isTrigger = true;
                 doors[i].GetComponent<BoxCollider2D>().size = new Vector2(0.1f, 0.1f);
-                doors[i].GetComponent<SpriteRenderer>().color = new Color(0f,29f/255,106f/255);
+                doors[i].GetComponent<SpriteRenderer>().color = new Color(22f/255,108f/255,87f/255);
             }
             for (int i = 0; i < itemSpawns.Count; i++)
             {
