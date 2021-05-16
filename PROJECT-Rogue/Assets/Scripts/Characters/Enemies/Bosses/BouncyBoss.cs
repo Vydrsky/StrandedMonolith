@@ -15,7 +15,8 @@ public class BouncyBoss : BouncingEnemy
 
     void Start()
     {
-        InvokeRepeating("SpawnMinion",0,5);
+        InstantiateMinions();
+        InvokeRepeating("SpawnMinion",2,2);
         player = GameObject.FindGameObjectsWithTag("Player")[0];
         _rigidbody = GetComponent<Rigidbody2D>();
         //transform.rotation = Quaternion.Euler(0f, 0f, 45f);
@@ -65,13 +66,31 @@ public class BouncyBoss : BouncingEnemy
 
     private void SpawnMinion()
     {
+        bool temp = false;
+        int tempIteration = 0;
         for (int i=0; i < minions.Length; i++)
         {
             if (minions[i]==null)
             {
-                minions[i] = Instantiate(minion,
-                    new Vector2(this.transform.localPosition.x, this.transform.localPosition.y), Quaternion.identity);
+                temp = true;
+                tempIteration = i;
+                break;
             }
+
+        }
+        if (temp)
+        {
+            minions[tempIteration] = Instantiate(minion,
+                        new Vector2(this.transform.localPosition.x, this.transform.localPosition.y), Quaternion.identity);
+        }
+    }
+
+    private void InstantiateMinions()
+    {
+        for (int i = 0; i < minions.Length; i++)
+        {
+                minions[i] = Instantiate(minion,
+                        new Vector2(this.transform.localPosition.x, this.transform.localPosition.y), Quaternion.identity);
         }
     }
 
