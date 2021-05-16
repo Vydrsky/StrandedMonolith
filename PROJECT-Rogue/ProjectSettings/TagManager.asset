@@ -24,11 +24,12 @@ TagManager:
   - Trapdoor
   - '|Enemy|Boss|'
   - NPC
+  - ShopItem
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - ItemDisplay
   - Water
   - UI
   - ForeGround

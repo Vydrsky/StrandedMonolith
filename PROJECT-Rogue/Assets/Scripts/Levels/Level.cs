@@ -212,6 +212,16 @@ public class Level : MonoBehaviour
         instancjaKamery.transform.position=(new Vector3(instancjaKamery.transform.position.x + x, instancjaKamery.transform.position.y + y, -10));
     }
 
+    public static List<GameObject> GetAllItems()
+    {
+        List<GameObject> allItems = new List<GameObject>();
+        allItems.AddRange(staticInstantItems);
+        allItems.AddRange(staticPassiveItems);
+        allItems.AddRange(staticActivetems);
+        allItems.AddRange(staticWeaponItems);
+        return allItems;
+    }
+
     public static void MoveFocus(int x, int y)
     {
         _currentX += x;
@@ -415,6 +425,30 @@ public class Level : MonoBehaviour
             }
         }
 
+        if (Random.Range(0, 2)==0)
+        {
+            cordX++;
+            if (cordX >= layout.Length)
+            {
+                string pH = "";
+                for (int i = 0; i <= cordY; i++)
+                {
+                    pH += '0';
+                }
+                layout.Append(pH);
+            }
+        }
+        else
+        {
+            cordY++;
+            if (cordY >= layout[cordX].Length)
+            {
+                for (int i = 0; i < layout.Length; i++)
+                {
+                    layout[i]+='0';
+                }
+            }
+        }
         layout[cordX]=ReplaceAtIndex(layout[cordX], cordY, 'B');
     }
 
