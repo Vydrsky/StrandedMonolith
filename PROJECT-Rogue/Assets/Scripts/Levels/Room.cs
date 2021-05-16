@@ -84,6 +84,8 @@ public class Room
                             if (Level.layout[y - 1][x] != '0')
                             {
                                 myPrefab[1].tag = "DoorUp";
+                                
+                                myPrefab[1].transform.rotation = Quaternion.Euler(0f,0f,90f);
                                 isDoor = true;
                             }
                         }
@@ -93,6 +95,8 @@ public class Room
                             if (Level.layout[y][x + 1] != '0')
                             {
                                 myPrefab[1].tag = "DoorRight";
+                                
+                                myPrefab[1].transform.rotation = Quaternion.Euler(0f,0f,90f);
                                 isDoor = true;
                             }
                         }
@@ -101,6 +105,8 @@ public class Room
                         {
                             if (Level.layout[y][x - 1] != '0')
                             {
+                                
+                                myPrefab[1].transform.rotation = Quaternion.Euler(0f,0f,90f);
                                 myPrefab[1].tag = "DoorLeft";
                                 isDoor = true;
                             }
@@ -109,6 +115,21 @@ public class Room
                         if (isDoor)
                         {
                             doors.Add(Object.Instantiate(myPrefab[1], new Vector2(x1, y1), Quaternion.identity));
+                            switch (doors[doors.Count-1].tag)
+                            {
+                                case "DoorBottom":
+                                    
+                                    doors[doors.Count-1].transform.rotation= Quaternion.Euler(0,0,90);
+                                    break;
+                                case "DoorUp":
+                                    
+                                    doors[doors.Count-1].transform.rotation= Quaternion.Euler(0,0,270);
+                                    break;
+                                case "DoorRight":
+                                    
+                                    doors[doors.Count-1].transform.rotation= Quaternion.Euler(0,0,180);
+                                    break;
+                            }
                         }
                         else
                         {
@@ -169,8 +190,12 @@ public class Room
                             case 2: 
                                 itemPool.Add(Level.GetItem(ItemClass.Weapon));
                                 break;
+                            
                         }
                         itemIndx++;
+                        break;
+                    case '$':
+                        allObjects.Add(Object.Instantiate(myPrefab[6], new Vector2(x1, y1), Quaternion.identity));
                         break;
                     default:
                         break;

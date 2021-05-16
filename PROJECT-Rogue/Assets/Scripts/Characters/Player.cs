@@ -158,7 +158,7 @@ public class Player : FightingCharacter
         WeaponItem.weapon.SetAttacker(this);
         _rigidbody = GetComponent<Rigidbody2D>();
         _audioSource = GetComponent<AudioSource>();
-        Money = 0;
+        Money = 20;
         //sound
         weaponItem.weapon.SetWeaponSound(weaponItem.sound);
         //
@@ -258,6 +258,14 @@ public class Player : FightingCharacter
                         activeQuest.SetText(journal.JournalEntry());
                     }
 
+                    break;
+                case "ShopItem":
+                    ShopItem shopItem = collider.gameObject.GetComponent<ShopItem>();
+                    if (shopItem.Buy() < money)
+                    {
+                        money -= shopItem.Buy();
+                        shopItem.Sell();
+                    }
                     break;
                 default:
                     break;
