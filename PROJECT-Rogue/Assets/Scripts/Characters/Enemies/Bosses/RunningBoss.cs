@@ -9,7 +9,7 @@ public class RunningBoss : Enemy
     private Vector2 direction;
     private void Charge()
     {
-        moveSpeed = originalMS*8f;
+        moveSpeed = originalMS*4f;
         move();
     }
 

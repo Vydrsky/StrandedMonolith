@@ -18,6 +18,10 @@ public abstract class Enemy : FightingCharacter
         {
             isTarget = value;
             this.GetComponent<SpriteRenderer>().color=Color.blue;
+            this.attackSpeed *= 2f;
+            this.maxHealth *= 2;
+            this.damage *= 2;
+            this.healthPoints *= 2;
             this.GetComponent<Transform>().localScale = new Vector2(this.transform.localScale.x*1.5f, this.transform.localScale.y*1.5f);
         }
     }

@@ -102,13 +102,13 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 2
-  m_LinearDrag: 1
+  m_LinearDrag: 2
   m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &8269411999204999967
 BoxCollider2D:
@@ -177,11 +177,11 @@ MonoBehaviour:
   firePoint: {fileID: 1290095928737400100}
   maxHealth: 100
   healthPoints: 100
-  moveSpeed: 25
-  attackSpeed: 1
-  damage: 1
-  range: 1
-  shotSpeed: 1
+  moveSpeed: 17
+  attackSpeed: 0
+  damage: 5
+  range: 0
+  shotSpeed: 0
   timeToWait: 0
 --- !u!82 &-1671597314753086881
 AudioSource:

@@ -125,10 +125,10 @@ MonoBehaviour:
   maxHealth: 100
   healthPoints: 100
   moveSpeed: 3
-  attackSpeed: 1
-  damage: 1
-  range: 1
-  shotSpeed: 1
+  attackSpeed: 0
+  damage: 5
+  range: 0
+  shotSpeed: 0
   timeToWait: 0
 --- !u!58 &290811408884704678
 CircleCollider2D:

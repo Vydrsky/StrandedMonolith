@@ -16,7 +16,7 @@ public class BouncyBossMinion : RunningEnemy
         Vector3 difference = player.transform.position - this.transform.position;
         difference = difference.normalized;
         float rotationOnZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0f, 0f, rotationOnZ);
+        firePoint.transform.rotation = Quaternion.Euler(0f, 0f, rotationOnZ);
     }
 
     public override void move()
@@ -54,7 +54,8 @@ public class BouncyBossMinion : RunningEnemy
         boss = GameObject.FindGameObjectsWithTag("|Enemy|Boss|")[0];
         _audioSource = GetComponent<AudioSource>();
         weaponFactory = new SimpleWeaponFactory();
-        weapon = weaponFactory.CreateWeapon(WeaponsEnum.EnemyProjectileRifle);
+        weapon = weaponFactory.CreateWeapon(WeaponsEnum.EnemyProjectilePistol);
+        attackSpeed = 1f;
         weapon.SetAttacker(this);
         weapon.SetWeaponSound(sound);
     }

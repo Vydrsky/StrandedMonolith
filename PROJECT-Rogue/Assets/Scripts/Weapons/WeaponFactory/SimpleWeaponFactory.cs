@@ -13,7 +13,7 @@ public class SimpleWeaponFactory
                 projWeaponStats.Name = "";
                 projWeaponStats.Description = "";
                 projWeaponStats.AttackSpeed = 3f;
-                projWeaponStats.Damage = 10;
+                projWeaponStats.Damage = 15;
                 projWeaponStats.RangeModifier = 0.6f;
                 projWeaponStats.BulletSize = 0.8f;
                 projWeaponStats.BulletSpeed = 18;
@@ -121,9 +121,19 @@ public class SimpleWeaponFactory
                 projWeaponStats.Description = "";
                 projWeaponStats.AttackSpeed = 1f;
                 projWeaponStats.Damage = 10;
-                projWeaponStats.RangeModifier = 1.5f;
+                projWeaponStats.RangeModifier = 0.6f;
                 projWeaponStats.BulletSize = 1f;
-                projWeaponStats.BulletSpeed = 17;
+                projWeaponStats.BulletSpeed = 10;
+                return new ProjectileSniperRifle(projWeaponStats);
+            case WeaponsEnum.EnemyProjectilePistol:
+                projWeaponStats = new ProjectileWeaponStats();
+                projWeaponStats.Name = "";
+                projWeaponStats.Description = "";
+                projWeaponStats.AttackSpeed = 0.01f;
+                projWeaponStats.Damage = 10;
+                projWeaponStats.RangeModifier = 1f;
+                projWeaponStats.BulletSize = 0.5f;
+                projWeaponStats.BulletSpeed = 5;
                 return new ProjectileSniperRifle(projWeaponStats);
 
             default:
