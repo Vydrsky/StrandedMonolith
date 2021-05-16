@@ -10,7 +10,7 @@ public class BouncyBoss : BouncingEnemy
     public override void move()
     {
         if (velocity.magnitude < 2)
-            _rigidbody.AddRelativeForce(Vector2.right * moveSpeed);
+            _rigidbody.AddRelativeForce(direction * moveSpeed);
     }
 
     void Start()
@@ -20,8 +20,8 @@ public class BouncyBoss : BouncingEnemy
         Damage = 2;
         player = GameObject.FindGameObjectsWithTag("Player")[0];
         _rigidbody = GetComponent<Rigidbody2D>();
-        transform.rotation = Quaternion.Euler(0f, 0f, 45f);
-        direction = new Vector2(1f, 0);
+        //transform.rotation = Quaternion.Euler(0f, 0f, 45f);
+        direction = new Vector2(1f, 1f);
         timeToWait = Time.time + 1f;
         _audioSource = GetComponent<AudioSource>();
     }
@@ -60,7 +60,7 @@ public class BouncyBoss : BouncingEnemy
             float speed = velocity.magnitude;
             direction = Vector2.Reflect(velocity.normalized, collision.contacts[0].normal);
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             _rigidbody.velocity = direction * Mathf.Max(speed, 0f);
         }
     }
@@ -79,9 +79,6 @@ public class BouncyBoss : BouncingEnemy
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag.Contains("Bullet"))
-        {
-            AudioSource.PlayClipAtPoint(_audioSource.clip, this.transform.position, _audioSource.volume);
-        }
+        PlayHitSound(collider);
     }
 }

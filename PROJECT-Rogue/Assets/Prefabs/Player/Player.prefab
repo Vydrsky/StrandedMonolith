@@ -222,7 +222,6 @@ MonoBehaviour:
   activeQuest: {fileID: 0}
   statsUI: {fileID: 0}
   activeUI: {fileID: 0}
-  lineRenderer: {fileID: 0}
   activeItem: {fileID: 0}
   weaponItem: {fileID: 4575320530088364512, guid: 8d944f8158ad2db4081b70994751c38e, type: 3}
   Inventory: []
@@ -233,6 +232,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cd607e2b3cdf94740a3ad4edf34a278f, type: 3}
   - {fileID: 8300000, guid: a63f3b10915ee5743bf6c841dd943cf1, type: 3}
   - {fileID: 8300000, guid: f202f6cf13c82074c8213a9f4bda4aab, type: 3}
+  takeDamageSound: {fileID: 8300000, guid: d3f4bf93e22c01f498a6aa220ec09874, type: 3}
 --- !u!114 &1668147795
 MonoBehaviour:
   m_ObjectHideFlags: 0

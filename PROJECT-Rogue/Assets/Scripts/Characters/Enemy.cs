@@ -85,4 +85,15 @@ public abstract class Enemy : FightingCharacter
 
     }
 
+
+    protected void PlayHitSound(Collider2D collider)
+    {
+        Bullet bulletCollision = collider.gameObject.GetComponent<Bullet>();
+
+        if (collider.gameObject.tag.Contains("Bullet") && bulletCollision.attackerTag == "Player")
+        {
+            AudioSource.PlayClipAtPoint(_audioSource.clip, this.transform.position, _audioSource.volume);
+        }
+    }
+
 }

@@ -52,9 +52,6 @@ public class TurretEnemy : Enemy
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag.Contains("Bullet"))
-        {
-            AudioSource.PlayClipAtPoint(_audioSource.clip, this.transform.position, _audioSource.volume);
-        }
+        PlayHitSound(collider);
     }
 }
