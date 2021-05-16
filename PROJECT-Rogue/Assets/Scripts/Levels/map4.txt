@@ -8,8 +8,8 @@ X          R    I      R    R      X
 E                      R    R      E
 E                W     R    RR     E
 XRRRR    RRRR          RRRRRRR     X
-XRR      RRRRRR        RR W RR     X
-XR     RRRRRRRRRRR     R    RR   W X
+XRR      RRRRRR        RR   RR     X
+XR     RRRRRRRRRRR     R    RR     X
 XRR                                X
-XR  W               W              X
+XR  W                           W  X
 XXXXXXXXXXXXXXXEEXXXXXXXXXXXXXXXXXXX

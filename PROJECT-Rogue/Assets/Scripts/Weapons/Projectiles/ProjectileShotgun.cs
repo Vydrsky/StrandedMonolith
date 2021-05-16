@@ -22,7 +22,7 @@ public class ProjectileShotgun : Projectile
 
             var obj = Object.Instantiate(bullet, whoAttacks.firePoint.position, Quaternion.Euler(rotationVector));
             obj.transform.localScale = new Vector2(obj.transform.localScale.x * 1f, obj.transform.localScale.y * 1f);
-            obj.GetComponent<Bullet>().SetParameters(whoAttacks, damage * whoAttacks.Damage, bulletSpeed + (random / 10), bulletSize, ownerVelocity, (whoAttacks.Range * rangeModifier) / 10);
+            obj.GetComponent<Bullet>().SetParameters(whoAttacks, (int)damage * (int)whoAttacks.Damage, bulletSpeed + (random / 10), bulletSize, ownerVelocity, (whoAttacks.Range * rangeModifier) / 10);
         }
     }
     //public ProjectileShotgun(float attackSpeed = 0.75f, int damage = 4, float bulletSpeed = 15, float bulletSize = 1) : base(attackSpeed, damage, bulletSpeed, bulletSize) { }

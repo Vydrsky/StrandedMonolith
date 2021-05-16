@@ -3,12 +3,12 @@ XRRRRRRRRRRRR      RRRRRRRRRRRRRRRRX
 XRRRRRRRRRRRR      RRRRRRRRRRRRRRRRX
 XRRRRRRRRRRRR      RRRRRRRRRRRRRRRRX
 XRRRRRRRRRRR        RRRRRRRRRRRRRRRX
-XRRRRRRRRR            RRRRRRRRRRRRRX
-X             W W                  X
-E         W   I     W              E
-E             W W                  E
+XRRRRRRRRR W        W RRRRRRRRRRRRRX
 X                                  X
-XRRRRRRRRR            RRRRRRRRRRRRRX
+E             I                    E
+E                                  E
+X                                  X
+XRRRRRRRRR W        W RRRRRRRRRRRRRX
 XRRRRRRRRRRR        RRRRRRRRRRRRRRRX
 XRRRRRRRRRRRR      RRRRRRRRRRRRRRRRX
 XRRRRRRRRRRRR      RRRRRRRRRRRRRRRRX

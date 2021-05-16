@@ -16,8 +16,6 @@ public class VolatileEnemyPassive : VolatileEnemy
 
     void Start()
     {
-        range = 15;
-        Damage = 2;
         _rigidbody = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectsWithTag("Player")[0];
         timeToWait = Time.time + 1f;

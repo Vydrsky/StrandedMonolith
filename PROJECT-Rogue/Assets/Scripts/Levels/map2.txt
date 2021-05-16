@@ -7,9 +7,9 @@ XR          RRRR    RRR            X
 X          RR          R           X
 E         RR            R          E
 E         R            RR          E
-X     W   RRRRRR      R           RX
+X         RRRRRR      R           RX
 X              RRRRRRRR          RRX
-XRRR                         W  RR X
+XRRR                            RR X
 X  RRR W                       RR  X
 X    RR                    W  RR   X
 XXXXXXXXXXXXXXXEEXXXXXXXXXXXXXXXXXXX

@@ -100,11 +100,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 0}
-  maxHealth: 100
-  healthPoints: 100
+  maxHealth: 150
+  healthPoints: 150
   moveSpeed: 2.5
   attackSpeed: 0
-  damage: 15
+  damage: 10
   range: 0
   shotSpeed: 0
   timeToWait: 0

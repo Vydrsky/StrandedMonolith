@@ -71,8 +71,8 @@ public class SimpleWeaponFactory
                 projWeaponStats = new ProjectileWeaponStats();
                 projWeaponStats.Name = "";
                 projWeaponStats.Description = "";
-                projWeaponStats.AttackSpeed = 0.55f;
-                projWeaponStats.Damage = 35;
+                projWeaponStats.AttackSpeed = 0.45f;
+                projWeaponStats.Damage = 55;
                 projWeaponStats.RangeModifier = 1.5f;
                 projWeaponStats.BulletSize = 0.75f;
                 projWeaponStats.BulletSpeed = 45;
@@ -82,8 +82,8 @@ public class SimpleWeaponFactory
                 projWeaponStats = new ProjectileWeaponStats();
                 projWeaponStats.Name = "";
                 projWeaponStats.Description = "";
-                projWeaponStats.AttackSpeed = 0.30f;
-                projWeaponStats.Damage = 55;
+                projWeaponStats.AttackSpeed = 0.2f;
+                projWeaponStats.Damage = 110;
                 projWeaponStats.RangeModifier = 1.5f;
                 projWeaponStats.BulletSize = 1.25f;
                 projWeaponStats.BulletSpeed = 28;
@@ -119,11 +119,11 @@ public class SimpleWeaponFactory
                 projWeaponStats = new ProjectileWeaponStats();
                 projWeaponStats.Name = "";
                 projWeaponStats.Description = "";
-                projWeaponStats.AttackSpeed = 1f;
+                projWeaponStats.AttackSpeed = 0.7f;
                 projWeaponStats.Damage = 10;
                 projWeaponStats.RangeModifier = 0.6f;
                 projWeaponStats.BulletSize = 1f;
-                projWeaponStats.BulletSpeed = 10;
+                projWeaponStats.BulletSpeed = 6;
                 return new ProjectileSniperRifle(projWeaponStats);
             case WeaponsEnum.EnemyProjectilePistol:
                 projWeaponStats = new ProjectileWeaponStats();

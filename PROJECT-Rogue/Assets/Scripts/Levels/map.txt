@@ -1,11 +1,11 @@
 XXXXXXXXXXXXXXXEEXXXXXXXXXXXXXXXXXXX
-X                             W    X
-X    W                     W     W X
+X                                  X
+X    W                             X
 X       RRR                   W    X
 XRRRRRRRRRR          RRRR          X
 XRRRRRR              RRRRRRRRR     X
 X             I       RRRRRRRRRRRRRX
-E          RRRRR                   E
+E          RRRRR   W               E
 E         RRRRRRR                  E
 X             RR                   X
 X                                  X

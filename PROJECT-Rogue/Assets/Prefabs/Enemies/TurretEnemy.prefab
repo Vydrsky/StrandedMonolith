@@ -136,7 +136,7 @@ MonoBehaviour:
   moveSpeed: 0
   attackSpeed: 1
   damage: 1
-  range: 1
+  range: 15
   shotSpeed: 1
   timeToWait: 0
   sound: {fileID: 59798449728939636}
