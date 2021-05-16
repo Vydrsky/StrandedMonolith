@@ -169,12 +169,14 @@ public class Level : MonoBehaviour
                         int rnd = Random.Range(0, bossRooms.Count);
                         rooms.Add("" + i + j,
                             new Room(staticMyPrefab, j, i, bossRooms[rnd]));
+                        //rooms["" + i + j].Disable();
                     }
                     else if (layout[i][j] == 'S')
                     {
                         int rnd = Random.Range(0, specialRooms.Count);
                         rooms.Add("" + i + j,
                             new Room(staticMyPrefab, j, i, specialRooms[rnd],true));
+                        //rooms["" + i + j].Disable();
                     }
                     else
                     {
@@ -195,7 +197,7 @@ public class Level : MonoBehaviour
                             int rnd = Random.Range(0, regularRooms.Count);
                             rooms.Add("" + i + j,
                                 new Room(staticMyPrefab, j, i, regularRooms[rnd]));
-                            
+                            //rooms["" + i + j].Disable();
                             unclearedRooms.Add(rooms["" + i + j]);
                         }
                         
@@ -224,8 +226,10 @@ public class Level : MonoBehaviour
 
     public static void MoveFocus(int x, int y)
     {
+        //rooms["" + _currentY + _currentX].Disable();
         _currentX += x;
         _currentY += y;
+        //rooms["" + _currentY + _currentX].Enable();
         if (rooms.ContainsKey("" + _currentY + _currentX))
         {
             rooms["" + _currentY + _currentX].Activate();

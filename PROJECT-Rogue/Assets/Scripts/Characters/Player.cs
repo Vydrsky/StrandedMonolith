@@ -24,8 +24,8 @@ public class Player : FightingCharacter
     [SerializeField] private PlayerStats statsUI;
     [SerializeField] private ActiveUI activeUI;
     //[SerializeField] private LineRenderer lineRenderer;
-    [SerializeField] private ActiveItem activeItem;
-    [SerializeField] private WeaponItem weaponItem;
+    [SerializeField] public ActiveItem activeItem;
+    [SerializeField] public WeaponItem weaponItem;
 
     [SerializeField] public List<PassiveItem> Inventory = new List<PassiveItem>();
 
