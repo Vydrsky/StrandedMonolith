@@ -121,13 +121,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 0}
-  maxHealth: 100
-  healthPoints: 100
-  moveSpeed: 10
-  attackSpeed: 1
-  damage: 1
-  range: 1
-  shotSpeed: 1
+  maxHealth: 200
+  healthPoints: 200
+  moveSpeed: 12
+  attackSpeed: 0
+  damage: 5
+  range: 0
+  shotSpeed: 0
   timeToWait: 0
 --- !u!61 &-1147752033621226564
 BoxCollider2D:

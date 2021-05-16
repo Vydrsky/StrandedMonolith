@@ -16,7 +16,7 @@ public class VolatileEnemy : Enemy
     public override void move()
     {
         _rigidbody.AddForce(randomMovement * 1, ForceMode2D.Impulse);
-        _rigidbody.AddRelativeForce(Vector2.right * 20);
+        _rigidbody.AddRelativeForce(Vector2.right * 40);
     }
 
     void Start()

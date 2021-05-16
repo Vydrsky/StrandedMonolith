@@ -48,7 +48,7 @@ public class Level : MonoBehaviour
 
     static string GenerateLevel(int mapSize, int wandererIterations, int numberOfWanderers)
     {
-        Random.InitState(Random.Range(-10000,10000));
+        Random.InitState((int)DateTime.Now.Ticks & 0x0000FFFF);
         string levelLayout="";
         int random;     //w ktora strone pojdzie pies
         int pivotIndex; //indeks w kt�rym jest pies, zaczyna od srodka
@@ -280,6 +280,7 @@ public class Level : MonoBehaviour
     public static GameObject GetEnemy(EnemyType type)
     {
         int rnd;
+        //Random.InitState((int)DateTime.Now.Ticks & 0x0000FFFF);
         switch (type)
         {
             case EnemyType.Regular:

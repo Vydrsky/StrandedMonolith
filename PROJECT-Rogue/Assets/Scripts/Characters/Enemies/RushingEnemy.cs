@@ -7,6 +7,7 @@ public class RushingEnemy : Enemy
 {
 
     private Vector2 distance;
+    private float leaway = 0.5f; 
     private enum Direction
     {
         Left,
@@ -18,19 +19,19 @@ public class RushingEnemy : Enemy
 
     private Direction PlayerCrossing()
     {
-        if(player.transform.position.y > this.transform.position.y - 0.3f && player.transform.position.y < this.transform.position.y + 0.3f && player.transform.position.x < this.transform.position.x)
+        if(player.transform.position.y > this.transform.position.y - leaway && player.transform.position.y < this.transform.position.y + leaway && player.transform.position.x < this.transform.position.x)
         {
             return Direction.Left;
         }
-        if (player.transform.position.y > this.transform.position.y -0.3f && player.transform.position.y < this.transform.position.y + 0.3f && player.transform.position.x > this.transform.position.x)
+        if (player.transform.position.y > this.transform.position.y - leaway && player.transform.position.y < this.transform.position.y + leaway && player.transform.position.x > this.transform.position.x)
         {
             return Direction.Right;
         }
-        if (player.transform.position.x > this.transform.position.x - 0.3f && player.transform.position.x < this.transform.position.x + 0.3f && player.transform.position.y > this.transform.position.y)
+        if (player.transform.position.x > this.transform.position.x - leaway && player.transform.position.x < this.transform.position.x + leaway && player.transform.position.y > this.transform.position.y)
         {
             return Direction.Up;
         }
-        if (player.transform.position.x > this.transform.position.x - 0.3f && player.transform.position.x < this.transform.position.x + 0.3f && player.transform.position.y < this.transform.position.y)
+        if (player.transform.position.x > this.transform.position.x - leaway && player.transform.position.x < this.transform.position.x + leaway && player.transform.position.y < this.transform.position.y)
         {
             return Direction.Down;
         }
@@ -44,12 +45,12 @@ public class RushingEnemy : Enemy
 
     public override void move()
     {
-        if (_rigidbody.velocity.sqrMagnitude < 1 && distance.magnitude < 10)
+        if (_rigidbody.velocity.sqrMagnitude < 1 && distance.sqrMagnitude < 49)
         {
             switch (PlayerCrossing())
             {
-                case Direction.Right:
-                    _rigidbody.AddForce(Vector2.right * moveSpeed*6, ForceMode2D.Impulse);
+                case Direction.Right: 
+                    _rigidbody.AddForce(Vector2.right * moveSpeed * 6, ForceMode2D.Impulse);
                     break;
                 case Direction.Left:
                     _rigidbody.AddForce(Vector2.left * moveSpeed * 6, ForceMode2D.Impulse);

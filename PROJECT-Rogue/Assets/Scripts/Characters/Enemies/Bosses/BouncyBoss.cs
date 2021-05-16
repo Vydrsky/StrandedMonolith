@@ -6,7 +6,7 @@ public class BouncyBoss : BouncingEnemy
 {
 
     [SerializeField] private GameObject minion;
-    private GameObject[] minions=new GameObject[20];
+    private GameObject[] minions=new GameObject[30];
     public override void move()
     {
         if (velocity.magnitude < 2)

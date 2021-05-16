@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : FightingCharacter
 {
@@ -60,12 +61,18 @@ public class Player : FightingCharacter
 
     public override void TakeDamage(int damage)
     {
+        
         if ( Time.time >= this.InvincibilityStart + this.InvincibilityDuration)
         {
             this.InvincibilityStart = Time.time;
             this.HealthPoints -= damage;
             healthBar.SetHealth(HealthPoints);
             healthBar.SetText(HealthPoints, MaxHealth);
+            AudioSource.PlayClipAtPoint(takeDamageSound, transform.position);
+        }
+        if (healthPoints <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
         }
     }
 
@@ -188,6 +195,7 @@ public class Player : FightingCharacter
             activeItem.RemoveEffect(this);
             Invoke("UpdateStats", 0f);
         }
+        
     }
 
     void FixedUpdate()
@@ -207,7 +215,7 @@ public class Player : FightingCharacter
             playerMovement.move(this);
         }
         playerMovement.rotate(this);
-        WeaponSwap();
+        //WeaponSwap();
     }
 
     public void JournalUpdate()
@@ -320,60 +328,60 @@ public class Player : FightingCharacter
     }
 
 
-    void WeaponSwap()
-    {     
-        if(Input.GetKey(KeyCode.Alpha1))
-        {
-            WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileRifleA);
-            WeaponItem.weapon.SetAttacker(this);
-        }
-        else if (Input.GetKey(KeyCode.Alpha2))
-        {
-            WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileRifleB);
-            weaponItem.weapon.SetAttacker(this);
-        }
-        else if (Input.GetKey(KeyCode.Alpha3))
-        {
-            WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileShotgunA);
-            weaponItem.weapon.SetAttacker(this);
-        }
-        else if (Input.GetKey(KeyCode.Alpha4))
-        {
-            WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileShotgunB);
-            weaponItem.weapon.SetAttacker(this);
-        }
-        else if (Input.GetKey(KeyCode.Alpha5))
-        {
-            WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileSniperRifleA);
-            weaponItem.weapon.SetAttacker(this);
-        }
-        else if (Input.GetKey(KeyCode.Alpha6))
-        {
-            WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileSniperRifleB);
-            weaponItem.weapon.SetAttacker(this);
-        }
-        else if (Input.GetKey(KeyCode.Alpha7))
-        {
-            WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.RaycastRifleA);
-            weaponItem.weapon.SetAttacker(this);
-        }
-        else if (Input.GetKey(KeyCode.Alpha8))
-        {
-            WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.RaycastRifleB);
-            weaponItem.weapon.SetAttacker(this);
-        }
-        else if (Input.GetKey(KeyCode.Alpha9))
-        {
-            WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.RaycastSniperRifle);
-            weaponItem.weapon.SetAttacker(this);
-        }
-        else if (Input.GetKey(KeyCode.Space))
-        {
-            Level.FillLevel();
+    //void WeaponSwap()
+    //{     
+    //    if(Input.GetKey(KeyCode.Alpha1))
+    //    {
+    //        WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileRifleA);
+    //        WeaponItem.weapon.SetAttacker(this);
+    //    }
+    //    else if (Input.GetKey(KeyCode.Alpha2))
+    //    {
+    //        WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileRifleB);
+    //        weaponItem.weapon.SetAttacker(this);
+    //    }
+    //    else if (Input.GetKey(KeyCode.Alpha3))
+    //    {
+    //        WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileShotgunA);
+    //        weaponItem.weapon.SetAttacker(this);
+    //    }
+    //    else if (Input.GetKey(KeyCode.Alpha4))
+    //    {
+    //        WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileShotgunB);
+    //        weaponItem.weapon.SetAttacker(this);
+    //    }
+    //    else if (Input.GetKey(KeyCode.Alpha5))
+    //    {
+    //        WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileSniperRifleA);
+    //        weaponItem.weapon.SetAttacker(this);
+    //    }
+    //    else if (Input.GetKey(KeyCode.Alpha6))
+    //    {
+    //        WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileSniperRifleB);
+    //        weaponItem.weapon.SetAttacker(this);
+    //    }
+    //    else if (Input.GetKey(KeyCode.Alpha7))
+    //    {
+    //        WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.RaycastRifleA);
+    //        weaponItem.weapon.SetAttacker(this);
+    //    }
+    //    else if (Input.GetKey(KeyCode.Alpha8))
+    //    {
+    //        WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.RaycastRifleB);
+    //        weaponItem.weapon.SetAttacker(this);
+    //    }
+    //    else if (Input.GetKey(KeyCode.Alpha9))
+    //    {
+    //        WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.RaycastSniperRifle);
+    //        weaponItem.weapon.SetAttacker(this);
+    //    }
+    //    else if (Input.GetKey(KeyCode.Space))
+    //    {
+    //        Level.FillLevel();
             
-        }
-        weaponItem.weapon.SetWeaponSound(weaponItem.sound);
-    }
+    //    }
+    //    weaponItem.weapon.SetWeaponSound(weaponItem.sound);
+    //}
 
 
 
@@ -382,8 +390,9 @@ public class Player : FightingCharacter
         UpdateHealth();
         if(collision.gameObject.tag.Contains("Enemy"))
         {
-            TakeDamage(15);
-            AudioSource.PlayClipAtPoint(takeDamageSound, transform.position);
+            Enemy enemyCollision = collision.gameObject.GetComponent<Enemy>();
+            TakeDamage(enemyCollision.Damage);
+            
         }
     }
 

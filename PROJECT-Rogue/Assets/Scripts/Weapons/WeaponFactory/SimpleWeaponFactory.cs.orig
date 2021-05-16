@@ -123,6 +123,9 @@ public class SimpleWeaponFactory
                 projWeaponStats.Damage = 10;
                 projWeaponStats.RangeModifier = 0.6f;
                 projWeaponStats.BulletSize = 1f;
+<<<<<<< HEAD
+                projWeaponStats.BulletSpeed = 12;
+=======
                 projWeaponStats.BulletSpeed = 10;
                 return new ProjectileSniperRifle(projWeaponStats);
             case WeaponsEnum.EnemyProjectilePistol:
@@ -134,6 +137,7 @@ public class SimpleWeaponFactory
                 projWeaponStats.RangeModifier = 1f;
                 projWeaponStats.BulletSize = 0.5f;
                 projWeaponStats.BulletSpeed = 5;
+>>>>>>> e1d0f4b15fe5e30aed6ca8ef6291b67175c889aa
                 return new ProjectileSniperRifle(projWeaponStats);
 
             default:

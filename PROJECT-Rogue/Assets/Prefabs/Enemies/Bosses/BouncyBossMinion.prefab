@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 1481783019538555598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.369, y: 0.321, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2324, y: 1.2324, z: 1.2324}
   m_Children:
   - {fileID: 3623869864844104827}
   m_Father: {fileID: 0}
@@ -155,8 +155,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 3623869864844104827}
-  maxHealth: 100
-  healthPoints: 100
+  maxHealth: 90
+  healthPoints: 90
   moveSpeed: 1
   attackSpeed: 1
   damage: 1
