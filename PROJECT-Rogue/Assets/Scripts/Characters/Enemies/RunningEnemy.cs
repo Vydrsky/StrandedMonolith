@@ -14,7 +14,7 @@ public class RunningEnemy : PathfindingEnemy
     public override void rotate()
     {
         Vector2 difference = player.transform.position - this.transform.position;
-        string[] layerName = { "Raycast Ignore", "Enemy", "Flying" };
+        string[] layerName = { "Raycast Ignore", "Enemy", "Flying", "MiddleGround" };
         
         float rotationOnZ = GetRotation(layerName);
         transform.rotation = Quaternion.Euler(0f, 0f, rotationOnZ);

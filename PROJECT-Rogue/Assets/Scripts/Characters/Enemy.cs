@@ -34,6 +34,7 @@ public abstract class Enemy : FightingCharacter
 
     public override void TakeDamage(float damage)
     {
+        Debug.Log($"Damage taken: {damage}");
         healthPoints -= (int)damage;
         if (healthPoints <= 0)
         {

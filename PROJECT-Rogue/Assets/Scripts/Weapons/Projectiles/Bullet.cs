@@ -33,6 +33,7 @@ public class Bullet : MonoBehaviour
         velocity = (baseBulletVelocity + ownerVelocity);
         this.transform.localScale = new Vector2(this.transform.localScale.x * bulletSize, this.transform.localScale.y * bulletSize);
         this.range = range;
+        Debug.Log($"{whoAttacks.tag} attacks, damage: {damage} ");
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -47,6 +48,7 @@ public class Bullet : MonoBehaviour
             {
                 character.TakeDamage(damage);
             }
+        damage = 0;
         PlayImpactAnimation();
     }
 

@@ -8,6 +8,7 @@ public class RaycastSniperRifle : Raycast
     {
         LayerMask newMask = (1 << LayerMask.NameToLayer("Hole"));
         newMask |= (1 << LayerMask.NameToLayer("Ignore Raycast"));
+        newMask |= (1 << LayerMask.NameToLayer("MiddleGround"));
         newMask = ~newMask;
 
         LineRenderer lineRenderer = Shooting.instance.raycastPrefabs.Find(x => x.tag.Contains("|RaySniper|"));
