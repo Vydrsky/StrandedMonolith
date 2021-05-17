@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5865779773234100898, guid: c7c837ec174be30478f3843e9535e7c6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 370
+      objectReference: {fileID: 0}
     - target: {fileID: 5865779773516927778, guid: c7c837ec174be30478f3843e9535e7c6, type: 3}
       propertyPath: m_Name
       value: GameOver
