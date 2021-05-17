@@ -156,7 +156,7 @@ public class Level : MonoBehaviour
         layout = GenerateLevel(8, 6, 2).Split('\n');
         unclearedRooms = new List<Room>();
         RemoveRooms();
-        PickBossRoom(layout);
+        PickSpecialRooms(layout);
         bool start = false;
         //Debug.Log(regularRooms.Count + " LEVEL COUNT");
         for (int i = 0; i < layout.Length; i++)
@@ -323,7 +323,7 @@ public class Level : MonoBehaviour
         }
     }
 
-    static void PickBossRoom(string[] layout)
+    static void PickSpecialRooms(string[] layout)
     {
         int cordY=0;
         int cordX=0;
