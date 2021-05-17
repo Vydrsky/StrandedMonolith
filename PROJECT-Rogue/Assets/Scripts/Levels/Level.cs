@@ -139,11 +139,11 @@ public class Level : MonoBehaviour
         staticGracz = gracz;
         rooms = new Dictionary<string, Room>();
         regularRooms =
-            RemoveThatBitchAssGarbageFromMyFileListUnityYouAreTheOneThatPutThatThereInTheFirstPlace(Directory
+            RemoveMetaFiles(Directory
                 .GetFiles("Assets/Scripts/Levels", "map*").ToList());
-        bossRooms = RemoveThatBitchAssGarbageFromMyFileListUnityYouAreTheOneThatPutThatThereInTheFirstPlace(Directory
+        bossRooms = RemoveMetaFiles(Directory
             .GetFiles("Assets/Scripts/Levels", "boss*").ToList());
-        specialRooms = RemoveThatBitchAssGarbageFromMyFileListUnityYouAreTheOneThatPutThatThereInTheFirstPlace(Directory
+        specialRooms = RemoveMetaFiles(Directory
             .GetFiles("Assets/Scripts/Levels", "special*").ToList());
 
         /////////////////////////////////////////////////////
@@ -152,7 +152,7 @@ public class Level : MonoBehaviour
 
     public static void FillLevel()
     {
-        layout = GenerateLevel(8, 6, 1).Split('\n');
+        layout = GenerateLevel(8, 6, 2).Split('\n');
         unclearedRooms = new List<Room>();
         RemoveRooms();
         PickBossRoom(layout);
@@ -457,7 +457,7 @@ public class Level : MonoBehaviour
         layout[cordX]=ReplaceAtIndex(layout[cordX], cordY, 'B');
     }
 
-    List<string> RemoveThatBitchAssGarbageFromMyFileListUnityYouAreTheOneThatPutThatThereInTheFirstPlace(List<string> files)
+    List<string> RemoveMetaFiles(List<string> files)
     {
         bool flag = false;
         string compare="meta";

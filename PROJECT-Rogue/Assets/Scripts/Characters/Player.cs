@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -273,7 +272,7 @@ public class Player : FightingCharacter
                     break;
                 case "ShopItem":
                     ShopItem shopItem = collider.gameObject.GetComponent<ShopItem>();
-                    if (shopItem.Buy() < money)
+                    if (shopItem.Buy() <= money)
                     {
                         money -= shopItem.Buy();
                         shopItem.Sell();
