@@ -318,6 +318,11 @@ public class Room
         Promotion = true;
     }
 
+    public void AddObject(GameObject orphan)
+    {
+        allObjects.Add(orphan);
+    }
+
     public void Delete()
     {
         for (int i = 0; i < allObjects.Count; i++)

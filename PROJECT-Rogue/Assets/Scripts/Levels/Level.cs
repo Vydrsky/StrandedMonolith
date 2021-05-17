@@ -248,6 +248,11 @@ public class Level : MonoBehaviour
         rooms[""+_currentY+_currentX].CheckEnemyTable();
     }
 
+    public static void CollectOrphan(GameObject orphan)
+    {
+        rooms[""+_currentY+_currentX].AddObject(orphan);
+    }
+
     public static Room PickChampionRoom()
     {
         if (unclearedRooms.Count == 0)
