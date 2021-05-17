@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1952523671558670502}
   - component: {fileID: 4010902792714218166}
   - component: {fileID: 8933245618440877136}
-  - component: {fileID: -6381099332315956136}
   - component: {fileID: -3684452069102734296}
   - component: {fileID: 6787230100279310602}
   - component: {fileID: 3018354253338879269}
@@ -100,30 +99,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 0}
-  maxHealth: 150
-  healthPoints: 150
+  maxHealth: 75
+  healthPoints: 75
   moveSpeed: 2.5
   attackSpeed: 0
   damage: 10
   range: 0
   shotSpeed: 0
   timeToWait: 0
---- !u!58 &-6381099332315956136
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6745002004135758567}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.06
 --- !u!58 &-3684452069102734296
 CircleCollider2D:
   m_ObjectHideFlags: 0
