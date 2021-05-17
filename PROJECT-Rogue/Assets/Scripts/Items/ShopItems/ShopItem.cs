@@ -39,7 +39,6 @@ public class ShopItem : MonoBehaviour
     {
         item.layer = 2;
         item.transform.parent = null;
-        Level.CollectOrphan(item);
         Destroy(gameObject);
         Destroy(this);
     }

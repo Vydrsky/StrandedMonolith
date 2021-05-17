@@ -27,6 +27,7 @@ public class Level : MonoBehaviour
     [SerializeField] private List<GameObject> bosses;
     private static List<GameObject> staticBosses;
     [SerializeField] private GameObject gracz;
+    private static List<GameObject> inventory;
     public static GameObject staticGracz;
     [SerializeField] private GameObject kamera;
     private static int _currentX;
@@ -248,11 +249,7 @@ public class Level : MonoBehaviour
         rooms[""+_currentY+_currentX].CheckEnemyTable();
     }
 
-    public static void CollectOrphan(GameObject orphan)
-    {
-        rooms[""+_currentY+_currentX].AddObject(orphan);
-    }
-
+    
     public static Room PickChampionRoom()
     {
         if (unclearedRooms.Count == 0)
@@ -313,6 +310,16 @@ public class Level : MonoBehaviour
             }
             unclearedRooms.Clear();
             rooms.Clear();
+        }
+
+        List<GameObject> temp;
+        temp = staticGracz.GetComponent<Player>().tempInventory;
+        for (int i = temp.Count-1; i >= 0; i--)
+        {
+            if (temp[i].activeInHierarchy)
+            {
+                temp.RemoveAt(i);
+            }
         }
     }
 

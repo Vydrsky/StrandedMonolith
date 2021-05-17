@@ -25,6 +25,7 @@ public class Player : FightingCharacter
     //[SerializeField] private LineRenderer lineRenderer;
     [SerializeField] public ActiveItem activeItem;
     [SerializeField] public WeaponItem weaponItem;
+    public List<GameObject> tempInventory=new List<GameObject>();
 
     [SerializeField] public List<PassiveItem> Inventory = new List<PassiveItem>();
 
@@ -98,6 +99,7 @@ public class Player : FightingCharacter
                 Vector2 force = transform.position - WeaponItem.transform.position;
                 WeaponItem.GetComponent<Rigidbody2D>().AddForce(-force * 2000, ForceMode2D.Force);
                 WeaponItem = temp;
+                tempInventory.Add(WeaponItem.gameObject);
                 WeaponItem.weapon.SetAttacker(this);
                 collider.gameObject.SetActive(false);
                 itemPickupTime = Time.time;
@@ -105,6 +107,7 @@ public class Player : FightingCharacter
             else
             {
                 WeaponItem = collider.gameObject.GetComponent<WeaponItem>();
+                tempInventory.Add(WeaponItem.gameObject);
                 collider.gameObject.SetActive(false);
                 WeaponItem.weapon.SetAttacker(this);
                 itemPickupTime = Time.time;
@@ -126,6 +129,7 @@ public class Player : FightingCharacter
                 Vector2 force = transform.position - activeItem.transform.position;
                 activeItem.GetComponent<Rigidbody2D>().AddForce(-force * 2000, ForceMode2D.Force);
                 activeItem = temp;
+                tempInventory.Add(activeItem.gameObject);
                 activeUI.SetCurrentActive(activeItem);
                 collider.gameObject.SetActive(false);
                 itemPickupTime = Time.time;
@@ -133,6 +137,7 @@ public class Player : FightingCharacter
             else
             {
                 activeItem = collider.gameObject.GetComponent<ActiveItem>();
+                tempInventory.Add(activeItem.gameObject);
                 activeUI.SetCurrentActive(activeItem);
                 collider.gameObject.SetActive(false);
                 itemPickupTime = Time.time;
