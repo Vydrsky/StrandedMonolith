@@ -72,10 +72,10 @@ public class SimpleWeaponFactory
                 projWeaponStats.Name = "";
                 projWeaponStats.Description = "";
                 projWeaponStats.AttackSpeed = 0.45f;
-                projWeaponStats.Damage = 55;
+                projWeaponStats.Damage = 45;
                 projWeaponStats.RangeModifier = 1.5f;
                 projWeaponStats.BulletSize = 0.75f;
-                projWeaponStats.BulletSpeed = 45;
+                projWeaponStats.BulletSpeed = 28;
                 return new ProjectileSniperRifle(projWeaponStats);
 
             case WeaponsEnum.ProjectileSniperRifleB:
@@ -83,7 +83,7 @@ public class SimpleWeaponFactory
                 projWeaponStats.Name = "";
                 projWeaponStats.Description = "";
                 projWeaponStats.AttackSpeed = 0.2f;
-                projWeaponStats.Damage = 110;
+                projWeaponStats.Damage = 70;
                 projWeaponStats.RangeModifier = 1.5f;
                 projWeaponStats.BulletSize = 1.25f;
                 projWeaponStats.BulletSpeed = 28;
@@ -93,8 +93,8 @@ public class SimpleWeaponFactory
                 WeaponStats weaponStats = new WeaponStats();
                 weaponStats.Name = "";
                 weaponStats.Description = "";
-                weaponStats.AttackSpeed = 10f;
-                weaponStats.Damage = 10;
+                weaponStats.AttackSpeed = 5f;
+                weaponStats.Damage = 15;
                 weaponStats.RangeModifier = 1.3f;
                 return new RaycastRifle(weaponStats);
 
@@ -102,8 +102,8 @@ public class SimpleWeaponFactory
                 weaponStats = new WeaponStats();
                 weaponStats.Name = "";
                 weaponStats.Description = "";
-                weaponStats.AttackSpeed = 15f;
-                weaponStats.Damage = 7;
+                weaponStats.AttackSpeed = 7f;
+                weaponStats.Damage = 10;
                 weaponStats.RangeModifier = 1.2f;
                 return new RaycastRifle(weaponStats);
 
@@ -112,7 +112,7 @@ public class SimpleWeaponFactory
                 weaponStats.Name = "";
                 weaponStats.Description = "";
                 weaponStats.AttackSpeed = 0.5f;
-                weaponStats.Damage = 45;
+                weaponStats.Damage = 55;
                 weaponStats.RangeModifier = 3;
                 return new RaycastSniperRifle(weaponStats);
             case WeaponsEnum.EnemyProjectileRifle:
