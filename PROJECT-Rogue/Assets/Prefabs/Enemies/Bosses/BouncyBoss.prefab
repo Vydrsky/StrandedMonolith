@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7013913875711908693}
   - component: {fileID: 8117639592715755559}
   - component: {fileID: 4624098574416307}
-  - component: {fileID: 1527998606385019194}
   - component: {fileID: 369665306045629205}
   - component: {fileID: 1581384353505871901}
   - component: {fileID: 8959841301815972548}
@@ -108,22 +107,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &1527998606385019194
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5954488639560277365}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.03, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.35
 --- !u!58 &369665306045629205
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -153,8 +136,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 0}
-  maxHealth: 1700
-  healthPoints: 1700
+  maxHealth: 850
+  healthPoints: 850
   moveSpeed: 150
   attackSpeed: 0
   damage: 0

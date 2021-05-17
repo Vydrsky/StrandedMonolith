@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 613257905954716417}
   - component: {fileID: 5858271028525974753}
   - component: {fileID: 2183375798871770053}
-  - component: {fileID: 788969276097762874}
   - component: {fileID: 59798449728939636}
   m_Layer: 11
   m_Name: TurretEnemy
@@ -131,8 +130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 2376008392393349478}
-  maxHealth: 135
-  healthPoints: 135
+  maxHealth: 90
+  healthPoints: 90
   moveSpeed: 0
   attackSpeed: 1
   damage: 1
@@ -172,32 +171,6 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.15, y: 0.03}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 1
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.7, y: 0.6}
-  m_EdgeRadius: 0
---- !u!61 &788969276097762874
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6847359738231118968}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.15, y: 0.03}
