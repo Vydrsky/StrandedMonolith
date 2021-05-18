@@ -7,7 +7,7 @@ public class PlayerJournal : MonoBehaviour
 {
     [SerializeField] private Text text;
 
-    public void SetText(string txt, bool finished = false)
+    public void SetText(string txt)
     {
         text.text = txt;
     }
