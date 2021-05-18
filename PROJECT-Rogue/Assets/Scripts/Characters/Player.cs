@@ -22,7 +22,6 @@ public class Player : FightingCharacter
     [SerializeField] private PlayerJournal activeQuest;
     [SerializeField] private PlayerStats statsUI;
     [SerializeField] private ActiveUI activeUI;
-    //[SerializeField] private LineRenderer lineRenderer;
     [SerializeField] public ActiveItem activeItem;
     [SerializeField] public WeaponItem weaponItem;
     public List<GameObject> tempInventory=new List<GameObject>();
@@ -221,7 +220,6 @@ public class Player : FightingCharacter
             playerMovement.move(this);
         }
         playerMovement.rotate(this);
-        //WeaponSwap();
     }
 
     public void JournalUpdate()
@@ -308,10 +306,6 @@ public class Player : FightingCharacter
                 
                 PassiveItem temp = collider.gameObject.GetComponent<PassiveItem>();
                 temp.AddToInventory(this);
-                foreach(PassiveItem i in Inventory)
-                {
-                    Debug.Log(i.ItemInfo());
-                }
                 collider.gameObject.SetActive(false);
                 healthBar.SetMaxHealth(MaxHealth);
                 UpdateHealth();

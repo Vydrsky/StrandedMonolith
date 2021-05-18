@@ -51,8 +51,8 @@ public class Level : MonoBehaviour
     {
         Random.InitState((int)DateTime.Now.Ticks & 0x0000FFFF);
         string levelLayout="";
-        int random;     //w ktora strone pojdzie pies
-        int pivotIndex; //indeks w kt�rym jest pies, zaczyna od srodka
+        int random;     
+        int pivotIndex; 
         int mapSideLength = mapSize;
         if (mapSize % 2 == 0)
         {
@@ -68,7 +68,6 @@ public class Level : MonoBehaviour
         }
 
         pivotIndex = ((mapSideLength * ((mapSideLength+1) / 2)-mapSideLength/2)-1)+(mapSideLength/2);
-        //Debug.Log(pivotIndex);
         levelLayout = ReplaceAtIndex(levelLayout, pivotIndex, 'X');
         for (int j = 0; j < numberOfWanderers; j++)
         {
@@ -120,12 +119,9 @@ public class Level : MonoBehaviour
                 levelLayout = ReplaceAtIndex(levelLayout, pivotIndex, 'X');
             }
         }
-       // Debug.Log(levelLayout);
-       // Debug.Log(levelLayout.Length);
 
         return levelLayout;
     }
-    // Start is called before the first frame update
     void Start()
     {
         
@@ -146,7 +142,6 @@ public class Level : MonoBehaviour
         specialRooms = RemoveMetaFiles(Directory
             .GetFiles("Assets/Scripts/Levels", "special*").ToList());
 
-        /////////////////////////////////////////////////////
         FillLevel();
     }
 
@@ -157,7 +152,6 @@ public class Level : MonoBehaviour
         RemoveRooms();
         PickSpecialRooms(layout);
         bool start = false;
-        //Debug.Log(regularRooms.Count + " LEVEL COUNT");
         for (int i = 0; i < layout.Length; i++)
         {
             for (int j = 0; j < layout[i].Length; j++)
@@ -169,14 +163,12 @@ public class Level : MonoBehaviour
                         int rnd = Random.Range(0, bossRooms.Count);
                         rooms.Add("" + i + j,
                             new Room(staticMyPrefab, j, i, bossRooms[rnd]));
-                        //rooms["" + i + j].Disable();
                     }
                     else if (layout[i][j] == 'S')
                     {
                         int rnd = Random.Range(0, specialRooms.Count);
                         rooms.Add("" + i + j,
                             new Room(staticMyPrefab, j, i, specialRooms[rnd],true));
-                        //rooms["" + i + j].Disable();
                     }
                     else
                     {
@@ -185,7 +177,6 @@ public class Level : MonoBehaviour
                             rooms.Add("" + i + j,
                                 new Room(staticMyPrefab, j, i, "Assets/Scripts/Levels/TEMPLATE.txt"));
                             rooms["" + i + j].DeActivate();
-                            //unclearedRooms.Remove(rooms["" + i + j]);
                             staticGracz.transform.position = new Vector2(7 + (j * (36)), -7 + (i * (-15)));
                             instancjaKamery.transform.position = new Vector3(17.5f + (j * (36)), -7 + (i * (-15)), -10);
                             _currentX = j;
@@ -193,11 +184,9 @@ public class Level : MonoBehaviour
                         }
                         else
                         {
-                            //Debug.Log("Henlo");
                             int rnd = Random.Range(0, regularRooms.Count);
                             rooms.Add("" + i + j,
                                 new Room(staticMyPrefab, j, i, regularRooms[rnd]));
-                            //rooms["" + i + j].Disable();
                             unclearedRooms.Add(rooms["" + i + j]);
                         }
                         
@@ -226,10 +215,8 @@ public class Level : MonoBehaviour
 
     public static void MoveFocus(int x, int y)
     {
-        //rooms["" + _currentY + _currentX].Disable();
         _currentX += x;
         _currentY += y;
-        //rooms["" + _currentY + _currentX].Enable();
         if (rooms.ContainsKey("" + _currentY + _currentX))
         {
             rooms["" + _currentY + _currentX].Activate();
@@ -285,7 +272,6 @@ public class Level : MonoBehaviour
     public static GameObject GetEnemy(EnemyType type)
     {
         int rnd;
-        //Random.InitState((int)DateTime.Now.Ticks & 0x0000FFFF);
         switch (type)
         {
             case EnemyType.Regular:
@@ -382,8 +368,6 @@ public class Level : MonoBehaviour
         {
             layout[cordX] = ReplaceAtIndex(layout[cordX],cordY,'X');
         }
-
-       // Debug.Log("TUTAJ COUNTS "+countS);
         while (countS < 2)
         {
             bool interrupt = false;

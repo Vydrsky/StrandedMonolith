@@ -49,8 +49,6 @@ public class Room
         //pathfinding
         roomX = x * 36;
         roomY = y1 - 14;
-        //Debug.Log(roomX + " " + roomY);
-        //
 
         while (k < map.GetLength(0))
         {
@@ -65,9 +63,7 @@ public class Room
                         allObjects.Add(Object.Instantiate(myPrefab[0], new Vector2(x1, y1), Quaternion.identity));
                         break;
                     case 'E':
-                        //////
                         bool isDoor=false;
-                       // Debug.Log(Level.layout.Length);// HERE WEWOOWEWOOO
                         if (y < Level.layout.Length - 1 && k == map.GetLength(0) - 2)
                         {
                             if (Level.layout[y + 1][x] != '0')
@@ -88,7 +84,7 @@ public class Room
                             }
                         }
 
-                        if (x < Level.layout[y].Length - 1 && i == map[k].Length - 2) // tu zmienic z -1 na -2
+                        if (x < Level.layout[y].Length - 1 && i == map[k].Length - 1)
                         {
                             if (Level.layout[y][x + 1] != '0')
                             {
@@ -265,8 +261,6 @@ public class Room
         //pathfinding
         PlayerPosition.instance.UpdateMapInfo(map, roomX, roomY);
         PlayerPosition.instance.InvokeRepeating("UpdateMapArray", 0.0f, 0.5f);
-        //Debug.Log("zmiana pokoju");
-        //
     }
 
     public void DeActivate()
@@ -299,7 +293,6 @@ public class Room
         int cnt = 0;
         for (int i = 0; i < enemies.Count; i++)
         {
-           // Debug.Log(i+" "+enemies[i]);
             if (enemies[i] == null)
             {
                 cnt++;

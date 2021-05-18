@@ -8,17 +8,10 @@ public class ShopItem : MonoBehaviour
     private GameObject item;
     private int price;
     [SerializeField] private Text priceDisplay;
-    // Start is called before the first frame update
     void Start()
     {
         List<GameObject> itemList = Level.GetAllItems();
         AssignGoods(itemList[Random.Range(0,itemList.Count)],15);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void AssignGoods(GameObject _item,int _price)
