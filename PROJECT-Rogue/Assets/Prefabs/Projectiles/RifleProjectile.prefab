@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactAnimation: {fileID: 8470515175463483428, guid: 40b18f6618f307c46b1ea3b2c886abe0, type: 3}
-  mixer: {fileID: 24100000, guid: 9911fa11cf8eb0c4d872c24cd6b6b512, type: 2}
+  attackerTag: 
 --- !u!58 &4528926901192893445
 CircleCollider2D:
   m_ObjectHideFlags: 0

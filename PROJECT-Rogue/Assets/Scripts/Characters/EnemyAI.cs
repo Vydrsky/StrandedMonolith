@@ -13,7 +13,6 @@ public class EnemyAI : MonoBehaviour
     {
         mapX = PlayerPosition.instance.mapX;
         mapY = PlayerPosition.instance.mapY;
-        //InvokeRepeating("ShowDebug", 0, 3f);
     }
 
     private void CheckPosition()

@@ -111,14 +111,11 @@ public class PlayerPosition : MonoBehaviour
     void UpdateMapArray()
     {
         ClearMap();
-        //ShowArrayInt();
         int playerX, playerY;
         playerX = Mathf.RoundToInt(transform.position.x) - mapX;
         playerY = Mathf.RoundToInt(transform.position.y) - mapY;
-        //Debug.Log(playerX + " " + playerY);
         mapInt[playerX, playerY] = playerNumber;
         FillWithNumbers();
-        //ShowArrayInt();
     }
 
     void ClearMap()

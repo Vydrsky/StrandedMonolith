@@ -334,63 +334,6 @@ public class Player : FightingCharacter
     }
 
 
-    //void WeaponSwap()
-    //{     
-    //    if(Input.GetKey(KeyCode.Alpha1))
-    //    {
-    //        WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileRifleA);
-    //        WeaponItem.weapon.SetAttacker(this);
-    //    }
-    //    else if (Input.GetKey(KeyCode.Alpha2))
-    //    {
-    //        WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileRifleB);
-    //        weaponItem.weapon.SetAttacker(this);
-    //    }
-    //    else if (Input.GetKey(KeyCode.Alpha3))
-    //    {
-    //        WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileShotgunA);
-    //        weaponItem.weapon.SetAttacker(this);
-    //    }
-    //    else if (Input.GetKey(KeyCode.Alpha4))
-    //    {
-    //        WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileShotgunB);
-    //        weaponItem.weapon.SetAttacker(this);
-    //    }
-    //    else if (Input.GetKey(KeyCode.Alpha5))
-    //    {
-    //        WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileSniperRifleA);
-    //        weaponItem.weapon.SetAttacker(this);
-    //    }
-    //    else if (Input.GetKey(KeyCode.Alpha6))
-    //    {
-    //        WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.ProjectileSniperRifleB);
-    //        weaponItem.weapon.SetAttacker(this);
-    //    }
-    //    else if (Input.GetKey(KeyCode.Alpha7))
-    //    {
-    //        WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.RaycastRifleA);
-    //        weaponItem.weapon.SetAttacker(this);
-    //    }
-    //    else if (Input.GetKey(KeyCode.Alpha8))
-    //    {
-    //        WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.RaycastRifleB);
-    //        weaponItem.weapon.SetAttacker(this);
-    //    }
-    //    else if (Input.GetKey(KeyCode.Alpha9))
-    //    {
-    //        WeaponItem.weapon = weaponFactory.CreateWeapon(WeaponsEnum.RaycastSniperRifle);
-    //        weaponItem.weapon.SetAttacker(this);
-    //    }
-    //    else if (Input.GetKey(KeyCode.Space))
-    //    {
-    //        Level.FillLevel();
-            
-    //    }
-    //    weaponItem.weapon.SetWeaponSound(weaponItem.sound);
-    //}
-
-
-
     private void OnCollisionStay2D(Collision2D collision)
     {
         UpdateHealth();

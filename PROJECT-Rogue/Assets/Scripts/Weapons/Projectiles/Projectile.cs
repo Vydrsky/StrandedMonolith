@@ -34,7 +34,6 @@ public abstract class Projectile : Ranged
             signY = 1;
         velocityX = Mathf.Min(limitX, Mathf.Abs(velocityX)) * signX;
         velocityY = Mathf.Min(limitY, Mathf.Abs(velocityY)) * signY;
-        // Debug.Log($"x vel: {velocityX} x limit: {limitX} y vel: {velocityY} y limit: {limitY}");
         return new Vector2(velocityX, velocityY);
     }
 }

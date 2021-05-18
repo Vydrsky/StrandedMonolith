@@ -33,9 +33,6 @@ public class RaycastSniperRifle : Raycast
         yield return new WaitForSeconds(0.03f);
         Object.Destroy(obj.gameObject);
     }
-
-//public RaycastSniperRifle(float attackSpeed = 1, int damage = 40) : base(attackSpeed, damage) { }
-
     public RaycastSniperRifle(WeaponStats weaponStats) : base(weaponStats)
     {
 

@@ -46,7 +46,6 @@ public abstract class Weapon
         {
             Attack();
             // sound
-            //weaponObject.PlaySound();
             AudioSource.PlayClipAtPoint(sound.clip, whoAttacks.transform.position, sound.volume);
             //
             lastShot = Time.time;

@@ -6,12 +6,6 @@ public abstract class PathfindingEnemy : Enemy
 {
     GameObject EnemyAIobj;
     protected EnemyAI enemyAIscript;
-    //public override void move()
-    //{
-    //    //transform.Translate(new Vector2(1 * moveSpeed, 0) * Time.deltaTime);
-    //    _rigidbody.AddRelativeForce(Vector2.right * moveSpeed);
-    //    //_rigidbody.AddRelativeForce(difference * moveSpeed);
-    //}
 
     protected float GetRotation(string[] layerName)
     {
@@ -30,7 +24,7 @@ public abstract class PathfindingEnemy : Enemy
         {
             temp = enemyAIscript.CheckDirection();
 
-            // srodek kratki na mapie
+            // z ta czescia kodu przeciwnik idze na srodek kratki ale za czesto sie obraca, nie wyglada to dobrze :(
             //float x, y;
             //int enemyX, enemyY;
             //x = temp.x;
@@ -44,22 +38,4 @@ public abstract class PathfindingEnemy : Enemy
         return temp.normalized;
     }
 
-    // void Start()
-    //{
-    //    _rigidbody = GetComponent<Rigidbody2D>();
-    //    player = GameObject.FindGameObjectsWithTag("Player")[0];
-    //    EnemyAIobj = transform.GetChild(0).gameObject;
-    //    enemyAIscript = transform.GetChild(0).gameObject.GetComponent<EnemyAI>();
-    //    timeToWait = Time.time + 1f;
-    //    _audioSource = GetComponent<AudioSource>();
-    //}
-
-    //void FixedUpdate()
-    //{
-    //    if (Wait())
-    //    {
-    //        rotate();
-    //        move();
-    //    }
-    //}
 }
