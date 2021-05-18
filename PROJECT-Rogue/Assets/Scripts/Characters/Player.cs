@@ -100,6 +100,8 @@ public class Player : FightingCharacter
                 WeaponItem.GetComponent<Rigidbody2D>().AddForce(-force * 2000, ForceMode2D.Force);
                 WeaponItem = temp;
                 tempInventory.Add(WeaponItem.gameObject);
+                
+                Debug.Log(tempInventory.Count);
                 WeaponItem.weapon.SetAttacker(this);
                 collider.gameObject.SetActive(false);
                 itemPickupTime = Time.time;
@@ -109,6 +111,8 @@ public class Player : FightingCharacter
                 WeaponItem = collider.gameObject.GetComponent<WeaponItem>();
                 tempInventory.Add(WeaponItem.gameObject);
                 collider.gameObject.SetActive(false);
+                
+                Debug.Log(tempInventory.Count);
                 WeaponItem.weapon.SetAttacker(this);
                 itemPickupTime = Time.time;
             }
@@ -138,6 +142,7 @@ public class Player : FightingCharacter
             {
                 activeItem = collider.gameObject.GetComponent<ActiveItem>();
                 tempInventory.Add(activeItem.gameObject);
+                Debug.Log(tempInventory.Count);
                 activeUI.SetCurrentActive(activeItem);
                 collider.gameObject.SetActive(false);
                 itemPickupTime = Time.time;
