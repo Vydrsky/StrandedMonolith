@@ -22,11 +22,7 @@ public class PlayerPosition : MonoBehaviour
         {
             map[i] = "                                    ";
         }
-        //FillStringMap();
         ConvertMapToInt();
-        //ShowArrayInt();
-        //InvokeRepeating("UpdateMapArray", 0.0f, 0.5f);
-        //InvokeRepeating("DebugLocation", 0.0f, 0.5f);
     }
 
     public void UpdateMapInfo(string[] map, int mapX, int mapY)
@@ -34,32 +30,8 @@ public class PlayerPosition : MonoBehaviour
         map.CopyTo(this.map, 0);
         this.mapX = mapX;
         this.mapY = mapY;
-        ConvertMapToInt();
-        
+        ConvertMapToInt();  
     }
-
-    //private void FillStringMap()
-    //{
-    //    for (int j = 0; j < map.GetLength(1); j++)
-    //    {
-    //        for (int i = 0; i < map.GetLength(0); i++)
-    //        {
-    //            if (j == 0 || j == map.GetLength(1) - 1)
-    //            {
-    //                map[i, j] = "X";
-    //            }
-    //            else if (i == 0 || i == map.GetLength(0) - 1)
-    //            {
-    //                map[i, j] = "X";
-    //            }
-    //            else
-    //                map[i, j] = " ";
-    //        }
-    //    }
-    //    map[3, 2] = "X";
-    //    map[2, 3] = "X";
-    //    map[2, 2] = "X";
-    //}
 
     private void FillWithNumbers()
     {     
