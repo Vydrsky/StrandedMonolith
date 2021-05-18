@@ -317,6 +317,7 @@ public class Level : MonoBehaviour
         {
             if (temp[i].activeInHierarchy)
             {
+                Destroy(temp[i]);
                 temp.RemoveAt(i);
             }
         }
