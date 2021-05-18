@@ -139,8 +139,7 @@ public class Level : MonoBehaviour
         staticMyPrefab = myPrefab;
         staticGracz = gracz;
         rooms = new Dictionary<string, Room>();
-        regularRooms =
-            RemoveMetaFiles(Directory
+       regularRooms =RemoveMetaFiles(Directory
                 .GetFiles("Assets/Scripts/Levels", "map*").ToList());
         bossRooms = RemoveMetaFiles(Directory
             .GetFiles("Assets/Scripts/Levels", "boss*").ToList());
