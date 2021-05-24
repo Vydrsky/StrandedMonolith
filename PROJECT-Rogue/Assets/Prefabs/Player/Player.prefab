@@ -208,8 +208,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 7823135346225160573}
-  maxHealth: 100
-  healthPoints: 100
+  maxHealth: 150
+  healthPoints: 150
   moveSpeed: 1
   attackSpeed: 1
   damage: 1
@@ -224,6 +224,7 @@ MonoBehaviour:
   activeUI: {fileID: 0}
   activeItem: {fileID: 0}
   weaponItem: {fileID: 4575320530088364512, guid: 8d944f8158ad2db4081b70994751c38e, type: 3}
+  tempInventory: []
   Inventory: []
   clipArray:
   - {fileID: 8300000, guid: fdc92040b23be54428a8dc4d787ddbd4, type: 3}
