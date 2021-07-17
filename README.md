@@ -1,2 +1,2 @@
-# PROJECT-Rogue
+# Stranded Monolith
 Rogue-like game in Unity
