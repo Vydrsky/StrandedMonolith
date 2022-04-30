@@ -1,2 +1,2 @@
 # Stranded Monolith
-Rogue-like game in Unity
+Gra typu rogue-like w Unity
